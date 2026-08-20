@@ -1,9 +1,13 @@
 "use client";
 
 import React, { useState } from "react";
+import { BookOpeningLoader } from "@/components/ui/BookOpeningLoader";
 import { Header } from "@/components/layout/Header";
+import { TrustBar } from "@/components/layout/TrustBar";
 import { HeroSection } from "@/components/hero/HeroSection";
+import { CircularCategoryBar } from "@/components/categories/CircularCategoryBar";
 import { FeaturedBigThree } from "@/components/products/FeaturedBigThree";
+import { AuthorOfTheMonth } from "@/components/author/AuthorOfTheMonth";
 import { ReferenceCatalogSection } from "@/components/products/ReferenceCatalogSection";
 import { WhyUsSection } from "@/components/why-us/WhyUsSection";
 import { SellerSection } from "@/components/seller/SellerSection";
@@ -19,6 +23,7 @@ export default function Home() {
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [isQuickViewOpen, setIsQuickViewOpen] = useState(false);
   const [isSellerModalOpen, setIsSellerModalOpen] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const [toasts, setToasts] = useState<ToastMessage[]>([]);
 
   const handleOpenQuickView = (product: Product) => {
@@ -45,40 +50,55 @@ export default function Home() {
 
   return (
     <div className="min-h-screen flex flex-col bg-white text-slate-900 selection:bg-brand-coral selection:text-white">
-      {/* 1. Sticky Navigation Header with image_c30669.png Logo & Low-Friction Promo Bar */}
+      {/* 0. Fast Book Opening Loading Animation */}
+      <BookOpeningLoader />
+
+      {/* 1. Header with Logo, Midnight Promo, and Category Sub-Nav */}
       <Header
         onOpenSellerModal={handleOpenSellerModal}
         onOpenQuickView={handleOpenQuickView}
       />
 
-      {/* Main Page Flow */}
+      {/* 2. 4-Item Guarantee Trust Bar */}
+      <TrustBar />
+
+      {/* Main Content Flow */}
       <main className="flex-1">
-        {/* 2. Direct-Response Hero Section */}
+        {/* 3. Hero Section (Stack Up, Save Big Promo Banner + Educational Direct Response) */}
         <HeroSection
           onOpenSellerModal={handleOpenSellerModal}
           onOpenQuickView={handleOpenQuickView}
         />
 
-        {/* 3. Featured Big Three Offers ("Must Have" Spotlight) */}
+        {/* 4. Circular Book Category Icons Strip */}
+        <CircularCategoryBar
+          selectedCategory={selectedCategory}
+          onSelectCategory={(catId) => setSelectedCategory(catId)}
+        />
+
+        {/* 5. The "Big 3" Featured Offers */}
         <FeaturedBigThree onOpenQuickView={handleOpenQuickView} />
 
-        {/* 4. Exact Reference Book Catalog (Matching User-Attached Images & Prices) */}
+        {/* 6. Author of the Month Spotlight Section */}
+        <AuthorOfTheMonth onOpenQuickView={handleOpenQuickView} />
+
+        {/* 7. Trending Book Catalog (6 Reference Books from attached images) */}
         <ReferenceCatalogSection onOpenQuickView={handleOpenQuickView} />
 
-        {/* 5. Direct-Response "Why Us" Buyer Protection Section */}
+        {/* 8. Why Us / Direct-Response Buyer Protection Grid */}
         <WhyUsSection />
 
-        {/* 6. Independent Seller Section with 5% Fee & Profit Calculator */}
+        {/* 9. Independent Seller Section with 5% Fee & Profit Calculator */}
         <SellerSection onOpenSellerModal={handleOpenSellerModal} />
 
-        {/* 7. Real-World Authentic Testimonials */}
+        {/* 10. Real-World Authentic Testimonials */}
         <TestimonialsSection />
       </main>
 
-      {/* 8. Scalable Editorial Footer */}
+      {/* 11. 4-Column Editorial Footer */}
       <Footer onOpenSellerModal={handleOpenSellerModal} />
 
-      {/* Interactive Cart Drawer */}
+      {/* Slide-out Cart Drawer */}
       <CartDrawer onOpenQuickView={handleOpenQuickView} />
 
       {/* Quick View Book Inspection Modal */}
@@ -94,7 +114,7 @@ export default function Home() {
         onClose={handleCloseSellerModal}
       />
 
-      {/* Toast Notification Container */}
+      {/* Live Toast Notification Container */}
       <ToastContainer toasts={toasts} onDismiss={handleDismissToast} />
     </div>
   );
