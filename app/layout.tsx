@@ -22,13 +22,13 @@ const lora = Lora({
 });
 
 export const metadata: Metadata = {
-  title: "Market Shop | The UK's Premier Books & Reader Marketplace",
+  title: "Market Shop | Ocean of Book - Direct UK Book Marketplace",
   description:
-    "Discover curated bestsellers, rare collector editions, and indie gems with up to 45% off. Free UK delivery over £15, 100-day money-back guarantee, and 5% flat fee for sellers.",
+    "Buy books direct from independent UK sellers. Save up to 45% on new, used, and collector copies with Royal Mail tracked delivery and a 100-day money-back guarantee.",
   keywords: [
     "Market Shop",
-    "books",
-    "buy books online",
+    "Ocean of Book",
+    "buy books online UK",
     "independent bookshop UK",
     "sell books online",
     "cheap books",
@@ -37,9 +37,9 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Market Shop Ltd" }],
   openGraph: {
-    title: "Market Shop | Books & Reader Marketplace",
+    title: "Market Shop | Ocean of Book - Direct UK Book Marketplace",
     description:
-      "Curated bestsellers, rare editions, and fair marketplace selling. 100-day reader satisfaction guarantee.",
+      "Buy books direct from independent UK sellers with flat 5% seller fee and 100-day returns.",
     type: "website",
     locale: "en_GB",
   },
@@ -52,7 +52,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${playfair.variable} ${inter.variable} ${lora.variable} scroll-smooth`}>
-      <body className="font-sans antialiased text-slate-900 bg-cream-50 min-h-screen flex flex-col selection:bg-amber-500 selection:text-slate-950">
+      <body className="font-sans antialiased text-slate-900 bg-white min-h-screen flex flex-col selection:bg-brand-coral selection:text-white">
         <CartProvider>
           {children}
         </CartProvider>

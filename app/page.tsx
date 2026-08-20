@@ -2,14 +2,12 @@
 
 import React, { useState } from "react";
 import { Header } from "@/components/layout/Header";
-import { TrustBar } from "@/components/layout/TrustBar";
-import { HeroSection } from "@/components/sections/HeroSection";
-import { FeaturedBigThree } from "@/components/sections/FeaturedBigThree";
-import { BenefitsSection } from "@/components/sections/BenefitsSection";
-import { PopularCatalogSection } from "@/components/sections/PopularCatalogSection";
-import { SellerSection } from "@/components/sections/SellerSection";
-import { GuaranteeBanner } from "@/components/sections/GuaranteeBanner";
-import { TestimonialsSection } from "@/components/sections/TestimonialsSection";
+import { HeroSection } from "@/components/hero/HeroSection";
+import { FeaturedBigThree } from "@/components/products/FeaturedBigThree";
+import { ReferenceCatalogSection } from "@/components/products/ReferenceCatalogSection";
+import { WhyUsSection } from "@/components/why-us/WhyUsSection";
+import { SellerSection } from "@/components/seller/SellerSection";
+import { TestimonialsSection } from "@/components/testimonials/TestimonialsSection";
 import { Footer } from "@/components/layout/Footer";
 import { QuickViewModal } from "@/components/modals/QuickViewModal";
 import { SellerModal } from "@/components/modals/SellerModal";
@@ -41,76 +39,62 @@ export default function Home() {
     setIsSellerModalOpen(false);
   };
 
-  const addToast = (toast: Omit<ToastMessage, "id">) => {
-    const id = Math.random().toString(36).substring(2, 9);
-    setToasts((prev) => [...prev, { ...toast, id }]);
-    setTimeout(() => {
-      setToasts((prev) => prev.filter((t) => t.id !== id));
-    }, 4000);
-  };
-
   const handleDismissToast = (id: string) => {
     setToasts((prev) => prev.filter((t) => t.id !== id));
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-cream-50 text-slate-900 selection:bg-amber-500 selection:text-slate-950">
-      {/* 1. Sticky Navigation Header */}
+    <div className="min-h-screen flex flex-col bg-white text-slate-900 selection:bg-brand-coral selection:text-white">
+      {/* 1. Sticky Navigation Header with image_c30669.png Logo & Low-Friction Promo Bar */}
       <Header
         onOpenSellerModal={handleOpenSellerModal}
         onOpenQuickView={handleOpenQuickView}
       />
 
-      {/* 2. Trust Bar (Guarantees & Badges) */}
-      <TrustBar />
-
       {/* Main Page Flow */}
       <main className="flex-1">
-        {/* 3. Hero Section */}
+        {/* 2. Direct-Response Hero Section */}
         <HeroSection
           onOpenSellerModal={handleOpenSellerModal}
           onOpenQuickView={handleOpenQuickView}
         />
 
-        {/* 4. Featured Big Three Deals (The 'Big 3' Prominent Books) */}
+        {/* 3. Featured Big Three Offers ("Must Have" Spotlight) */}
         <FeaturedBigThree onOpenQuickView={handleOpenQuickView} />
 
-        {/* 5. Benefits / Why Choose Us Section */}
-        <BenefitsSection />
+        {/* 4. Exact Reference Book Catalog (Matching User-Attached Images & Prices) */}
+        <ReferenceCatalogSection onOpenQuickView={handleOpenQuickView} />
 
-        {/* 6. Popular Catalog & Genre Explorer */}
-        <PopularCatalogSection onOpenQuickView={handleOpenQuickView} />
+        {/* 5. Direct-Response "Why Us" Buyer Protection Section */}
+        <WhyUsSection />
 
-        {/* 7. Seller Section (Marketplace Value Prop & Earnings Calculator) */}
+        {/* 6. Independent Seller Section with 5% Fee & Profit Calculator */}
         <SellerSection onOpenSellerModal={handleOpenSellerModal} />
 
-        {/* 8. 100-Day Risk-Free Guarantee Banner */}
-        <GuaranteeBanner />
-
-        {/* 9. Verified Testimonials & Reviews */}
+        {/* 7. Real-World Authentic Testimonials */}
         <TestimonialsSection />
       </main>
 
-      {/* 10. Multi-Column Footer with Newsletter & Payment Methods */}
+      {/* 8. Scalable Editorial Footer */}
       <Footer onOpenSellerModal={handleOpenSellerModal} />
 
-      {/* Slide-over Cart Drawer */}
+      {/* Interactive Cart Drawer */}
       <CartDrawer onOpenQuickView={handleOpenQuickView} />
 
-      {/* Quick View Book Preview Modal */}
+      {/* Quick View Book Inspection Modal */}
       <QuickViewModal
         product={selectedProduct}
         isOpen={isQuickViewOpen}
         onClose={handleCloseQuickView}
       />
 
-      {/* Seller Onboarding Modal */}
+      {/* Seller Registration Modal */}
       <SellerModal
         isOpen={isSellerModalOpen}
         onClose={handleCloseSellerModal}
       />
 
-      {/* Live Toast Feedback */}
+      {/* Toast Notification Container */}
       <ToastContainer toasts={toasts} onDismiss={handleDismissToast} />
     </div>
   );
