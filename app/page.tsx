@@ -351,25 +351,29 @@ export default function Home() {
             {/* Pick 1 */}
             <div
               className="flex flex-col group cursor-pointer"
-              onClick={() => handleOpenProductModal("The Silent Echo", "Elena Rostova", 14.99, "https://lh3.googleusercontent.com/aida-public/AB6AXuA2hRt3nflzL572lhboo0z-oM5QqblQKdxtBjr5uZ4Yo3vE1pBLR8UsLdU6IE1zhmgnxizLOaoVTmXe4uLdwken3H7lDihNa8CMxpsgZbTtkLkUR_mnTDvEksUMBVY5wYXnTLMiG8sAtzSusvH1xe2E14hX9F_9AoYbXlLv-zdA3mcjlFS1wy-726qKp0hWLvQ5wsTS5KXzmFghEFuBOJeU0u3FZmM5sVUEAIxn2OaHJvt_pJutkvU", "Literary Fiction")}
+              onClick={() => handleOpenProductModal("David Walliams Gangsta Granny", "info.vebryx@gmail.com", 5.99, "/images/books/gangsta-granny.png", "Children's Fiction", 7.99)}
             >
               <div className="aspect-[2/3] w-full bg-surface-container mb-4 overflow-hidden border border-muted-border rounded book-shadow transition-all duration-300 lift-on-hover relative">
+                <div className="absolute top-2 left-2 bg-secondary text-on-secondary text-xs px-2 py-0.5 uppercase font-bold rounded shadow-sm z-10">
+                  Sale -25%
+                </div>
                 <button
                   onClick={(e) => {
                     e.stopPropagation();
                     addToWishlist({
-                      id: "the-silent-echo",
-                      title: "The Silent Echo",
-                      author: "Elena Rostova",
-                      price: 14.99,
-                      rating: 4.9,
-                      reviewCount: 128,
-                      coverImage: "https://lh3.googleusercontent.com/aida-public/AB6AXuA2hRt3nflzL572lhboo0z-oM5QqblQKdxtBjr5uZ4Yo3vE1pBLR8UsLdU6IE1zhmgnxizLOaoVTmXe4uLdwken3H7lDihNa8CMxpsgZbTtkLkUR_mnTDvEksUMBVY5wYXnTLMiG8sAtzSusvH1xe2E14hX9F_9AoYbXlLv-zdA3mcjlFS1wy-726qKp0hWLvQ5wsTS5KXzmFghEFuBOJeU0u3FZmM5sVUEAIxn2OaHJvt_pJutkvU",
-                      category: "Literary Fiction",
-                      description: "A masterfully crafted edition of The Silent Echo.",
-                      format: "Hardcover",
+                      id: "david-walliams-gangsta-granny",
+                      title: "David Walliams Gangsta Granny",
+                      author: "info.vebryx@gmail.com",
+                      price: 5.99,
+                      originalPrice: 7.99,
+                      rating: 0.0,
+                      reviewCount: 0,
+                      coverImage: "/images/books/gangsta-granny.png",
+                      category: "Children's Fiction",
+                      description: "Ben thinks his cabbage-soup-eating grandmother is utterly dull—until he finds out she is a master international jewel thief.",
+                      format: "Paperback",
                       inStock: true,
-                      sellerName: "Market Shop Direct"
+                      sellerName: "info.vebryx@gmail.com"
                     });
                   }}
                   className="absolute top-2 right-2 p-1.5 rounded-full bg-white/90 shadow hover:bg-white text-secondary transition-transform hover:scale-110 z-10 cursor-pointer"
@@ -377,26 +381,32 @@ export default function Home() {
                 >
                   <span
                     className="material-symbols-outlined text-[18px]"
-                    style={{ fontVariationSettings: isInWishlist("the-silent-echo") ? "'FILL' 1" : "'FILL' 0" }}
+                    style={{ fontVariationSettings: isInWishlist("david-walliams-gangsta-granny") ? "'FILL' 1" : "'FILL' 0" }}
                   >
                     favorite
                   </span>
                 </button>
                 <img
                   className="w-full h-full object-cover"
-                  data-alt="Cover of The Silent Echo"
-                  alt="Cover of The Silent Echo"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2hRt3nflzL572lhboo0z-oM5QqblQKdxtBjr5uZ4Yo3vE1pBLR8UsLdU6IE1zhmgnxizLOaoVTmXe4uLdwken3H7lDihNa8CMxpsgZbTtkLkUR_mnTDvEksUMBVY5wYXnTLMiG8sAtzSusvH1xe2E14hX9F_9AoYbXlLv-zdA3mcjlFS1wy-726qKp0hWLvQ5wsTS5KXzmFghEFuBOJeU0u3FZmM5sVUEAIxn2OaHJvt_pJutkvU"
+                  data-alt="Cover of David Walliams Gangsta Granny"
+                  alt="Cover of David Walliams Gangsta Granny"
+                  src="/images/books/gangsta-granny.png"
                 />
               </div>
               <div className="text-center">
-                <h3 className="font-title-md text-title-md text-ink-charcoal mb-1">The Silent Echo</h3>
-                <p className="font-body-md text-body-md text-outline mb-2">Elena Rostova</p>
-                <p className="font-body-lg text-body-lg text-ink-charcoal font-semibold mb-4">£14.99</p>
+                <div className="flex items-center justify-center gap-1 text-xs text-outline mb-1 font-mono">
+                  <span className="text-primary font-bold">★ (0)</span>
+                </div>
+                <h3 className="font-title-md text-title-md text-ink-charcoal mb-1">David Walliams Gangsta Granny</h3>
+                <p className="font-body-md text-xs text-secondary mb-2 font-mono">By: info.vebryx@gmail.com</p>
+                <p className="font-body-lg text-body-lg font-semibold mb-4">
+                  <span className="text-secondary mr-2">$5.99</span>
+                  <span className="text-outline line-through font-normal text-sm">$7.99</span>
+                </p>
                 <button
                   onClick={(e) => {
                     e.stopPropagation();
-                    handleAddToCartQuick("The Silent Echo", "Elena Rostova", 14.99, "https://lh3.googleusercontent.com/aida-public/AB6AXuA2hRt3nflzL572lhboo0z-oM5QqblQKdxtBjr5uZ4Yo3vE1pBLR8UsLdU6IE1zhmgnxizLOaoVTmXe4uLdwken3H7lDihNa8CMxpsgZbTtkLkUR_mnTDvEksUMBVY5wYXnTLMiG8sAtzSusvH1xe2E14hX9F_9AoYbXlLv-zdA3mcjlFS1wy-726qKp0hWLvQ5wsTS5KXzmFghEFuBOJeU0u3FZmM5sVUEAIxn2OaHJvt_pJutkvU");
+                    handleAddToCartQuick("David Walliams Gangsta Granny", "info.vebryx@gmail.com", 5.99, "/images/books/gangsta-granny.png", "Children's Fiction");
                   }}
                   className="w-full bg-surface-container-high hover:bg-primary hover:text-on-primary text-ink-charcoal font-label-sm text-label-sm uppercase py-3 border border-muted-border rounded transition-colors"
                 >
@@ -408,26 +418,29 @@ export default function Home() {
             {/* Pick 2 */}
             <div
               className="flex flex-col group cursor-pointer"
-              onClick={() => handleOpenProductModal("Architecture of the Mind", "Dr. Julian Hayes", 18.50, "https://lh3.googleusercontent.com/aida-public/AB6AXuBKqhMVW19RD8lwVDkVG2ldd-joFRVeGCcNj9Ju0A1D7vYroSl9ab6EYzgBrKp8D_XjgfsOILDxxtpVcFO8mzcbEKS74KiPCJs0tIWv2LHsQqMWAJyq4jXYg5XbTfdKAfbNS7ujtS7bcw8zxF5-4HdZqKgGwTWfeP7qPemRfWAc0KLSyDcMurOvGO6cPfrPsWWoJdXst-3NaT75ZHfbScmQe5GI_KabpY_ZaYBDSiX0H5dYHIbySlM", "Non-Fiction")}
+              onClick={() => handleOpenProductModal("Adventures of the magic star", "info.vebryx@gmail.com", 5.99, "/images/books/adventures-of-the-magic-star.png", "Romance & Poetry", 7.00)}
             >
               <div className="aspect-[2/3] w-full bg-surface-container mb-4 overflow-hidden border border-muted-border rounded book-shadow transition-all duration-300 lift-on-hover relative">
-                <div className="absolute top-2 left-2 bg-secondary text-on-secondary text-xs px-2 py-1 uppercase font-bold rounded shadow-sm z-10">Bestseller</div>
+                <div className="absolute top-2 left-2 bg-secondary text-on-secondary text-xs px-2 py-0.5 uppercase font-bold rounded shadow-sm z-10">
+                  Sale -14%
+                </div>
                 <button
                   onClick={(e) => {
                     e.stopPropagation();
                     addToWishlist({
-                      id: "architecture-of-the-mind",
-                      title: "Architecture of the Mind",
-                      author: "Dr. Julian Hayes",
-                      price: 18.50,
-                      rating: 4.9,
-                      reviewCount: 94,
-                      coverImage: "https://lh3.googleusercontent.com/aida-public/AB6AXuBKqhMVW19RD8lwVDkVG2ldd-joFRVeGCcNj9Ju0A1D7vYroSl9ab6EYzgBrKp8D_XjgfsOILDxxtpVcFO8mzcbEKS74KiPCJs0tIWv2LHsQqMWAJyq4jXYg5XbTfdKAfbNS7ujtS7bcw8zxF5-4HdZqKgGwTWfeP7qPemRfWAc0KLSyDcMurOvGO6cPfrPsWWoJdXst-3NaT75ZHfbScmQe5GI_KabpY_ZaYBDSiX0H5dYHIbySlM",
-                      category: "Non-Fiction",
-                      description: "Bestselling exploration of space, mind, and culture.",
-                      format: "Hardcover",
+                      id: "adventures-of-the-magic-star",
+                      title: "Adventures of the magic star",
+                      author: "info.vebryx@gmail.com",
+                      price: 5.99,
+                      originalPrice: 7.00,
+                      rating: 0.0,
+                      reviewCount: 0,
+                      coverImage: "/images/books/adventures-of-the-magic-star.png",
+                      category: "Romance & Poetry",
+                      description: "A tender graphic novella tracing love, serendipity, and quiet moments beneath blossom trees.",
+                      format: "Paperback",
                       inStock: true,
-                      sellerName: "Market Shop UK"
+                      sellerName: "info.vebryx@gmail.com"
                     });
                   }}
                   className="absolute top-2 right-2 p-1.5 rounded-full bg-white/90 shadow hover:bg-white text-secondary transition-transform hover:scale-110 z-10 cursor-pointer"
@@ -435,26 +448,32 @@ export default function Home() {
                 >
                   <span
                     className="material-symbols-outlined text-[18px]"
-                    style={{ fontVariationSettings: isInWishlist("architecture-of-the-mind") ? "'FILL' 1" : "'FILL' 0" }}
+                    style={{ fontVariationSettings: isInWishlist("adventures-of-the-magic-star") ? "'FILL' 1" : "'FILL' 0" }}
                   >
                     favorite
                   </span>
                 </button>
                 <img
                   className="w-full h-full object-cover"
-                  data-alt="Cover of Architecture of the Mind"
-                  alt="Cover of Architecture of the Mind"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuBKqhMVW19RD8lwVDkVG2ldd-joFRVeGCcNj9Ju0A1D7vYroSl9ab6EYzgBrKp8D_XjgfsOILDxxtpVcFO8mzcbEKS74KiPCJs0tIWv2LHsQqMWAJyq4jXYg5XbTfdKAfbNS7ujtS7bcw8zxF5-4HdZqKgGwTWfeP7qPemRfWAc0KLSyDcMurOvGO6cPfrPsWWoJdXst-3NaT75ZHfbScmQe5GI_KabpY_ZaYBDSiX0H5dYHIbySlM"
+                  data-alt="Cover of Adventures of the magic star"
+                  alt="Cover of Adventures of the magic star"
+                  src="/images/books/adventures-of-the-magic-star.png"
                 />
               </div>
               <div className="text-center">
-                <h3 className="font-title-md text-title-md text-ink-charcoal mb-1">Architecture of the Mind</h3>
-                <p className="font-body-md text-body-md text-outline mb-2">Dr. Julian Hayes</p>
-                <p className="font-body-lg text-body-lg text-ink-charcoal font-semibold mb-4">£18.50</p>
+                <div className="flex items-center justify-center gap-1 text-xs text-outline mb-1 font-mono">
+                  <span className="text-primary font-bold">★ (0)</span>
+                </div>
+                <h3 className="font-title-md text-title-md text-ink-charcoal mb-1">Adventures of the magic star</h3>
+                <p className="font-body-md text-xs text-secondary mb-2 font-mono">By: info.vebryx@gmail.com</p>
+                <p className="font-body-lg text-body-lg font-semibold mb-4">
+                  <span className="text-secondary mr-2">$5.99</span>
+                  <span className="text-outline line-through font-normal text-sm">$7.00</span>
+                </p>
                 <button
                   onClick={(e) => {
                     e.stopPropagation();
-                    handleAddToCartQuick("Architecture of the Mind", "Dr. Julian Hayes", 18.50, "https://lh3.googleusercontent.com/aida-public/AB6AXuBKqhMVW19RD8lwVDkVG2ldd-joFRVeGCcNj9Ju0A1D7vYroSl9ab6EYzgBrKp8D_XjgfsOILDxxtpVcFO8mzcbEKS74KiPCJs0tIWv2LHsQqMWAJyq4jXYg5XbTfdKAfbNS7ujtS7bcw8zxF5-4HdZqKgGwTWfeP7qPemRfWAc0KLSyDcMurOvGO6cPfrPsWWoJdXst-3NaT75ZHfbScmQe5GI_KabpY_ZaYBDSiX0H5dYHIbySlM");
+                    handleAddToCartQuick("Adventures of the magic star", "info.vebryx@gmail.com", 5.99, "/images/books/adventures-of-the-magic-star.png", "Romance & Poetry");
                   }}
                   className="w-full bg-surface-container-high hover:bg-primary hover:text-on-primary text-ink-charcoal font-label-sm text-label-sm uppercase py-3 border border-muted-border rounded transition-colors"
                 >
@@ -466,25 +485,25 @@ export default function Home() {
             {/* Pick 3 */}
             <div
               className="flex flex-col group cursor-pointer"
-              onClick={() => handleOpenProductModal("Whispers in the Glass", "Sarah Lin", 9.99, "https://lh3.googleusercontent.com/aida-public/AB6AXuBP9EUPxxR5ZhKdNwbT2tGhHqG4vvKp31oQ-2RUXhJKN-dbNIbnugvpJR0zFsJmF3e6WD9XAGKbPMtHcWLG_i55Cw2y9AVGYXwaI8GwQ_H2NpD9dwPCJKROrCESEdrDujVgVcNdoFt6waG0NV18YSae0LdjKl7zx8oHJEzXlUO72Ov3B3_fSC7IvI4c__dAWZ-JJmQ9MCLtlbSGg0jlWH5ZRQtL6gggH-Nm6bsATKPn77_S2WouR9c", "Poetry", 12.99)}
+              onClick={() => handleOpenProductModal("Shadow of Decenit", "info.vebryx@gmail.com", 155.00, "/images/books/shadow-of-deceit.png", "Mystery & Thriller")}
             >
               <div className="aspect-[2/3] w-full bg-surface-container mb-4 overflow-hidden border border-muted-border rounded book-shadow transition-all duration-300 lift-on-hover relative">
                 <button
                   onClick={(e) => {
                     e.stopPropagation();
                     addToWishlist({
-                      id: "whispers-in-the-glass",
-                      title: "Whispers in the Glass",
-                      author: "Sarah Lin",
-                      price: 9.99,
-                      rating: 4.8,
-                      reviewCount: 67,
-                      coverImage: "https://lh3.googleusercontent.com/aida-public/AB6AXuBP9EUPxxR5ZhKdNwbT2tGhHqG4vvKp31oQ-2RUXhJKN-dbNIbnugvpJR0zFsJmF3e6WD9XAGKbPMtHcWLG_i55Cw2y9AVGYXwaI8GwQ_H2NpD9dwPCJKROrCESEdrDujVgVcNdoFt6waG0NV18YSae0LdjKl7zx8oHJEzXlUO72Ov3B3_fSC7IvI4c__dAWZ-JJmQ9MCLtlbSGg0jlWH5ZRQtL6gggH-Nm6bsATKPn77_S2WouR9c",
-                      category: "Poetry",
-                      description: "Contemporary poetry capturing quiet moments of nature.",
+                      id: "shadow-of-decenit",
+                      title: "Shadow of Decenit",
+                      author: "info.vebryx@gmail.com",
+                      price: 155.00,
+                      rating: 0.0,
+                      reviewCount: 0,
+                      coverImage: "/images/books/shadow-of-deceit.png",
+                      category: "Mystery & Thriller",
+                      description: "Some secrets are meant to stay hidden. A gripping noir thriller with embossed crimson title lettering.",
                       format: "Hardcover",
                       inStock: true,
-                      sellerName: "Market Shop Direct"
+                      sellerName: "info.vebryx@gmail.com"
                     });
                   }}
                   className="absolute top-2 right-2 p-1.5 rounded-full bg-white/90 shadow hover:bg-white text-secondary transition-transform hover:scale-110 z-10 cursor-pointer"
@@ -492,29 +511,31 @@ export default function Home() {
                 >
                   <span
                     className="material-symbols-outlined text-[18px]"
-                    style={{ fontVariationSettings: isInWishlist("whispers-in-the-glass") ? "'FILL' 1" : "'FILL' 0" }}
+                    style={{ fontVariationSettings: isInWishlist("shadow-of-decenit") ? "'FILL' 1" : "'FILL' 0" }}
                   >
                     favorite
                   </span>
                 </button>
                 <img
                   className="w-full h-full object-cover"
-                  data-alt="Cover of Whispers in the Glass"
-                  alt="Cover of Whispers in the Glass"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuBP9EUPxxR5ZhKdNwbT2tGhHqG4vvKp31oQ-2RUXhJKN-dbNIbnugvpJR0zFsJmF3e6WD9XAGKbPMtHcWLG_i55Cw2y9AVGYXwaI8GwQ_H2NpD9dwPCJKROrCESEdrDujVgVcNdoFt6waG0NV18YSae0LdjKl7zx8oHJEzXlUO72Ov3B3_fSC7IvI4c__dAWZ-JJmQ9MCLtlbSGg0jlWH5ZRQtL6gggH-Nm6bsATKPn77_S2WouR9c"
+                  data-alt="Cover of Shadow of Decenit"
+                  alt="Cover of Shadow of Decenit"
+                  src="/images/books/shadow-of-deceit.png"
                 />
               </div>
               <div className="text-center">
-                <h3 className="font-title-md text-title-md text-ink-charcoal mb-1">Whispers in the Glass</h3>
-                <p className="font-body-md text-body-md text-outline mb-2">Sarah Lin</p>
-                <p className="font-body-lg text-body-lg font-semibold mb-4">
-                  <span className="text-secondary mr-2">£9.99</span>
-                  <span className="text-outline line-through font-normal text-sm">£12.99</span>
+                <div className="flex items-center justify-center gap-1 text-xs text-outline mb-1 font-mono">
+                  <span className="text-primary font-bold">★ (0)</span>
+                </div>
+                <h3 className="font-title-md text-title-md text-ink-charcoal mb-1">Shadow of Decenit</h3>
+                <p className="font-body-md text-xs text-secondary mb-2 font-mono">By: info.vebryx@gmail.com</p>
+                <p className="font-body-lg text-body-lg font-semibold mb-4 text-ink-charcoal">
+                  $155.00
                 </p>
                 <button
                   onClick={(e) => {
                     e.stopPropagation();
-                    handleAddToCartQuick("Whispers in the Glass", "Sarah Lin", 9.99, "https://lh3.googleusercontent.com/aida-public/AB6AXuBP9EUPxxR5ZhKdNwbT2tGhHqG4vvKp31oQ-2RUXhJKN-dbNIbnugvpJR0zFsJmF3e6WD9XAGKbPMtHcWLG_i55Cw2y9AVGYXwaI8GwQ_H2NpD9dwPCJKROrCESEdrDujVgVcNdoFt6waG0NV18YSae0LdjKl7zx8oHJEzXlUO72Ov3B3_fSC7IvI4c__dAWZ-JJmQ9MCLtlbSGg0jlWH5ZRQtL6gggH-Nm6bsATKPn77_S2WouR9c");
+                    handleAddToCartQuick("Shadow of Decenit", "info.vebryx@gmail.com", 155.00, "/images/books/shadow-of-deceit.png", "Mystery & Thriller");
                   }}
                   className="w-full bg-surface-container-high hover:bg-primary hover:text-on-primary text-ink-charcoal font-label-sm text-label-sm uppercase py-3 border border-muted-border rounded transition-colors"
                 >
@@ -557,61 +578,61 @@ export default function Home() {
           >
             {/* Deal Item 1 */}
             <div
-              onClick={() => handleOpenProductModal("Wintering", "Katherine May", 8.99, "https://lh3.googleusercontent.com/aida-public/AB6AXuA-xiT39Ukh2KvmvyYQSMJfSKI77Mkwj_eQXoz-qgCDpx5DMS-Z242nHffetXx7yCATO1pa8PXVizBrxmvW_DcgP0rLwgYHT2RVCvFNtPcFKHKvldXBh7aW0OltHTGibjoNhWjcA1hexgbYAoU9iBJ8xmW5Y_jcYNSiNKvqv9vIxQeMULe1loZOUYwtkRb1EIMWGa6-PdxbvNv2rUPWE8_mI7WC9Vx6UAFa32w2xMpgIlYhLdd5tEw", "Non-Fiction", 10.99)}
+              onClick={() => handleOpenProductModal("The story of the magic star", "info.vebryx@gmail.com", 105.00, "/images/books/the-story-of-the-magic-star.png", "Sci-Fi & Fantasy", 130.00)}
               className="min-w-[300px] flex-shrink-0 bg-surface-container-lowest p-6 rounded-lg shadow-sm border border-muted-border flex items-center gap-6 group cursor-pointer hover:shadow-md transition-shadow"
             >
               <div className="w-24 h-36 bg-surface-variant flex-shrink-0 book-shadow overflow-hidden rounded">
                 <img
-                  alt="Book"
+                  alt="The story of the magic star"
                   className="w-full h-full object-cover"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-xiT39Ukh2KvmvyYQSMJfSKI77Mkwj_eQXoz-qgCDpx5DMS-Z242nHffetXx7yCATO1pa8PXVizBrxmvW_DcgP0rLwgYHT2RVCvFNtPcFKHKvldXBh7aW0OltHTGibjoNhWjcA1hexgbYAoU9iBJ8xmW5Y_jcYNSiNKvqv9vIxQeMULe1loZOUYwtkRb1EIMWGa6-PdxbvNv2rUPWE8_mI7WC9Vx6UAFa32w2xMpgIlYhLdd5tEw"
+                  src="/images/books/the-story-of-the-magic-star.png"
                 />
               </div>
               <div>
-                <span className="text-secondary font-label-sm uppercase tracking-wide block mb-1 font-bold">Save 20%</span>
-                <h3 className="font-title-md text-ink-charcoal mb-1 group-hover:text-primary transition-colors">Wintering</h3>
-                <p className="text-sm text-outline mb-2">Katherine May</p>
-                <p className="font-semibold"><span className="text-secondary mr-2">£8.99</span><span className="line-through text-outline text-sm">£10.99</span></p>
+                <span className="text-secondary font-label-sm uppercase tracking-wide block mb-1 font-bold">Save 19%</span>
+                <h3 className="font-title-md text-ink-charcoal mb-1 group-hover:text-primary transition-colors">The story of the magic star</h3>
+                <p className="text-xs text-secondary mb-2 font-mono">By: info.vebryx@gmail.com</p>
+                <p className="font-semibold"><span className="text-secondary mr-2">$105.00</span><span className="line-through text-outline text-sm">$130.00</span></p>
               </div>
             </div>
 
             {/* Deal Item 2 */}
             <div
-              onClick={() => handleOpenProductModal("The Alchemist", "Paulo Coelho", 12.99, "https://lh3.googleusercontent.com/aida-public/AB6AXuC900G178DAqgWsGjTCHSmCjPx5iA6yyAtOHSoTD6j9ALlXlSi0TIYckc3SOu0alrAngZelbz01fQSKwoOPDhv0mirFF4mmI_ifAlKjXFAYEc6QGDC6ico8MRPYZ_X6AyIa4SxvI8YaZsSR3xiQQfq-LtMi5OSMdtprBPsrcf0YN3ztLkmxGDpwaF9g37x0EK5kCtuDyZvaEXx3UeKtHCJ4bw71RIhNRBO3NRdRx9rL5iIT8n1ZyH4", "Fiction")}
+              onClick={() => handleOpenProductModal("Miss P the Pirate", "info.vebryx@gmail.com", 5.00, "/images/books/miss-p-the-pirate.png", "Adventure & Sci-Fi", 6.99)}
               className="min-w-[300px] flex-shrink-0 bg-surface-container-lowest p-6 rounded-lg shadow-sm border border-muted-border flex items-center gap-6 group cursor-pointer hover:shadow-md transition-shadow"
             >
               <div className="w-24 h-36 bg-surface-variant flex-shrink-0 book-shadow overflow-hidden rounded">
                 <img
-                  alt="Book"
+                  alt="Miss P the Pirate"
                   className="w-full h-full object-cover"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuC900G178DAqgWsGjTCHSmCjPx5iA6yyAtOHSoTD6j9ALlXlSi0TIYckc3SOu0alrAngZelbz01fQSKwoOPDhv0mirFF4mmI_ifAlKjXFAYEc6QGDC6ico8MRPYZ_X6AyIa4SxvI8YaZsSR3xiQQfq-LtMi5OSMdtprBPsrcf0YN3ztLkmxGDpwaF9g37x0EK5kCtuDyZvaEXx3UeKtHCJ4bw71RIhNRBO3NRdRx9rL5iIT8n1ZyH4"
+                  src="/images/books/miss-p-the-pirate.png"
                 />
               </div>
               <div>
-                <span className="text-secondary font-label-sm uppercase tracking-wide block mb-1 font-bold">Buy 1 Get 1</span>
-                <h3 className="font-title-md text-ink-charcoal mb-1 group-hover:text-primary transition-colors">The Alchemist</h3>
-                <p className="text-sm text-outline mb-2">Paulo Coelho</p>
-                <p className="font-semibold">£12.99</p>
+                <span className="text-secondary font-label-sm uppercase tracking-wide block mb-1 font-bold">Save 28%</span>
+                <h3 className="font-title-md text-ink-charcoal mb-1 group-hover:text-primary transition-colors">Miss P the Pirate</h3>
+                <p className="text-xs text-secondary mb-2 font-mono">By: info.vebryx@gmail.com</p>
+                <p className="font-semibold"><span className="text-secondary mr-2">$5.00</span><span className="line-through text-outline text-sm">$6.99</span></p>
               </div>
             </div>
 
             {/* Deal Item 3 */}
             <div
-              onClick={() => handleOpenProductModal("Classic Poems", "Various Artists", 15.00, "https://lh3.googleusercontent.com/aida-public/AB6AXuBhkj-qJgt1iSzLLpV3bog07pQDawy69it9VZFs4IxlzzO5yf3e1RG4UeWa1kpDWMxHfBghfGbg_PapkGierDQ96lL-a5jsUR7b99UKGixqaTvJcTbRXhm-4XvBwCsK4B54qSnHUf5H9ZZEH7Y9BnErjqTxS24Eq4uUj2YjuRy6xhmJQxr9nFqMXd2sf39AWdkxenAVe3WPKH1arpzZT4p6nneK1Bc9lpPhlyYahcd7vUuQIqF9IWY", "Poetry", 22.00)}
+              onClick={() => handleOpenProductModal("The whitre Abbott", "info.vebryx@gmail.com", 7.99, "/images/books/the-white-abbott.png", "Philosophy & Art", 10.99)}
               className="min-w-[300px] flex-shrink-0 bg-surface-container-lowest p-6 rounded-lg shadow-sm border border-muted-border flex items-center gap-6 group cursor-pointer hover:shadow-md transition-shadow"
             >
               <div className="w-24 h-36 bg-surface-variant flex-shrink-0 book-shadow overflow-hidden rounded">
                 <img
-                  alt="Book"
+                  alt="The whitre Abbott"
                   className="w-full h-full object-cover"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuBhkj-qJgt1iSzLLpV3bog07pQDawy69it9VZFs4IxlzzO5yf3e1RG4UeWa1kpDWMxHfBghfGbg_PapkGierDQ96lL-a5jsUR7b99UKGixqaTvJcTbRXhm-4XvBwCsK4B54qSnHUf5H9ZZEH7Y9BnErjqTxS24Eq4uUj2YjuRy6xhmJQxr9nFqMXd2sf39AWdkxenAVe3WPKH1arpzZT4p6nneK1Bc9lpPhlyYahcd7vUuQIqF9IWY"
+                  src="/images/books/the-white-abbott.png"
                 />
               </div>
               <div>
-                <span className="text-secondary font-label-sm uppercase tracking-wide block mb-1 font-bold">Bundle Deal</span>
-                <h3 className="font-title-md text-ink-charcoal mb-1 group-hover:text-primary transition-colors">Classic Poems</h3>
-                <p className="text-sm text-outline mb-2">Various Artists</p>
-                <p className="font-semibold"><span className="text-secondary mr-2">£15.00</span><span className="line-through text-outline text-sm">£22.00</span></p>
+                <span className="text-secondary font-label-sm uppercase tracking-wide block mb-1 font-bold">Save 27%</span>
+                <h3 className="font-title-md text-ink-charcoal mb-1 group-hover:text-primary transition-colors">The whitre Abbott</h3>
+                <p className="text-xs text-secondary mb-2 font-mono">By: info.vebryx@gmail.com</p>
+                <p className="font-semibold"><span className="text-secondary mr-2">$7.99</span><span className="line-through text-outline text-sm">$10.99</span></p>
               </div>
             </div>
           </div>
@@ -686,104 +707,152 @@ export default function Home() {
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
             {/* Book 1 */}
             <div
-              onClick={() => handleOpenProductModal("The Lost City", "Amanda Wells", 12.99, "https://lh3.googleusercontent.com/aida-public/AB6AXuB2onXBOs8n9f9rWGVctc9v7Zm0Qv-0lF1gOm-LoX2hEBsH6T-dTP54GgdKE_FCsPI3R20N2zyuBkzJZo9XaeFIe-0m-iorr0U1dIyZ3Xell1SxB3Wwb_hhuMFXbzy0nX6J5uw2u8jxB-5TrZzyjQydLIgtIMgC-PRY2eMyX1bGMP6Tn2h0c0-Hxj_tN6d3ngC5nzzejJjvPpLyhRlOZa9DsLwJHDBpnClJh3mmCQhm4PCExaflqj4", "Fiction")}
+              onClick={() => handleOpenProductModal("David Walliams Gangsta Granny", "info.vebryx@gmail.com", 5.99, "/images/books/gangsta-granny.png", "Children's Fiction", 7.99)}
               className="flex flex-col group cursor-pointer"
             >
-              <div className="aspect-[2/3] w-full bg-surface-variant mb-3 rounded book-shadow overflow-hidden hover:scale-105 transition-transform duration-300 border border-muted-border">
+              <div className="aspect-[2/3] w-full bg-surface-variant mb-3 rounded book-shadow overflow-hidden hover:scale-105 transition-transform duration-300 border border-muted-border relative">
+                <div className="absolute top-1.5 left-1.5 bg-secondary text-on-secondary text-[10px] font-bold px-1.5 py-0.5 rounded shadow-sm z-10">
+                  Sale -25%
+                </div>
                 <img
-                  alt="Book Cover"
+                  alt="David Walliams Gangsta Granny"
                   className="w-full h-full object-cover"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2onXBOs8n9f9rWGVctc9v7Zm0Qv-0lF1gOm-LoX2hEBsH6T-dTP54GgdKE_FCsPI3R20N2zyuBkzJZo9XaeFIe-0m-iorr0U1dIyZ3Xell1SxB3Wwb_hhuMFXbzy0nX6J5uw2u8jxB-5TrZzyjQydLIgtIMgC-PRY2eMyX1bGMP6Tn2h0c0-Hxj_tN6d3ngC5nzzejJjvPpLyhRlOZa9DsLwJHDBpnClJh3mmCQhm4PCExaflqj4"
+                  src="/images/books/gangsta-granny.png"
                 />
               </div>
-              <h3 className="font-title-md text-sm text-ink-charcoal truncate">The Lost City</h3>
-              <p className="font-body-md text-xs text-outline mb-1">Amanda Wells</p>
-              <p className="font-body-lg text-sm font-semibold">£12.99</p>
+              <div className="flex items-center gap-1 text-[11px] text-outline mb-0.5 font-mono">
+                <span className="text-primary font-bold">★ (0)</span>
+              </div>
+              <p className="text-[11px] text-secondary truncate font-mono">By: info.vebryx@gmail.com</p>
+              <h3 className="font-title-md text-sm text-ink-charcoal truncate mt-0.5">David Walliams Gangsta Granny</h3>
+              <p className="font-body-lg text-sm font-semibold mt-1">
+                <span className="text-secondary mr-1.5">$5.99</span>
+                <span className="text-outline line-through font-normal text-xs">$7.99</span>
+              </p>
             </div>
 
             {/* Book 2 */}
             <div
-              onClick={() => handleOpenProductModal("Midnight Thoughts", "R. K. Sterling", 10.50, "https://lh3.googleusercontent.com/aida-public/AB6AXuDdZyPT1vz7oMNDhghsTy-kI3XoJ4gatH_VY2JxmlibnUp0lHNTNQafEfcSiPhHpg1-7c4PisH3BecLAg1tF8XtCvakUaOWPYDfoVGDpB8CMt6PDnby_Mx5c1Zo5kB17QbqzeGYXAHB_8JGlPSzwNWO4DDTKWKadD76573EVJrHPPeMszPylfkJq1_v3OLFOHFbWbGxeYq05pzpJqPiBfi4oFjOUNEH36gJMpu4cq4_LmjyxpwzY-o", "Poetry")}
+              onClick={() => handleOpenProductModal("Adventures of the magic star", "info.vebryx@gmail.com", 5.99, "/images/books/adventures-of-the-magic-star.png", "Romance & Poetry", 7.00)}
               className="flex flex-col group cursor-pointer"
             >
-              <div className="aspect-[2/3] w-full bg-surface-variant mb-3 rounded book-shadow overflow-hidden hover:scale-105 transition-transform duration-300 border border-muted-border">
+              <div className="aspect-[2/3] w-full bg-surface-variant mb-3 rounded book-shadow overflow-hidden hover:scale-105 transition-transform duration-300 border border-muted-border relative">
+                <div className="absolute top-1.5 left-1.5 bg-secondary text-on-secondary text-[10px] font-bold px-1.5 py-0.5 rounded shadow-sm z-10">
+                  Sale -14%
+                </div>
                 <img
-                  alt="Book Cover"
+                  alt="Adventures of the magic star"
                   className="w-full h-full object-cover"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdZyPT1vz7oMNDhghsTy-kI3XoJ4gatH_VY2JxmlibnUp0lHNTNQafEfcSiPhHpg1-7c4PisH3BecLAg1tF8XtCvakUaOWPYDfoVGDpB8CMt6PDnby_Mx5c1Zo5kB17QbqzeGYXAHB_8JGlPSzwNWO4DDTKWKadD76573EVJrHPPeMszPylfkJq1_v3OLFOHFbWbGxeYq05pzpJqPiBfi4oFjOUNEH36gJMpu4cq4_LmjyxpwzY-o"
+                  src="/images/books/adventures-of-the-magic-star.png"
                 />
               </div>
-              <h3 className="font-title-md text-sm text-ink-charcoal truncate">Midnight Thoughts</h3>
-              <p className="font-body-md text-xs text-outline mb-1">R. K. Sterling</p>
-              <p className="font-body-lg text-sm font-semibold">£10.50</p>
+              <div className="flex items-center gap-1 text-[11px] text-outline mb-0.5 font-mono">
+                <span className="text-primary font-bold">★ (0)</span>
+              </div>
+              <p className="text-[11px] text-secondary truncate font-mono">By: info.vebryx@gmail.com</p>
+              <h3 className="font-title-md text-sm text-ink-charcoal truncate mt-0.5">Adventures of the magic star</h3>
+              <p className="font-body-lg text-sm font-semibold mt-1">
+                <span className="text-secondary mr-1.5">$5.99</span>
+                <span className="text-outline line-through font-normal text-xs">$7.00</span>
+              </p>
             </div>
 
             {/* Book 3 */}
             <div
-              onClick={() => handleOpenProductModal("Ocean Waves", "T. H. White", 14.00, "https://lh3.googleusercontent.com/aida-public/AB6AXuAePQbF8dSYdAIpAU6mjO461nW2RVta3xPEh7E5ID4vO5kHo3Xan9uYV1D0t2--vSM2DX9QPf4o0j7jZAeJIEomT4Rpwv5gRSDerYvAaqrMupgfKcaGW2THrN0fOKUDRq9sxjplmW8LrIR5_zse7QwKxdKmAD8eetAuU3rq-QoU8eEdt4HNumaiLdE7ULxmyULMIN7sAJkUzl7ezgVZIEzp4cEK_WypLtxONvf-0PtD-iqS4iJtzwQ", "Fiction")}
+              onClick={() => handleOpenProductModal("Shadow of Decenit", "info.vebryx@gmail.com", 155.00, "/images/books/shadow-of-deceit.png", "Mystery & Thriller")}
               className="flex flex-col group cursor-pointer"
             >
-              <div className="aspect-[2/3] w-full bg-surface-variant mb-3 rounded book-shadow overflow-hidden hover:scale-105 transition-transform duration-300 border border-muted-border">
+              <div className="aspect-[2/3] w-full bg-surface-variant mb-3 rounded book-shadow overflow-hidden hover:scale-105 transition-transform duration-300 border border-muted-border relative">
                 <img
-                  alt="Book Cover"
+                  alt="Shadow of Decenit"
                   className="w-full h-full object-cover"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuAePQbF8dSYdAIpAU6mjO461nW2RVta3xPEh7E5ID4vO5kHo3Xan9uYV1D0t2--vSM2DX9QPf4o0j7jZAeJIEomT4Rpwv5gRSDerYvAaqrMupgfKcaGW2THrN0fOKUDRq9sxjplmW8LrIR5_zse7QwKxdKmAD8eetAuU3rq-QoU8eEdt4HNumaiLdE7ULxmyULMIN7sAJkUzl7ezgVZIEzp4cEK_WypLtxONvf-0PtD-iqS4iJtzwQ"
+                  src="/images/books/shadow-of-deceit.png"
                 />
               </div>
-              <h3 className="font-title-md text-sm text-ink-charcoal truncate">Ocean Waves</h3>
-              <p className="font-body-md text-xs text-outline mb-1">T. H. White</p>
-              <p className="font-body-lg text-sm font-semibold">£14.00</p>
+              <div className="flex items-center gap-1 text-[11px] text-outline mb-0.5 font-mono">
+                <span className="text-primary font-bold">★ (0)</span>
+              </div>
+              <p className="text-[11px] text-secondary truncate font-mono">By: info.vebryx@gmail.com</p>
+              <h3 className="font-title-md text-sm text-ink-charcoal truncate mt-0.5">Shadow of Decenit</h3>
+              <p className="font-body-lg text-sm font-semibold mt-1 text-ink-charcoal">$155.00</p>
             </div>
 
             {/* Book 4 */}
             <div
-              onClick={() => handleOpenProductModal("Modern Art", "Julia Stone", 25.00, "https://lh3.googleusercontent.com/aida-public/AB6AXuBTyVgASNE_biXyqxmCwjzsDfiLJW0Pfe5nQuLWBgJoaRhOJ1FNPNsvvy0VP_8Tg7T_WpNRabeefu0fzDybbOhM_Tko34RQaXmM6NpNDk-emu8SO6tLNPdwmNAzDksuNtzUXcwpmTSBbqlj7J_Qhcv4Nhx1VdHN__b2M2TzyWTI3RKkQRzHe8uyePORP9wmgqWgnSPazveJfYlLdnz0TMgigM0Pt-HPLWTuzpTLIUa8KbHkKdA7NTE", "Art & Architecture")}
+              onClick={() => handleOpenProductModal("The story of the magic star", "info.vebryx@gmail.com", 105.00, "/images/books/the-story-of-the-magic-star.png", "Sci-Fi & Fantasy", 130.00)}
               className="flex flex-col group cursor-pointer"
             >
-              <div className="aspect-[2/3] w-full bg-surface-variant mb-3 rounded book-shadow overflow-hidden hover:scale-105 transition-transform duration-300 border border-muted-border">
+              <div className="aspect-[2/3] w-full bg-surface-variant mb-3 rounded book-shadow overflow-hidden hover:scale-105 transition-transform duration-300 border border-muted-border relative">
+                <div className="absolute top-1.5 left-1.5 bg-secondary text-on-secondary text-[10px] font-bold px-1.5 py-0.5 rounded shadow-sm z-10">
+                  Sale -19%
+                </div>
                 <img
-                  alt="Book Cover"
+                  alt="The story of the magic star"
                   className="w-full h-full object-cover"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTyVgASNE_biXyqxmCwjzsDfiLJW0Pfe5nQuLWBgJoaRhOJ1FNPNsvvy0VP_8Tg7T_WpNRabeefu0fzDybbOhM_Tko34RQaXmM6NpNDk-emu8SO6tLNPdwmNAzDksuNtzUXcwpmTSBbqlj7J_Qhcv4Nhx1VdHN__b2M2TzyWTI3RKkQRzHe8uyePORP9wmgqWgnSPazveJfYlLdnz0TMgigM0Pt-HPLWTuzpTLIUa8KbHkKdA7NTE"
+                  src="/images/books/the-story-of-the-magic-star.png"
                 />
               </div>
-              <h3 className="font-title-md text-sm text-ink-charcoal truncate">Modern Art</h3>
-              <p className="font-body-md text-xs text-outline mb-1">Julia Stone</p>
-              <p className="font-body-lg text-sm font-semibold">£25.00</p>
+              <div className="flex items-center gap-1 text-[11px] text-outline mb-0.5 font-mono">
+                <span className="text-primary font-bold">★ (5.00)</span>
+              </div>
+              <p className="text-[11px] text-secondary truncate font-mono">By: info.vebryx@gmail.com</p>
+              <h3 className="font-title-md text-sm text-ink-charcoal truncate mt-0.5">The story of the magic star</h3>
+              <p className="font-body-lg text-sm font-semibold mt-1">
+                <span className="text-secondary mr-1.5">$105.00</span>
+                <span className="text-outline line-through font-normal text-xs">$130.00</span>
+              </p>
             </div>
 
             {/* Book 5 */}
             <div
-              onClick={() => handleOpenProductModal("History Repeats", "Martin King", 18.99, "https://lh3.googleusercontent.com/aida-public/AB6AXuDZQ2Y_ske2vc0SP32eeDvSPa9ozO8wREJC1GFtdCCErEmgqM61BJozRAIJg8sp8wUm1pKXh3ibmm41URk19aY7oA-iDS7VnO-oUbDimc4wIGoD0Df3ArzjCk-ekNYzAw48348X2xwF2AlWPXzpBaEE_EYUePcWzUlc42ZzMAosuPMpH1qrp093ocvuQc6rZBiS7BrWCB4BcX6uBHfP14pd9095TxXOacYYYNCQTOlZELj9iSDuTmQ", "History")}
+              onClick={() => handleOpenProductModal("Miss P the Pirate", "info.vebryx@gmail.com", 5.00, "/images/books/miss-p-the-pirate.png", "Adventure & Sci-Fi", 6.99)}
               className="flex flex-col group cursor-pointer"
             >
-              <div className="aspect-[2/3] w-full bg-surface-variant mb-3 rounded book-shadow overflow-hidden hover:scale-105 transition-transform duration-300 border border-muted-border">
+              <div className="aspect-[2/3] w-full bg-surface-variant mb-3 rounded book-shadow overflow-hidden hover:scale-105 transition-transform duration-300 border border-muted-border relative">
+                <div className="absolute top-1.5 left-1.5 bg-secondary text-on-secondary text-[10px] font-bold px-1.5 py-0.5 rounded shadow-sm z-10">
+                  Sale -28%
+                </div>
                 <img
-                  alt="Book Cover"
+                  alt="Miss P the Pirate"
                   className="w-full h-full object-cover"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZQ2Y_ske2vc0SP32eeDvSPa9ozO8wREJC1GFtdCCErEmgqM61BJozRAIJg8sp8wUm1pKXh3ibmm41URk19aY7oA-iDS7VnO-oUbDimc4wIGoD0Df3ArzjCk-ekNYzAw48348X2xwF2AlWPXzpBaEE_EYUePcWzUlc42ZzMAosuPMpH1qrp093ocvuQc6rZBiS7BrWCB4BcX6uBHfP14pd9095TxXOacYYYNCQTOlZELj9iSDuTmQ"
+                  src="/images/books/miss-p-the-pirate.png"
                 />
               </div>
-              <h3 className="font-title-md text-sm text-ink-charcoal truncate">History Repeats</h3>
-              <p className="font-body-md text-xs text-outline mb-1">Martin King</p>
-              <p className="font-body-lg text-sm font-semibold">£18.99</p>
+              <div className="flex items-center gap-1 text-[11px] text-outline mb-0.5 font-mono">
+                <span className="text-primary font-bold">★ (0)</span>
+              </div>
+              <p className="text-[11px] text-secondary truncate font-mono">By: info.vebryx@gmail.com</p>
+              <h3 className="font-title-md text-sm text-ink-charcoal truncate mt-0.5">Miss P the Pirate</h3>
+              <p className="font-body-lg text-sm font-semibold mt-1">
+                <span className="text-secondary mr-1.5">$5.00</span>
+                <span className="text-outline line-through font-normal text-xs">$6.99</span>
+              </p>
             </div>
 
             {/* Book 6 */}
             <div
-              onClick={() => handleOpenProductModal("Cooking Basics", "Chef Mario", 16.50, "https://lh3.googleusercontent.com/aida-public/AB6AXuCW-cAvnLXfcCULqPblJ4eLpBPvnWr4zzhsAtJK2nKX2wgN_KKhxK-yi-DnIV8mWS5Df8retEoknjTGUX7MM-wvvaadH353AuSPg2fNxL16r_cZr8UEPtSAfrVDCPdvO4w4fruXJdCpyzDS_YEnzLSTQp0XMEhEHtcjaCdcvKN1DxgKWTiMHcitKd0BQ2eP1AWkSP0pz1oVKIc9NaNQHlPFjGUJfZvF3qzX3ZEPpz5VRCC_OT-7myA", "Culinary")}
+              onClick={() => handleOpenProductModal("The whitre Abbott", "info.vebryx@gmail.com", 7.99, "/images/books/the-white-abbott.png", "Philosophy & Art", 10.99)}
               className="flex flex-col group cursor-pointer"
             >
-              <div className="aspect-[2/3] w-full bg-surface-variant mb-3 rounded book-shadow overflow-hidden hover:scale-105 transition-transform duration-300 border border-muted-border">
+              <div className="aspect-[2/3] w-full bg-surface-variant mb-3 rounded book-shadow overflow-hidden hover:scale-105 transition-transform duration-300 border border-muted-border relative">
+                <div className="absolute top-1.5 left-1.5 bg-secondary text-on-secondary text-[10px] font-bold px-1.5 py-0.5 rounded shadow-sm z-10">
+                  Sale -27%
+                </div>
                 <img
-                  alt="Book Cover"
+                  alt="The whitre Abbott"
                   className="w-full h-full object-cover"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuCW-cAvnLXfcCULqPblJ4eLpBPvnWr4zzhsAtJK2nKX2wgN_KKhxK-yi-DnIV8mWS5Df8retEoknjTGUX7MM-wvvaadH353AuSPg2fNxL16r_cZr8UEPtSAfrVDCPdvO4w4fruXJdCpyzDS_YEnzLSTQp0XMEhEHtcjaCdcvKN1DxgKWTiMHcitKd0BQ2eP1AWkSP0pz1oVKIc9NaNQHlPFjGUJfZvF3qzX3ZEPpz5VRCC_OT-7myA"
+                  src="/images/books/the-white-abbott.png"
                 />
               </div>
-              <h3 className="font-title-md text-sm text-ink-charcoal truncate">Cooking Basics</h3>
-              <p className="font-body-md text-xs text-outline mb-1">Chef Mario</p>
-              <p className="font-body-lg text-sm font-semibold">£16.50</p>
+              <div className="flex items-center gap-1 text-[11px] text-outline mb-0.5 font-mono">
+                <span className="text-primary font-bold">★ (0)</span>
+              </div>
+              <p className="text-[11px] text-secondary truncate font-mono">By: info.vebryx@gmail.com</p>
+              <h3 className="font-title-md text-sm text-ink-charcoal truncate mt-0.5">The whitre Abbott</h3>
+              <p className="font-body-lg text-sm font-semibold mt-1">
+                <span className="text-secondary mr-1.5">$7.99</span>
+                <span className="text-outline line-through font-normal text-xs">$10.99</span>
+              </p>
             </div>
           </div>
         </section>
