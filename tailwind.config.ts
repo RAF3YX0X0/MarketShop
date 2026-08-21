@@ -52,18 +52,18 @@ const config: Config = {
         "surface-tint": "#277dce",
         "on-secondary": "#ffffff",
         "surface-container-highest": "#E4CDCE",
-        "background": "#FAF4F4",
+        "background": "#fafafa",
         "inverse-surface": "#2f312e",
         "surface-variant": "#E4CDCE",
         "on-error": "#ffffff",
         "inverse-on-surface": "#f2f1ed",
         "error-container": "#ffdad6",
         "on-surface-variant": "#3f484c",
-        "surface": "#FAF4F4",
+        "surface": "#fafafa",
         "tertiary-fixed": "#3bff55",
         "surface-container-high": "#EBD8D9",
         "surface-container-lowest": "#ffffff",
-        "paper-cream": "#FAF4F4",
+        "paper-cream": "#fafafa",
         // Legacy brand colors preserved for backward compatibility
         brand: {
           blue: {

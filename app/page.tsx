@@ -21,8 +21,10 @@ export default function Home() {
   } = useCart();
 
   const dealsContainerRef = useRef<HTMLDivElement>(null);
+  const searchInputRef = useRef<HTMLInputElement>(null);
 
   const [searchQuery, setSearchQuery] = useState("");
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [activeCategory, setActiveCategory] = useState("Fiction");
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [isQuickViewOpen, setIsQuickViewOpen] = useState(false);
@@ -86,6 +88,15 @@ export default function Home() {
     }
   };
 
+  const genresList = [
+    { id: "fiction", name: "Fiction", icon: "auto_stories" },
+    { id: "non-fiction", name: "Non-Fiction", icon: "science" },
+    { id: "rare-editions", name: "Rare Editions", icon: "diamond" },
+    { id: "poetry", name: "Poetry", icon: "history_edu" },
+    { id: "children", name: "Children's", icon: "child_care" },
+    { id: "sci-fi", name: "Sci-Fi & Fantasy", icon: "rocket_launch" },
+  ];
+
   return (
     <>
       {/* 1. Top Bar */}
@@ -106,46 +117,156 @@ export default function Home() {
         </span>
       </div>
 
-      {/* 2 & 3. Navigation */}
-      <header className="w-full top-0 bg-paper-cream flex flex-col w-full max-w-container-max mx-auto px-margin-desktop hidden md:flex border-b border-muted-border sticky z-40">
-        <div className="py-5 flex justify-between items-center w-full">
-          {/* Logo with transparent background using mix-blend-multiply */}
-          <a className="hover:scale-105 transition-transform flex items-center" href="#">
+      {/* 2 & 3. Navigation Header */}
+      <header className="w-full top-0 bg-[#fafafa]/95 backdrop-blur-md flex flex-col w-full max-w-container-max mx-auto px-margin-desktop hidden md:flex border-b border-muted-border sticky z-40 transition-all">
+        <div className="py-4 flex justify-between items-center w-full relative">
+          {/* Logo */}
+          <a className="hover:scale-105 transition-transform flex items-center flex-shrink-0" href="#">
             <img
               src="/images/logo.png"
               alt="Market Shop - Ocean of Book"
-              className="h-12 w-auto object-contain mix-blend-multiply"
+              className="h-11 w-auto object-contain mix-blend-multiply"
             />
           </a>
 
-          {/* Search Bar */}
-          <div className="flex-1 max-w-xl mx-8 relative">
-            <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">search</span>
-            <input
-              className="w-full bg-surface-container rounded-full py-3 pl-12 pr-6 border border-muted-border focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-colors text-body-md font-body-md"
-              placeholder="Search authors, titles, or genres..."
-              type="text"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-            />
-          </div>
+          {/* Categories in the middle between Logo and Favorites/Cart/Search */}
+          <nav className="flex items-center gap-5 lg:gap-7 mx-4">
+            <a
+              className={`font-title-md text-sm lg:text-base font-semibold transition-all duration-200 hover:scale-105 ${
+                activeCategory === "Fiction"
+                  ? "text-primary font-bold border-b-2 border-primary pb-0.5"
+                  : "text-on-surface-variant hover:text-secondary"
+              }`}
+              href="#curators-picks"
+              onClick={(e) => { e.preventDefault(); setActiveCategory("Fiction"); }}
+            >
+              Fiction
+            </a>
+            <a
+              className={`font-title-md text-sm lg:text-base font-semibold transition-all duration-200 hover:scale-105 ${
+                activeCategory === "Non-Fiction"
+                  ? "text-primary font-bold border-b-2 border-primary pb-0.5"
+                  : "text-on-surface-variant hover:text-secondary"
+              }`}
+              href="#curators-picks"
+              onClick={(e) => { e.preventDefault(); setActiveCategory("Non-Fiction"); }}
+            >
+              Non-Fiction
+            </a>
+            <a
+              className={`font-title-md text-sm lg:text-base font-semibold transition-all duration-200 hover:scale-105 ${
+                activeCategory === "Rare Editions"
+                  ? "text-primary font-bold border-b-2 border-primary pb-0.5"
+                  : "text-on-surface-variant hover:text-secondary"
+              }`}
+              href="#curators-picks"
+              onClick={(e) => { e.preventDefault(); setActiveCategory("Rare Editions"); }}
+            >
+              Rare Editions
+            </a>
+            <a
+              className={`font-title-md text-sm lg:text-base font-semibold transition-all duration-200 hover:scale-105 ${
+                activeCategory === "Poetry"
+                  ? "text-primary font-bold border-b-2 border-primary pb-0.5"
+                  : "text-on-surface-variant hover:text-secondary"
+              }`}
+              href="#curators-picks"
+              onClick={(e) => { e.preventDefault(); setActiveCategory("Poetry"); }}
+            >
+              Poetry
+            </a>
+            <a
+              className={`font-title-md text-sm lg:text-base font-semibold transition-all duration-200 hover:scale-105 ${
+                activeCategory === "Children"
+                  ? "text-primary font-bold border-b-2 border-primary pb-0.5"
+                  : "text-on-surface-variant hover:text-secondary"
+              }`}
+              href="#curators-picks"
+              onClick={(e) => { e.preventDefault(); setActiveCategory("Children"); }}
+            >
+              Children
+            </a>
+            <a
+              className={`font-title-md text-sm lg:text-base font-bold transition-all duration-200 hover:scale-105 ${
+                activeCategory === "Sale"
+                  ? "text-secondary border-b-2 border-secondary pb-0.5"
+                  : "text-secondary hover:text-secondary-container"
+              }`}
+              href="#seasonal-deals"
+              onClick={(e) => { e.preventDefault(); setActiveCategory("Sale"); }}
+            >
+              Sale
+            </a>
+          </nav>
 
-          {/* User Controls: Favorites & Cart both slide out from LEFT side */}
-          <div className="flex items-center gap-6">
+          {/* Right Controls: Search Expand Icon, Favorites, Cart */}
+          <div className="flex items-center gap-4 relative">
+            {/* Search Icon with Click-to-Expand Dropdown below */}
+            <div className="relative">
+              <button
+                aria-label="Search"
+                onClick={() => {
+                  setIsSearchOpen(!isSearchOpen);
+                  if (!isSearchOpen) {
+                    setTimeout(() => searchInputRef.current?.focus(), 100);
+                  }
+                }}
+                className={`p-2 rounded-full transition-all duration-200 cursor-pointer flex items-center justify-center ${
+                  isSearchOpen
+                    ? "bg-primary text-white shadow-md scale-105"
+                    : "text-primary hover:bg-surface-container hover:text-secondary"
+                }`}
+              >
+                <span className="material-symbols-outlined" style={{ fontSize: "24px" }}>
+                  {isSearchOpen ? "close" : "search"}
+                </span>
+              </button>
+
+              {/* Expandable Search Bar Dropdown right below Search Button */}
+              {isSearchOpen && (
+                <div className="absolute top-full right-0 mt-3 w-80 sm:w-96 bg-white border border-muted-border shadow-2xl rounded-2xl p-3.5 z-50 animate-in fade-in slide-in-from-top-3 duration-200">
+                  <div className="relative flex items-center">
+                    <span className="material-symbols-outlined absolute left-3.5 text-outline text-[20px]">search</span>
+                    <input
+                      ref={searchInputRef}
+                      className="w-full bg-[#f4f4f4] rounded-xl py-2.5 pl-10 pr-9 border border-muted-border focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-colors text-sm font-medium text-ink-charcoal"
+                      placeholder="Search authors, titles, genres..."
+                      type="text"
+                      value={searchQuery}
+                      onChange={(e) => setSearchQuery(e.target.value)}
+                      autoFocus
+                    />
+                    {searchQuery && (
+                      <button
+                        onClick={() => setSearchQuery("")}
+                        className="absolute right-3 p-1 text-outline hover:text-ink-charcoal text-xs font-bold"
+                      >
+                        ✕
+                      </button>
+                    )}
+                  </div>
+                  <div className="mt-2.5 pt-2 border-t border-muted-border flex items-center justify-between text-[11px] text-outline font-mono">
+                    <span>Search 6 verified titles</span>
+                    <span className="text-secondary font-semibold">Instant results</span>
+                  </div>
+                </div>
+              )}
+            </div>
+
             {/* Favorites / Wishlist Button */}
             <button
               aria-label="Favorites"
               onClick={() => setIsWishlistOpen(true)}
-              className="text-primary hover:text-secondary transition-colors duration-200 relative p-1 cursor-pointer"
+              className="text-primary hover:text-secondary transition-colors duration-200 relative p-1.5 rounded-full hover:bg-surface-container cursor-pointer"
             >
               <span
                 className="material-symbols-outlined"
-                style={{ fontSize: "28px", fontVariationSettings: wishlistCount > 0 ? "'FILL' 1" : "'FILL' 0" }}
+                style={{ fontSize: "26px", fontVariationSettings: wishlistCount > 0 ? "'FILL' 1" : "'FILL' 0" }}
               >
                 favorite
               </span>
               {wishlistCount > 0 && (
-                <span className="absolute -top-1 -right-1 bg-secondary text-white text-[10px] rounded-full w-4 h-4 flex items-center justify-center font-bold shadow-sm">
+                <span className="absolute 0 top-0 right-0 bg-secondary text-white text-[10px] rounded-full w-4 h-4 flex items-center justify-center font-bold shadow-sm">
                   {wishlistCount}
                 </span>
               )}
@@ -155,87 +276,19 @@ export default function Home() {
             <button
               aria-label="Cart"
               onClick={() => setIsCartOpen(true)}
-              className="text-primary hover:text-secondary transition-colors duration-200 relative p-1 cursor-pointer"
+              className="text-primary hover:text-secondary transition-colors duration-200 relative p-1.5 rounded-full hover:bg-surface-container cursor-pointer"
             >
-              <span className="material-symbols-outlined" style={{ fontSize: "28px" }}>shopping_bag</span>
-              <span className="absolute -top-1 -right-1 bg-primary text-white text-[10px] rounded-full w-4 h-4 flex items-center justify-center font-bold shadow-sm">
+              <span className="material-symbols-outlined" style={{ fontSize: "26px" }}>shopping_bag</span>
+              <span className="absolute 0 top-0 right-0 bg-primary text-white text-[10px] rounded-full w-4 h-4 flex items-center justify-center font-bold shadow-sm">
                 {totalItems}
               </span>
             </button>
           </div>
         </div>
-        <nav className="flex justify-center gap-8 pb-4">
-          <a
-            className={`font-title-md text-title-md transition-all duration-200 hover:scale-105 ${
-              activeCategory === "Fiction"
-                ? "text-primary font-bold border-b-2 border-primary pb-1"
-                : "text-on-surface-variant hover:text-secondary"
-            }`}
-            href="#fiction"
-            onClick={(e) => { e.preventDefault(); setActiveCategory("Fiction"); }}
-          >
-            Fiction
-          </a>
-          <a
-            className={`font-title-md text-title-md transition-all duration-200 hover:scale-105 ${
-              activeCategory === "Non-Fiction"
-                ? "text-primary font-bold border-b-2 border-primary pb-1"
-                : "text-on-surface-variant hover:text-secondary"
-            }`}
-            href="#non-fiction"
-            onClick={(e) => { e.preventDefault(); setActiveCategory("Non-Fiction"); }}
-          >
-            Non-Fiction
-          </a>
-          <a
-            className={`font-title-md text-title-md transition-all duration-200 hover:scale-105 ${
-              activeCategory === "Rare Editions"
-                ? "text-primary font-bold border-b-2 border-primary pb-1"
-                : "text-on-surface-variant hover:text-secondary"
-            }`}
-            href="#rare-editions"
-            onClick={(e) => { e.preventDefault(); setActiveCategory("Rare Editions"); }}
-          >
-            Rare Editions
-          </a>
-          <a
-            className={`font-title-md text-title-md transition-all duration-200 hover:scale-105 ${
-              activeCategory === "Poetry"
-                ? "text-primary font-bold border-b-2 border-primary pb-1"
-                : "text-on-surface-variant hover:text-secondary"
-            }`}
-            href="#poetry"
-            onClick={(e) => { e.preventDefault(); setActiveCategory("Poetry"); }}
-          >
-            Poetry
-          </a>
-          <a
-            className={`font-title-md text-title-md transition-all duration-200 hover:scale-105 ${
-              activeCategory === "Children"
-                ? "text-primary font-bold border-b-2 border-primary pb-1"
-                : "text-on-surface-variant hover:text-secondary"
-            }`}
-            href="#children"
-            onClick={(e) => { e.preventDefault(); setActiveCategory("Children"); }}
-          >
-            Children
-          </a>
-          <a
-            className={`font-title-md text-title-md transition-all duration-200 hover:scale-105 ${
-              activeCategory === "Sale"
-                ? "text-secondary font-bold border-b-2 border-secondary pb-1"
-                : "text-secondary hover:text-secondary-container"
-            }`}
-            href="#sale"
-            onClick={(e) => { e.preventDefault(); setActiveCategory("Sale"); }}
-          >
-            Sale
-          </a>
-        </nav>
       </header>
 
       {/* Mobile Header */}
-      <header className="md:hidden flex justify-between items-center px-margin-mobile py-3 bg-paper-cream sticky top-0 z-40 border-b border-muted-border">
+      <header className="md:hidden flex justify-between items-center px-margin-mobile py-3 bg-[#fafafa] sticky top-0 z-40 border-b border-muted-border">
         <a className="flex items-center" href="#">
           <img
             src="/images/logo.png"
@@ -244,6 +297,18 @@ export default function Home() {
           />
         </a>
         <div className="flex items-center gap-3">
+          <button
+            onClick={() => {
+              setIsSearchOpen(!isSearchOpen);
+              if (!isSearchOpen) {
+                setTimeout(() => searchInputRef.current?.focus(), 100);
+              }
+            }}
+            aria-label="Search"
+            className="text-on-surface hover:text-primary p-1"
+          >
+            <span className="material-symbols-outlined text-[24px]">search</span>
+          </button>
           <button
             onClick={() => setIsWishlistOpen(true)}
             aria-label="Favorites"
@@ -259,17 +324,43 @@ export default function Home() {
             )}
           </button>
           <button
-            onClick={() => {
-              const query = prompt("Search Market Shop by author, title, or genre:", searchQuery);
-              if (query !== null) setSearchQuery(query);
-            }}
-            aria-label="Search"
-            className="text-on-surface hover:text-primary p-1"
+            onClick={() => setIsCartOpen(true)}
+            aria-label="Cart"
+            className="text-on-surface hover:text-primary relative p-1"
           >
-            <span className="material-symbols-outlined text-[24px]">search</span>
+            <span className="material-symbols-outlined text-[24px]">shopping_bag</span>
+            <span className="absolute -top-1 -right-1 bg-primary text-white text-[9px] rounded-full w-3.5 h-3.5 flex items-center justify-center font-bold">
+              {totalItems}
+            </span>
           </button>
         </div>
       </header>
+
+      {/* Mobile Search Bar Dropdown */}
+      {isSearchOpen && (
+        <div className="md:hidden px-4 py-3 bg-white border-b border-muted-border shadow-md">
+          <div className="relative flex items-center">
+            <span className="material-symbols-outlined absolute left-3.5 text-outline text-[20px]">search</span>
+            <input
+              ref={searchInputRef}
+              className="w-full bg-[#f4f4f4] rounded-xl py-2.5 pl-10 pr-9 border border-muted-border focus:outline-none focus:border-primary text-sm font-medium text-ink-charcoal"
+              placeholder="Search authors, titles, genres..."
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              autoFocus
+            />
+            {searchQuery && (
+              <button
+                onClick={() => setSearchQuery("")}
+                className="absolute right-3 p-1 text-outline hover:text-ink-charcoal text-xs font-bold"
+              >
+                ✕
+              </button>
+            )}
+          </div>
+        </div>
+      )}
 
       {/* 4. Trust Bar */}
       <div className="bg-sage-haze py-3 border-y border-muted-border">
@@ -341,17 +432,17 @@ export default function Home() {
           </div>
         </section>
 
-        {/* 6. Featured Books */}
+        {/* 6. Featured Books: Curator's Picks */}
         <section id="curators-picks" className="px-margin-mobile md:px-margin-desktop py-12 scroll-mt-20">
           <div className="flex justify-between items-end mb-8">
             <h2 className="font-title-md text-title-md text-ink-charcoal">Curator&apos;s Picks</h2>
             <a className="font-label-sm text-label-sm text-primary uppercase hover:underline" href="#curators-picks">View All</a>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Pick 1 */}
+            {/* Book 1 */}
             <div
+              onClick={() => handleOpenProductModal("David Walliams Gangsta Granny", "info.vebryx@gmail.com", 5.99, "/images/books/gangsta-granny.png", "Curator's Choice", 7.99)}
               className="flex flex-col group cursor-pointer"
-              onClick={() => handleOpenProductModal("David Walliams Gangsta Granny", "info.vebryx@gmail.com", 5.99, "/images/books/gangsta-granny.png", "Children's Fiction", 7.99)}
             >
               <div className="aspect-[2/3] w-full bg-surface-container mb-4 overflow-hidden border border-muted-border rounded-xl book-shadow transition-all duration-300 lift-on-hover relative">
                 <div className="absolute top-2 left-2 bg-secondary text-on-secondary text-xs px-2 py-0.5 uppercase font-bold rounded-lg shadow-sm z-10">
@@ -360,21 +451,26 @@ export default function Home() {
                 <button
                   onClick={(e) => {
                     e.stopPropagation();
-                    addToWishlist({
-                      id: "david-walliams-gangsta-granny",
-                      title: "David Walliams Gangsta Granny",
-                      author: "info.vebryx@gmail.com",
-                      price: 5.99,
-                      originalPrice: 7.99,
-                      rating: 0.0,
-                      reviewCount: 0,
-                      coverImage: "/images/books/gangsta-granny.png",
-                      category: "Children's Fiction",
-                      description: "Ben thinks his cabbage-soup-eating grandmother is utterly dull—until he finds out she is a master international jewel thief.",
-                      format: "Paperback",
-                      inStock: true,
-                      sellerName: "info.vebryx@gmail.com"
-                    });
+                    const inList = isInWishlist("david-walliams-gangsta-granny");
+                    if (inList) {
+                      removeFromWishlist("david-walliams-gangsta-granny");
+                    } else {
+                      addToWishlist({
+                        id: "david-walliams-gangsta-granny",
+                        title: "David Walliams Gangsta Granny",
+                        author: "info.vebryx@gmail.com",
+                        price: 5.99,
+                        originalPrice: 7.99,
+                        rating: 4.9,
+                        reviewCount: 0,
+                        coverImage: "/images/books/gangsta-granny.png",
+                        category: "Children's Fiction",
+                        description: "Ben thought his granny was boring... until he discovered she was an international jewel thief! A hilarious and heartwarming modern classic.",
+                        format: "Hardcover",
+                        inStock: true,
+                        sellerName: "info.vebryx@gmail.com"
+                      });
+                    }
                   }}
                   className="absolute top-2 right-2 p-1.5 rounded-full bg-white/90 shadow hover:bg-white text-secondary transition-transform hover:scale-110 z-10 cursor-pointer"
                   aria-label="Save to wishlist"
@@ -415,10 +511,10 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Pick 2 */}
+            {/* Book 2 */}
             <div
+              onClick={() => handleOpenProductModal("Adventures of the magic star", "info.vebryx@gmail.com", 5.99, "/images/books/adventures-of-the-magic-star.png", "Curator's Choice", 7.00)}
               className="flex flex-col group cursor-pointer"
-              onClick={() => handleOpenProductModal("Adventures of the magic star", "info.vebryx@gmail.com", 5.99, "/images/books/adventures-of-the-magic-star.png", "Romance & Poetry", 7.00)}
             >
               <div className="aspect-[2/3] w-full bg-surface-container mb-4 overflow-hidden border border-muted-border rounded-xl book-shadow transition-all duration-300 lift-on-hover relative">
                 <div className="absolute top-2 left-2 bg-secondary text-on-secondary text-xs px-2 py-0.5 uppercase font-bold rounded-lg shadow-sm z-10">
@@ -427,21 +523,26 @@ export default function Home() {
                 <button
                   onClick={(e) => {
                     e.stopPropagation();
-                    addToWishlist({
-                      id: "adventures-of-the-magic-star",
-                      title: "Adventures of the magic star",
-                      author: "info.vebryx@gmail.com",
-                      price: 5.99,
-                      originalPrice: 7.00,
-                      rating: 0.0,
-                      reviewCount: 0,
-                      coverImage: "/images/books/adventures-of-the-magic-star.png",
-                      category: "Romance & Poetry",
-                      description: "A tender graphic novella tracing love, serendipity, and quiet moments beneath blossom trees.",
-                      format: "Paperback",
-                      inStock: true,
-                      sellerName: "info.vebryx@gmail.com"
-                    });
+                    const inList = isInWishlist("adventures-of-the-magic-star");
+                    if (inList) {
+                      removeFromWishlist("adventures-of-the-magic-star");
+                    } else {
+                      addToWishlist({
+                        id: "adventures-of-the-magic-star",
+                        title: "Adventures of the magic star",
+                        author: "info.vebryx@gmail.com",
+                        price: 5.99,
+                        originalPrice: 7.00,
+                        rating: 4.9,
+                        reviewCount: 0,
+                        coverImage: "/images/books/adventures-of-the-magic-star.png",
+                        category: "Adventure & Romance",
+                        description: "A whimsical tale of wonder and celestial courage across uncharted galaxies.",
+                        format: "Hardcover",
+                        inStock: true,
+                        sellerName: "info.vebryx@gmail.com"
+                      });
+                    }
                   }}
                   className="absolute top-2 right-2 p-1.5 rounded-full bg-white/90 shadow hover:bg-white text-secondary transition-transform hover:scale-110 z-10 cursor-pointer"
                   aria-label="Save to wishlist"
@@ -473,7 +574,7 @@ export default function Home() {
                 <button
                   onClick={(e) => {
                     e.stopPropagation();
-                    handleAddToCartQuick("Adventures of the magic star", "info.vebryx@gmail.com", 5.99, "/images/books/adventures-of-the-magic-star.png", "Romance & Poetry");
+                    handleAddToCartQuick("Adventures of the magic star", "info.vebryx@gmail.com", 5.99, "/images/books/adventures-of-the-magic-star.png", "Adventure & Romance");
                   }}
                   className="w-full bg-surface-container-high hover:bg-primary hover:text-on-primary text-ink-charcoal font-label-sm text-label-sm uppercase py-3 border border-muted-border rounded-xl transition-colors cursor-pointer"
                 >
@@ -482,10 +583,10 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Pick 3 */}
+            {/* Book 3 */}
             <div
+              onClick={() => handleOpenProductModal("Shadow of Decenit", "info.vebryx@gmail.com", 155.00, "/images/books/shadow-of-deceit.png", "Curator's Choice")}
               className="flex flex-col group cursor-pointer"
-              onClick={() => handleOpenProductModal("Shadow of Decenit", "info.vebryx@gmail.com", 155.00, "/images/books/shadow-of-deceit.png", "Mystery & Thriller")}
             >
               <div className="aspect-[2/3] w-full bg-surface-container mb-4 overflow-hidden border border-muted-border rounded-xl book-shadow transition-all duration-300 lift-on-hover relative">
                 <button
@@ -496,7 +597,7 @@ export default function Home() {
                       title: "Shadow of Decenit",
                       author: "info.vebryx@gmail.com",
                       price: 155.00,
-                      rating: 0.0,
+                      rating: 4.9,
                       reviewCount: 0,
                       coverImage: "/images/books/shadow-of-deceit.png",
                       category: "Mystery & Thriller",
@@ -546,8 +647,39 @@ export default function Home() {
           </div>
         </section>
 
-        {/* 7. Seasonal Deals & New Releases Slideshow */}
-        <section className="px-margin-mobile md:px-margin-desktop py-12 bg-sage-haze my-8 rounded-2xl mx-4 md:mx-0 border border-muted-border overflow-hidden">
+        {/* 7. Author of the Month (Placed below Curator's Picks) */}
+        <section id="author-of-the-month" className="bg-surface-container-highest/70 py-16 px-margin-mobile md:px-margin-desktop my-8 border-y border-muted-border rounded-2xl mx-4 md:mx-0">
+          <div className="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div className="rounded-2xl overflow-hidden shadow-md">
+              <img
+                alt="Author of the Month - Elara Vance"
+                className="w-full h-full object-cover"
+                src="/images/author-of-the-month.png"
+              />
+            </div>
+            <div>
+              <h2 className="font-title-md text-headline-lg text-ink-charcoal mb-4">Author of the Month</h2>
+              <h3 className="font-title-md text-2xl text-primary mb-6">Elara Vance</h3>
+              <p className="text-on-surface-variant mb-8 text-lg leading-relaxed">
+                Elara Vance is a renowned novelist celebrated for her evocative prose and deep exploration of the human condition. With over a dozen bestselling titles, her work continues to captivate readers around the globe. Join us this month as we delve into her most compelling stories and uncover the inspiration behind her words.
+              </p>
+              <a
+                className="inline-flex items-center gap-2 text-primary font-label-sm uppercase tracking-wider hover:text-primary-container transition-colors font-bold cursor-pointer"
+                onClick={() => {
+                  const el = document.getElementById("curators-picks");
+                  el?.scrollIntoView({ behavior: "smooth" });
+                  showToast("Discovering other authors on Market Shop");
+                }}
+              >
+                Discover other authors
+                <span className="material-symbols-outlined text-sm">arrow_forward</span>
+              </a>
+            </div>
+          </div>
+        </section>
+
+        {/* 8. Seasonal Deals & New Releases Slideshow */}
+        <section id="seasonal-deals" className="px-margin-mobile md:px-margin-desktop py-12 bg-sage-haze my-8 rounded-2xl mx-4 md:mx-0 border border-muted-border overflow-hidden">
           <div className="flex justify-between items-end mb-8 px-4">
             <div className="flex items-center gap-3">
               <h2 className="font-title-md text-headline-lg text-ink-charcoal">Seasonal Deals</h2>
@@ -638,42 +770,126 @@ export default function Home() {
           </div>
         </section>
 
-        {/* 8. Browse by Genre */}
-        <section id="genres-section" className="px-margin-mobile md:px-margin-desktop py-12 scroll-mt-20">
+        {/* 9. About Us (Revamped section based on attached image, placed above Browse by Genre) */}
+        <section id="about-us" className="py-16 px-margin-mobile md:px-margin-desktop my-8 bg-white border-y border-muted-border rounded-2xl mx-4 md:mx-0 shadow-sm">
+          <div className="max-w-container-max mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 md:gap-14 items-center">
+            
+            {/* Left Column: 3 Value Props with Circular Outline Badges */}
+            <div className="lg:col-span-6 space-y-9">
+              {/* Feature 1: Quick Delivery */}
+              <div className="flex items-center gap-5 sm:gap-6">
+                <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full border-2 border-slate-200 bg-[#fafafa] flex items-center justify-center text-slate-800 flex-shrink-0 shadow-sm">
+                  <span className="material-symbols-outlined text-3xl sm:text-4xl text-slate-800">
+                    inventory_2
+                  </span>
+                </div>
+                <div>
+                  <h3 className="font-title-md text-lg sm:text-xl font-bold text-[#b90538] leading-snug">
+                    Quick Delivery
+                  </h3>
+                  <p className="text-sm text-slate-600 font-medium mt-1">
+                    Orders are delivered within 2 working days*
+                  </p>
+                </div>
+              </div>
+
+              {/* Feature 2: Money-back Guarantee */}
+              <div className="flex items-center gap-5 sm:gap-6">
+                <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full border-2 border-slate-200 bg-[#fafafa] flex items-center justify-center text-slate-800 flex-shrink-0 shadow-sm">
+                  <span className="material-symbols-outlined text-3xl sm:text-4xl text-slate-800">
+                    verified_user
+                  </span>
+                </div>
+                <div>
+                  <h3 className="font-title-md text-lg sm:text-xl font-bold text-[#b90538] leading-snug">
+                    Money-back Guarantee
+                  </h3>
+                  <p className="text-sm text-slate-600 font-medium mt-1">
+                    We&apos;re proud to offer a 100-day no-quibble money-back guarantee
+                  </p>
+                </div>
+              </div>
+
+              {/* Feature 3: Hassle-free Returns */}
+              <div className="flex items-center gap-5 sm:gap-6">
+                <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full border-2 border-slate-200 bg-[#fafafa] flex items-center justify-center text-slate-800 flex-shrink-0 shadow-sm">
+                  <span className="material-symbols-outlined text-3xl sm:text-4xl text-slate-800">
+                    shopping_cart_checkout
+                  </span>
+                </div>
+                <div>
+                  <h3 className="font-title-md text-lg sm:text-xl font-bold text-[#b90538] leading-snug">
+                    Hassle-free Returns
+                  </h3>
+                  <p className="text-sm text-slate-600 font-medium mt-1">
+                    We&apos;ve made returning items quick &amp; easy
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Column: Family Photo + Oval Badge + Story Link */}
+            <div className="lg:col-span-6 flex flex-col items-center">
+              <div className="relative w-full max-w-lg rounded-3xl overflow-hidden shadow-lg border border-slate-200">
+                <img
+                  src="/images/family-photo.png"
+                  alt="Market Shop Family"
+                  className="w-full h-auto object-cover"
+                />
+              </div>
+
+              {/* Red Curved Pill Badge */}
+              <div className="mt-4 sm:mt-5 text-center">
+                <div className="bg-[#c8102e] text-white px-8 py-3 rounded-full shadow-md inline-block">
+                  <span className="font-extrabold text-sm sm:text-base tracking-wider uppercase block">
+                    FAMILY OWNED
+                  </span>
+                  <span className="font-extrabold text-sm sm:text-base tracking-wider uppercase block">
+                    &amp; RUN SINCE 2018
+                  </span>
+                </div>
+
+                {/* Read story link */}
+                <div
+                  onClick={() => showToast("Market Shop story: Founded as a family-run independent book seller.")}
+                  className="mt-3 flex items-center justify-center gap-2 text-sm font-bold text-[#c8102e] hover:underline cursor-pointer"
+                >
+                  <span className="w-4 h-4 rounded-full bg-[#1b2a4a] text-white flex items-center justify-center text-[10px] font-bold">
+                    ›
+                  </span>
+                  <span>Read about where it all began...</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        {/* 10. Browse by Genre (6 Genres in Circular Placeholders with Large Filling Icons) */}
+        <section id="genres-section" className="px-margin-mobile md:px-margin-desktop py-14 scroll-mt-20">
           <h2 className="font-title-md text-headline-lg text-ink-charcoal text-center mb-10">Browse by Genre</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-            <a
-              onClick={(e) => { e.preventDefault(); setActiveCategory("Fiction"); showToast("Browsing Fiction titles"); }}
-              className="group relative aspect-square bg-surface-container-high rounded-xl overflow-hidden shadow-sm flex flex-col items-center justify-center border border-muted-border hover:border-primary transition-colors cursor-pointer"
-              href="#fiction"
-            >
-              <span className="material-symbols-outlined text-4xl mb-3 text-primary group-hover:scale-110 transition-transform">auto_stories</span>
-              <span className="font-title-md text-ink-charcoal">Fiction</span>
-            </a>
-            <a
-              onClick={(e) => { e.preventDefault(); setActiveCategory("Non-Fiction"); showToast("Browsing Non-Fiction titles"); }}
-              className="group relative aspect-square bg-surface-container-high rounded-xl overflow-hidden shadow-sm flex flex-col items-center justify-center border border-muted-border hover:border-primary transition-colors cursor-pointer"
-              href="#non-fiction"
-            >
-              <span className="material-symbols-outlined text-4xl mb-3 text-primary group-hover:scale-110 transition-transform">science</span>
-              <span className="font-title-md text-ink-charcoal">Non-Fiction</span>
-            </a>
-            <a
-              onClick={(e) => { e.preventDefault(); setActiveCategory("Poetry"); showToast("Browsing Poetry titles"); }}
-              className="group relative aspect-square bg-surface-container-high rounded-xl overflow-hidden shadow-sm flex flex-col items-center justify-center border border-muted-border hover:border-primary transition-colors cursor-pointer"
-              href="#poetry"
-            >
-              <span className="material-symbols-outlined text-4xl mb-3 text-primary group-hover:scale-110 transition-transform">history_edu</span>
-              <span className="font-title-md text-ink-charcoal">Poetry</span>
-            </a>
-            <a
-              onClick={(e) => { e.preventDefault(); setActiveCategory("Rare Editions"); showToast("Browsing Rare & Signed Editions"); }}
-              className="group relative aspect-square bg-surface-container-high rounded-xl overflow-hidden shadow-sm flex flex-col items-center justify-center border border-muted-border hover:border-primary transition-colors cursor-pointer"
-              href="#rare-editions"
-            >
-              <span className="material-symbols-outlined text-4xl mb-3 text-primary group-hover:scale-110 transition-transform">diamond</span>
-              <span className="font-title-md text-ink-charcoal">Rare Editions</span>
-            </a>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 md:gap-8 justify-items-center">
+            {genresList.map((genre) => (
+              <a
+                key={genre.id}
+                onClick={(e) => {
+                  e.preventDefault();
+                  setActiveCategory(genre.name);
+                  showToast(`Browsing ${genre.name} collection`);
+                }}
+                className="group flex flex-col items-center cursor-pointer text-center"
+                href={`#${genre.id}`}
+              >
+                <div className="w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 rounded-full bg-white border-2 border-muted-border group-hover:border-primary group-hover:bg-primary/5 group-hover:scale-110 group-hover:shadow-lg transition-all duration-300 flex items-center justify-center shadow-sm">
+                  <span className="material-symbols-outlined text-4xl sm:text-5xl md:text-6xl text-primary group-hover:scale-110 transition-transform duration-300">
+                    {genre.icon}
+                  </span>
+                </div>
+                <span className="font-title-md text-sm sm:text-base font-bold text-ink-charcoal mt-3.5 group-hover:text-primary transition-colors">
+                  {genre.name}
+                </span>
+              </a>
+            ))}
           </div>
         </section>
 
@@ -697,305 +913,6 @@ export default function Home() {
             <span>Direct UK Sellers</span>
           </div>
         </div>
-
-        {/* 9. New Releases Grid (6 books) */}
-        <section id="new-releases" className="px-margin-mobile md:px-margin-desktop py-12 scroll-mt-20">
-          <div className="flex justify-between items-end mb-8">
-            <h2 className="font-title-md text-title-md text-ink-charcoal">New Releases</h2>
-            <a className="font-label-sm text-label-sm text-primary uppercase hover:underline" href="#new-releases">View All</a>
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
-            {/* Book 1 */}
-            <div
-              onClick={() => handleOpenProductModal("David Walliams Gangsta Granny", "info.vebryx@gmail.com", 5.99, "/images/books/gangsta-granny.png", "Children's Fiction", 7.99)}
-              className="flex flex-col group cursor-pointer"
-            >
-              <div className="aspect-[2/3] w-full bg-surface-variant mb-3 rounded-xl book-shadow overflow-hidden hover:scale-105 transition-transform duration-300 border border-muted-border relative">
-                <div className="absolute top-1.5 left-1.5 bg-secondary text-on-secondary text-[10px] font-bold px-1.5 py-0.5 rounded-md shadow-sm z-10">
-                  Sale -25%
-                </div>
-                <img
-                  alt="David Walliams Gangsta Granny"
-                  className="w-full h-full object-cover"
-                  src="/images/books/gangsta-granny.png"
-                />
-              </div>
-              <div className="flex items-center gap-1 text-[11px] text-outline mb-0.5 font-mono">
-                <span className="text-primary font-bold">★ (0)</span>
-              </div>
-              <p className="text-[11px] text-secondary truncate font-mono">By: info.vebryx@gmail.com</p>
-              <h3 className="font-title-md text-sm text-ink-charcoal truncate mt-0.5">David Walliams Gangsta Granny</h3>
-              <p className="font-body-lg text-sm font-semibold mt-1">
-                <span className="text-secondary mr-1.5">$5.99</span>
-                <span className="text-outline line-through font-normal text-xs">$7.99</span>
-              </p>
-            </div>
-
-            {/* Book 2 */}
-            <div
-              onClick={() => handleOpenProductModal("Adventures of the magic star", "info.vebryx@gmail.com", 5.99, "/images/books/adventures-of-the-magic-star.png", "Romance & Poetry", 7.00)}
-              className="flex flex-col group cursor-pointer"
-            >
-              <div className="aspect-[2/3] w-full bg-surface-variant mb-3 rounded-xl book-shadow overflow-hidden hover:scale-105 transition-transform duration-300 border border-muted-border relative">
-                <div className="absolute top-1.5 left-1.5 bg-secondary text-on-secondary text-[10px] font-bold px-1.5 py-0.5 rounded-md shadow-sm z-10">
-                  Sale -14%
-                </div>
-                <img
-                  alt="Adventures of the magic star"
-                  className="w-full h-full object-cover"
-                  src="/images/books/adventures-of-the-magic-star.png"
-                />
-              </div>
-              <div className="flex items-center gap-1 text-[11px] text-outline mb-0.5 font-mono">
-                <span className="text-primary font-bold">★ (0)</span>
-              </div>
-              <p className="text-[11px] text-secondary truncate font-mono">By: info.vebryx@gmail.com</p>
-              <h3 className="font-title-md text-sm text-ink-charcoal truncate mt-0.5">Adventures of the magic star</h3>
-              <p className="font-body-lg text-sm font-semibold mt-1">
-                <span className="text-secondary mr-1.5">$5.99</span>
-                <span className="text-outline line-through font-normal text-xs">$7.00</span>
-              </p>
-            </div>
-
-            {/* Book 3 */}
-            <div
-              onClick={() => handleOpenProductModal("Shadow of Decenit", "info.vebryx@gmail.com", 155.00, "/images/books/shadow-of-deceit.png", "Mystery & Thriller")}
-              className="flex flex-col group cursor-pointer"
-            >
-              <div className="aspect-[2/3] w-full bg-surface-variant mb-3 rounded-xl book-shadow overflow-hidden hover:scale-105 transition-transform duration-300 border border-muted-border relative">
-                <img
-                  alt="Shadow of Decenit"
-                  className="w-full h-full object-cover"
-                  src="/images/books/shadow-of-deceit.png"
-                />
-              </div>
-              <div className="flex items-center gap-1 text-[11px] text-outline mb-0.5 font-mono">
-                <span className="text-primary font-bold">★ (0)</span>
-              </div>
-              <p className="text-[11px] text-secondary truncate font-mono">By: info.vebryx@gmail.com</p>
-              <h3 className="font-title-md text-sm text-ink-charcoal truncate mt-0.5">Shadow of Decenit</h3>
-              <p className="font-body-lg text-sm font-semibold mt-1 text-ink-charcoal">$155.00</p>
-            </div>
-
-            {/* Book 4 */}
-            <div
-              onClick={() => handleOpenProductModal("The story of the magic star", "info.vebryx@gmail.com", 105.00, "/images/books/the-story-of-the-magic-star.png", "Sci-Fi & Fantasy", 130.00)}
-              className="flex flex-col group cursor-pointer"
-            >
-              <div className="aspect-[2/3] w-full bg-surface-variant mb-3 rounded-xl book-shadow overflow-hidden hover:scale-105 transition-transform duration-300 border border-muted-border relative">
-                <div className="absolute top-1.5 left-1.5 bg-secondary text-on-secondary text-[10px] font-bold px-1.5 py-0.5 rounded-md shadow-sm z-10">
-                  Sale -19%
-                </div>
-                <img
-                  alt="The story of the magic star"
-                  className="w-full h-full object-cover"
-                  src="/images/books/the-story-of-the-magic-star.png"
-                />
-              </div>
-              <div className="flex items-center gap-1 text-[11px] text-outline mb-0.5 font-mono">
-                <span className="text-primary font-bold">★ (5.00)</span>
-              </div>
-              <p className="text-[11px] text-secondary truncate font-mono">By: info.vebryx@gmail.com</p>
-              <h3 className="font-title-md text-sm text-ink-charcoal truncate mt-0.5">The story of the magic star</h3>
-              <p className="font-body-lg text-sm font-semibold mt-1">
-                <span className="text-secondary mr-1.5">$105.00</span>
-                <span className="text-outline line-through font-normal text-xs">$130.00</span>
-              </p>
-            </div>
-
-            {/* Book 5 */}
-            <div
-              onClick={() => handleOpenProductModal("Miss P the Pirate", "info.vebryx@gmail.com", 5.00, "/images/books/miss-p-the-pirate.png", "Adventure & Sci-Fi", 6.99)}
-              className="flex flex-col group cursor-pointer"
-            >
-              <div className="aspect-[2/3] w-full bg-surface-variant mb-3 rounded-xl book-shadow overflow-hidden hover:scale-105 transition-transform duration-300 border border-muted-border relative">
-                <div className="absolute top-1.5 left-1.5 bg-secondary text-on-secondary text-[10px] font-bold px-1.5 py-0.5 rounded-md shadow-sm z-10">
-                  Sale -28%
-                </div>
-                <img
-                  alt="Miss P the Pirate"
-                  className="w-full h-full object-cover"
-                  src="/images/books/miss-p-the-pirate.png"
-                />
-              </div>
-              <div className="flex items-center gap-1 text-[11px] text-outline mb-0.5 font-mono">
-                <span className="text-primary font-bold">★ (0)</span>
-              </div>
-              <p className="text-[11px] text-secondary truncate font-mono">By: info.vebryx@gmail.com</p>
-              <h3 className="font-title-md text-sm text-ink-charcoal truncate mt-0.5">Miss P the Pirate</h3>
-              <p className="font-body-lg text-sm font-semibold mt-1">
-                <span className="text-secondary mr-1.5">$5.00</span>
-                <span className="text-outline line-through font-normal text-xs">$6.99</span>
-              </p>
-            </div>
-
-            {/* Book 6 */}
-            <div
-              onClick={() => handleOpenProductModal("The whitre Abbott", "info.vebryx@gmail.com", 7.99, "/images/books/the-white-abbott.png", "Philosophy & Art", 10.99)}
-              className="flex flex-col group cursor-pointer"
-            >
-              <div className="aspect-[2/3] w-full bg-surface-variant mb-3 rounded-xl book-shadow overflow-hidden hover:scale-105 transition-transform duration-300 border border-muted-border relative">
-                <div className="absolute top-1.5 left-1.5 bg-secondary text-on-secondary text-[10px] font-bold px-1.5 py-0.5 rounded-md shadow-sm z-10">
-                  Sale -27%
-                </div>
-                <img
-                  alt="The whitre Abbott"
-                  className="w-full h-full object-cover"
-                  src="/images/books/the-white-abbott.png"
-                />
-              </div>
-              <div className="flex items-center gap-1 text-[11px] text-outline mb-0.5 font-mono">
-                <span className="text-primary font-bold">★ (0)</span>
-              </div>
-              <p className="text-[11px] text-secondary truncate font-mono">By: info.vebryx@gmail.com</p>
-              <h3 className="font-title-md text-sm text-ink-charcoal truncate mt-0.5">The whitre Abbott</h3>
-              <p className="font-body-lg text-sm font-semibold mt-1">
-                <span className="text-secondary mr-1.5">$7.99</span>
-                <span className="text-outline line-through font-normal text-xs">$10.99</span>
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* 10. Author of the Month */}
-        <section className="bg-surface-container-highest py-16 px-margin-mobile md:px-margin-desktop mt-8 border-y border-muted-border">
-          <div className="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div className="rounded-xl overflow-hidden shadow-md">
-              <img
-                alt="Author of the Month"
-                className="w-full h-full object-cover"
-                src="/images/author-of-the-month.png"
-              />
-            </div>
-            <div>
-              <h2 className="font-title-md text-headline-lg text-ink-charcoal mb-4">Author of the Month</h2>
-              <h3 className="font-title-md text-2xl text-primary mb-6">Elara Vance</h3>
-              <p className="text-on-surface-variant mb-8 text-lg leading-relaxed">
-                Elara Vance is a renowned novelist celebrated for her evocative prose and deep exploration of the human condition. With over a dozen bestselling titles, her work continues to captivate readers around the globe. Join us this month as we delve into her most compelling stories and uncover the inspiration behind her words.
-              </p>
-              <a
-                className="inline-flex items-center gap-2 text-primary font-label-sm uppercase tracking-wider hover:text-primary-container transition-colors font-bold cursor-pointer"
-                onClick={() => {
-                  const el = document.getElementById("curators-picks");
-                  el?.scrollIntoView({ behavior: "smooth" });
-                  showToast("Discovering other authors on Market Shop");
-                }}
-              >
-                Discover other authors
-                <span className="material-symbols-outlined text-sm">arrow_forward</span>
-              </a>
-            </div>
-          </div>
-        </section>
-
-        {/* 11. Customer Reviews */}
-        <section className="px-margin-mobile md:px-margin-desktop py-16">
-          <h2 className="font-title-md text-headline-lg text-ink-charcoal text-center mb-10">What Readers Say</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {/* Review 1 */}
-            <div className="bg-surface-container p-6 rounded-xl border border-muted-border relative shadow-sm">
-              <span className="material-symbols-outlined text-outline-variant absolute top-4 right-4 text-4xl opacity-50">format_quote</span>
-              <div className="flex text-primary mb-3">
-                <span className="material-symbols-outlined text-sm" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
-                <span className="material-symbols-outlined text-sm" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
-                <span className="material-symbols-outlined text-sm" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
-                <span className="material-symbols-outlined text-sm" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
-                <span className="material-symbols-outlined text-sm" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
-              </div>
-              <p className="font-body-md text-on-surface-variant italic mb-4 relative z-10">&quot;A truly magical bookstore experience online. The curation is exceptional, and my books arrived beautifully packaged within two days.&quot;</p>
-              <p className="font-label-sm text-ink-charcoal uppercase">— Claire M.</p>
-            </div>
-
-            {/* Review 2 */}
-            <div className="bg-surface-container p-6 rounded-xl border border-muted-border relative shadow-sm">
-              <span className="material-symbols-outlined text-outline-variant absolute top-4 right-4 text-4xl opacity-50">format_quote</span>
-              <div className="flex text-primary mb-3">
-                <span className="material-symbols-outlined text-sm" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
-                <span className="material-symbols-outlined text-sm" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
-                <span className="material-symbols-outlined text-sm" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
-                <span className="material-symbols-outlined text-sm" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
-                <span className="material-symbols-outlined text-sm" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
-              </div>
-              <p className="font-body-md text-on-surface-variant italic mb-4 relative z-10">&quot;I always find something unexpected and wonderful here. The rare editions section is a treasure trove for collectors.&quot;</p>
-              <p className="font-label-sm text-ink-charcoal uppercase">— James T.</p>
-            </div>
-
-            {/* Review 3 */}
-            <div className="bg-surface-container p-6 rounded-xl border border-muted-border relative shadow-sm">
-              <span className="material-symbols-outlined text-outline-variant absolute top-4 right-4 text-4xl opacity-50">format_quote</span>
-              <div className="flex text-primary mb-3">
-                <span className="material-symbols-outlined text-sm" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
-                <span className="material-symbols-outlined text-sm" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
-                <span className="material-symbols-outlined text-sm" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
-                <span className="material-symbols-outlined text-sm" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
-                <span className="material-symbols-outlined text-sm" style={{ fontVariationSettings: "'FILL' 1" }}>star_half</span>
-              </div>
-              <p className="font-body-md text-on-surface-variant italic mb-4 relative z-10">&quot;The best place to discover new authors. The site is incredibly easy to navigate and aesthetically so pleasing. Highly recommend.&quot;</p>
-              <p className="font-label-sm text-ink-charcoal uppercase">— Anita W.</p>
-            </div>
-          </div>
-        </section>
-
-        {/* 12. About Us */}
-        <section id="about-us" className="py-16 px-margin-mobile md:px-margin-desktop border-t border-muted-border bg-paper-cream">
-          <div className="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div className="order-2 md:order-1">
-              <h2 className="font-title-md text-headline-lg text-ink-charcoal mb-4">About Us</h2>
-              <p className="text-on-surface-variant mb-6 text-lg leading-relaxed">
-                Established in 2015, Market Shop was founded on a simple belief: the right book can transform a moment, a day, or a life. We strive to be more than just a retailer; we are a community of readers dedicated to the quiet joy of getting lost in a story.
-              </p>
-              <p className="text-on-surface-variant text-lg leading-relaxed mb-6">
-                Our mission is to curate a selection that surprises and delights, bridging the gap between beloved classics and fresh, new voices. We&apos;re proud of the excellent reviews we receive from our community, reflecting our commitment to quality, curation, and exceptional service.
-              </p>
-            </div>
-            <div className="rounded-xl overflow-hidden shadow-md order-1 md:order-2">
-              <img
-                alt="About Market Shop"
-                className="w-full h-full object-cover"
-                src="/images/about-us.png"
-              />
-            </div>
-          </div>
-        </section>
-
-        {/* 13. Join Our Newsletter */}
-        <section className="bg-surface-container py-16 px-margin-mobile md:px-margin-desktop border-t border-muted-border">
-          <div className="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div className="rounded-xl overflow-hidden shadow-md">
-              <img
-                alt="Newsletter Sign Up"
-                className="w-full h-full object-cover"
-                src="/images/newsletter.png"
-              />
-            </div>
-            <div>
-              <h2 className="font-title-md text-headline-lg text-ink-charcoal mb-4">Join Our Newsletter</h2>
-              <p className="text-on-surface-variant mb-8 text-lg leading-relaxed">
-                Subscribe to receive curated reading lists, exclusive offers, and the latest news from Market Shop directly to your inbox.
-              </p>
-              <form
-                className="flex flex-col sm:flex-row gap-4"
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  showToast("Thank you for subscribing to Market Shop Newsletter!");
-                }}
-              >
-                <input
-                  className="flex-1 bg-surface-container-lowest rounded-xl py-3 px-4 border border-muted-border focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-colors text-body-md font-body-md"
-                  placeholder="Enter your email address"
-                  required
-                  type="email"
-                />
-                <button
-                  className="bg-primary hover:bg-primary-container text-on-primary font-label-sm text-label-sm uppercase tracking-wider py-3 px-8 rounded-xl transition-colors shadow-sm whitespace-nowrap font-bold cursor-pointer"
-                  type="submit"
-                >
-                  Subscribe
-                </button>
-              </form>
-            </div>
-          </div>
-        </section>
       </main>
 
       {/* Comprehensive Footer */}

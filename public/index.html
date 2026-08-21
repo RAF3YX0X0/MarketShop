@@ -142,7 +142,7 @@
         }
     </style>
 </head>
-<body class="bg-paper-cream text-on-surface font-body-md antialiased pb-24 md:pb-0 relative min-h-screen">
+<body class="bg-[#fafafa] text-on-surface font-body-md antialiased pb-24 md:pb-0 relative min-h-screen">
 <!-- 1. Top Bar -->
 <div class="bg-surface-container-highest text-on-surface text-center py-2 px-margin-mobile md:px-margin-desktop text-sm flex flex-col md:flex-row justify-center items-center gap-2 md:gap-6 border-b border-muted-border">
 <div class="flex items-center gap-1 text-primary">
@@ -157,53 +157,81 @@
 <span class="font-quote-text italic text-on-surface-variant text-sm md:text-base hidden md:block">"A room without books is like a body without a soul."</span>
 </div>
 
-<!-- 2 & 3. Navigation -->
-<header class="w-full top-0 bg-paper-cream flex flex-col w-full max-w-container-max mx-auto px-margin-desktop hidden md:flex border-b border-muted-border sticky z-40">
-<div class="py-5 flex justify-between items-center w-full">
-<a class="hover:scale-105 transition-transform flex items-center" href="#">
-  <img src="/images/logo.png" alt="Market Shop - Ocean of Book" class="h-12 w-auto object-contain mix-blend-multiply"/>
+<!-- 2 & 3. Navigation Header -->
+<header class="w-full top-0 bg-[#fafafa]/95 backdrop-blur-md flex flex-col w-full max-w-container-max mx-auto px-margin-desktop hidden md:flex border-b border-muted-border sticky z-40">
+<div class="py-4 flex justify-between items-center w-full relative">
+<a class="hover:scale-105 transition-transform flex items-center flex-shrink-0" href="#">
+  <img src="/images/logo.png" alt="Market Shop - Ocean of Book" class="h-11 w-auto object-contain mix-blend-multiply"/>
 </a>
-<div class="flex-1 max-w-xl mx-8 relative">
-<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">search</span>
-<input class="w-full bg-surface-container rounded-full py-3 pl-12 pr-6 border border-muted-border focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-colors text-body-md font-body-md" placeholder="Search authors, titles, or genres..." type="text"/>
-</div>
-<div class="flex items-center gap-6">
-<!-- Favorites button triggers left drawer -->
-<button onclick="toggleWishlistDrawer()" aria-label="Favorites" class="text-primary hover:text-secondary transition-colors duration-200 relative p-1 cursor-pointer">
-<span class="material-symbols-outlined" style="font-size: 28px;">favorite</span>
-<span class="absolute -top-1 -right-1 bg-secondary text-white text-[10px] rounded-full w-4 h-4 flex items-center justify-center font-bold">2</span>
-</button>
-<!-- Cart button triggers left drawer -->
-<button onclick="toggleCartDrawer()" aria-label="Cart" class="text-primary hover:text-secondary transition-colors duration-200 relative p-1 cursor-pointer">
-<span class="material-symbols-outlined" style="font-size: 28px;">shopping_bag</span>
-<span class="absolute -top-1 -right-1 bg-primary text-white text-[10px] rounded-full w-4 h-4 flex items-center justify-center font-bold">2</span>
-</button>
-</div>
-</div>
-<nav class="flex justify-center gap-8 pb-4">
-<a class="font-title-md text-title-md text-primary font-bold border-b-2 border-primary pb-1 hover:scale-105 transition-transform" href="#">Fiction</a>
-<a class="font-title-md text-title-md text-on-surface-variant hover:text-secondary transition-colors duration-200 hover:scale-105" href="#">Non-Fiction</a>
-<a class="font-title-md text-title-md text-on-surface-variant hover:text-secondary transition-colors duration-200 hover:scale-105" href="#">Rare Editions</a>
-<a class="font-title-md text-title-md text-on-surface-variant hover:text-secondary transition-colors duration-200 hover:scale-105" href="#">Poetry</a>
-<a class="font-title-md text-title-md text-on-surface-variant hover:text-secondary transition-colors duration-200 hover:scale-105" href="#">Children</a>
-<a class="font-title-md text-title-md text-secondary hover:text-secondary-container transition-colors duration-200 hover:scale-105" href="#">Sale</a>
+
+<!-- Categories in the middle between Logo and Favorites/Cart/Search -->
+<nav class="flex items-center gap-6 lg:gap-8 mx-6">
+<a class="font-title-md text-sm lg:text-base font-semibold text-primary font-bold border-b-2 border-primary pb-0.5 hover:scale-105 transition-transform" href="#curators-picks">Fiction</a>
+<a class="font-title-md text-sm lg:text-base font-semibold text-on-surface-variant hover:text-secondary transition-colors hover:scale-105" href="#curators-picks">Non-Fiction</a>
+<a class="font-title-md text-sm lg:text-base font-semibold text-on-surface-variant hover:text-secondary transition-colors hover:scale-105" href="#curators-picks">Rare Editions</a>
+<a class="font-title-md text-sm lg:text-base font-semibold text-on-surface-variant hover:text-secondary transition-colors hover:scale-105" href="#curators-picks">Poetry</a>
+<a class="font-title-md text-sm lg:text-base font-semibold text-on-surface-variant hover:text-secondary transition-colors hover:scale-105" href="#curators-picks">Children</a>
+<a class="font-title-md text-sm lg:text-base font-bold text-secondary hover:text-secondary-container transition-colors hover:scale-105" href="#seasonal-deals">Sale</a>
 </nav>
+
+<!-- Right Controls: Search Icon, Favorites, Cart -->
+<div class="flex items-center gap-4 relative">
+  <!-- Search Icon with Click-to-Expand Dropdown -->
+  <div class="relative">
+    <button onclick="document.getElementById('search-dropdown').classList.toggle('hidden'); document.getElementById('search-input-box').focus();" aria-label="Search" class="p-2 rounded-full text-primary hover:bg-surface-container hover:text-secondary transition-colors cursor-pointer flex items-center justify-center">
+      <span class="material-symbols-outlined" style="font-size: 24px;">search</span>
+    </button>
+    <div id="search-dropdown" class="hidden absolute top-full right-0 mt-3 w-80 sm:w-96 bg-white border border-muted-border shadow-2xl rounded-2xl p-3.5 z-50">
+      <div class="relative flex items-center">
+        <span class="material-symbols-outlined absolute left-3.5 text-outline text-[20px]">search</span>
+        <input id="search-input-box" class="w-full bg-[#f4f4f4] rounded-xl py-2.5 pl-10 pr-9 border border-muted-border focus:outline-none focus:border-primary text-sm font-medium text-ink-charcoal" placeholder="Search authors, titles, genres..." type="text"/>
+      </div>
+      <div class="mt-2.5 pt-2 border-t border-muted-border flex items-center justify-between text-[11px] text-outline font-mono">
+        <span>Search 6 verified titles</span>
+        <span class="text-secondary font-semibold">Instant results</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Favorites button triggers left drawer -->
+  <button onclick="toggleWishlistDrawer()" aria-label="Favorites" class="text-primary hover:text-secondary transition-colors duration-200 relative p-1.5 rounded-full hover:bg-surface-container cursor-pointer">
+    <span class="material-symbols-outlined" style="font-size: 26px;">favorite</span>
+    <span class="absolute 0 top-0 right-0 bg-secondary text-white text-[10px] rounded-full w-4 h-4 flex items-center justify-center font-bold">2</span>
+  </button>
+
+  <!-- Cart button triggers left drawer -->
+  <button onclick="toggleCartDrawer()" aria-label="Cart" class="text-primary hover:text-secondary transition-colors duration-200 relative p-1.5 rounded-full hover:bg-surface-container cursor-pointer">
+    <span class="material-symbols-outlined" style="font-size: 26px;">shopping_bag</span>
+    <span class="absolute 0 top-0 right-0 bg-primary text-white text-[10px] rounded-full w-4 h-4 flex items-center justify-center font-bold">2</span>
+  </button>
+</div>
+</div>
 </header>
 
 <!-- Mobile Header -->
-<header class="md:hidden flex justify-between items-center px-margin-mobile py-3 bg-paper-cream sticky top-0 z-40 border-b border-muted-border">
+<header class="md:hidden flex justify-between items-center px-margin-mobile py-3 bg-[#fafafa] sticky top-0 z-40 border-b border-muted-border">
 <a class="flex items-center" href="#">
   <img src="/images/logo.png" alt="Market Shop - Ocean of Book" class="h-8 w-auto object-contain mix-blend-multiply"/>
 </a>
 <div class="flex items-center gap-3">
-<button onclick="toggleWishlistDrawer()" aria-label="Favorites" class="text-on-surface hover:text-secondary p-1">
+<button onclick="document.getElementById('mobile-search-bar').classList.toggle('hidden')" aria-label="Search" class="text-on-surface hover:text-primary p-1">
+  <span class="material-symbols-outlined text-[24px]">search</span>
+</button>
+<button onclick="toggleWishlistDrawer()" aria-label="Favorites" class="text-on-surface hover:text-secondary relative p-1">
   <span class="material-symbols-outlined text-[24px]">favorite</span>
 </button>
-<button aria-label="Search" class="text-on-surface hover:text-primary p-1">
-  <span class="material-symbols-outlined text-[24px]">search</span>
+<button onclick="toggleCartDrawer()" aria-label="Cart" class="text-on-surface hover:text-primary relative p-1">
+  <span class="material-symbols-outlined text-[24px]">shopping_bag</span>
 </button>
 </div>
 </header>
+
+<div id="mobile-search-bar" class="hidden md:hidden px-4 py-3 bg-white border-b border-muted-border shadow-md">
+  <div class="relative flex items-center">
+    <span class="material-symbols-outlined absolute left-3.5 text-outline text-[20px]">search</span>
+    <input class="w-full bg-[#f4f4f4] rounded-xl py-2.5 pl-10 pr-4 border border-muted-border focus:outline-none focus:border-primary text-sm font-medium text-ink-charcoal" placeholder="Search authors, titles, genres..." type="text"/>
+  </div>
+</div>
 
 <!-- 4. Trust Bar -->
 <div class="bg-sage-haze py-3 border-y border-muted-border">
@@ -248,26 +276,26 @@
 <!-- 5. Hero Section -->
 <section class="py-16 md:py-24 px-margin-mobile md:px-margin-desktop text-center">
 <h1 class="font-display-xl text-headline-lg-mobile md:text-display-xl text-ink-charcoal mb-6 max-w-3xl mx-auto">
-                Curating Quiet Moments for Every Reader
-            </h1>
+    Curating Quiet Moments for Every Reader
+</h1>
 <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto mb-10">
-                Discover a carefully selected collection of literature designed to inspire, comfort, and transport you. Explore our shelves and find your next escape with direct UK independent sellers.
-            </p>
+    Discover a carefully selected collection of literature designed to inspire, comfort, and transport you. Explore our shelves and find your next escape with direct UK independent sellers.
+</p>
 <div class="flex flex-col sm:flex-row justify-center gap-4">
-<button class="bg-primary hover:bg-primary-container text-on-primary font-label-sm text-label-sm uppercase tracking-wider py-4 px-8 rounded transition-colors shadow-sm">
-                    Shop Collection
-                </button>
-<button class="border border-ink-charcoal text-ink-charcoal hover:bg-surface-container font-label-sm text-label-sm uppercase tracking-wider py-4 px-8 rounded-xl transition-colors">
-                    Explore Genres
-                </button>
+<a href="#curators-picks" class="bg-primary hover:bg-primary-container text-on-primary font-label-sm text-label-sm uppercase tracking-wider py-4 px-8 rounded-xl transition-colors shadow-sm inline-block">
+    Shop Collection
+</a>
+<a href="#genres-section" class="border border-ink-charcoal text-ink-charcoal hover:bg-surface-container font-label-sm text-label-sm uppercase tracking-wider py-4 px-8 rounded-xl transition-colors inline-block">
+    Explore Genres
+</a>
 </div>
 </section>
 
-<!-- 6. Featured Books -->
-<section class="px-margin-mobile md:px-margin-desktop py-12">
+<!-- 6. Featured Books: Curator's Picks -->
+<section id="curators-picks" class="px-margin-mobile md:px-margin-desktop py-12 scroll-mt-20">
 <div class="flex justify-between items-end mb-8">
 <h2 class="font-title-md text-title-md text-ink-charcoal">Curator's Picks</h2>
-<a class="font-label-sm text-label-sm text-primary uppercase hover:underline" href="#">View All</a>
+<a class="font-label-sm text-label-sm text-primary uppercase hover:underline" href="#curators-picks">View All</a>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
 <div class="flex flex-col group cursor-pointer">
@@ -285,7 +313,7 @@
 <span class="text-secondary mr-2">$5.99</span>
 <span class="text-outline line-through font-normal text-sm">$7.99</span>
 </p>
-<button onclick="toggleCartDrawer()" class="w-full bg-surface-container-high hover:bg-primary hover:text-on-primary text-ink-charcoal font-label-sm text-label-sm uppercase py-3 border border-muted-border rounded-xl transition-colors">Add to Cart</button>
+<button onclick="toggleCartDrawer()" class="w-full bg-surface-container-high hover:bg-primary hover:text-on-primary text-ink-charcoal font-label-sm text-label-sm uppercase py-3 border border-muted-border rounded-xl transition-colors cursor-pointer">Add to Cart</button>
 </div>
 </div>
 <div class="flex flex-col group cursor-pointer">
@@ -303,7 +331,7 @@
 <span class="text-secondary mr-2">$5.99</span>
 <span class="text-outline line-through font-normal text-sm">$7.00</span>
 </p>
-<button onclick="toggleCartDrawer()" class="w-full bg-surface-container-high hover:bg-primary hover:text-on-primary text-ink-charcoal font-label-sm text-label-sm uppercase py-3 border border-muted-border rounded-xl transition-colors">Add to Cart</button>
+<button onclick="toggleCartDrawer()" class="w-full bg-surface-container-high hover:bg-primary hover:text-on-primary text-ink-charcoal font-label-sm text-label-sm uppercase py-3 border border-muted-border rounded-xl transition-colors cursor-pointer">Add to Cart</button>
 </div>
 </div>
 <div class="flex flex-col group cursor-pointer">
@@ -317,22 +345,42 @@
 <h3 class="font-title-md text-title-md text-ink-charcoal mb-1">Shadow of Decenit</h3>
 <p class="font-body-md text-xs text-secondary mb-2 font-mono">By: info.vebryx@gmail.com</p>
 <p class="font-body-lg text-body-lg font-semibold mb-4 text-ink-charcoal">$155.00</p>
-<button onclick="toggleCartDrawer()" class="w-full bg-surface-container-high hover:bg-primary hover:text-on-primary text-ink-charcoal font-label-sm text-label-sm uppercase py-3 border border-muted-border rounded-xl transition-colors">Add to Cart</button>
+<button onclick="toggleCartDrawer()" class="w-full bg-surface-container-high hover:bg-primary hover:text-on-primary text-ink-charcoal font-label-sm text-label-sm uppercase py-3 border border-muted-border rounded-xl transition-colors cursor-pointer">Add to Cart</button>
 </div>
 </div>
 </div>
 </section>
 
-<!-- 7. Seasonal Deals & New Releases Slideshow -->
-<section class="px-margin-mobile md:px-margin-desktop py-12 bg-sage-haze my-8 rounded-2xl mx-4 md:mx-0 border border-muted-border overflow-hidden">
+<!-- 7. Author of the Month (Placed below Curator's Picks) -->
+<section id="author-of-the-month" class="bg-surface-container-highest/70 py-16 px-margin-mobile md:px-margin-desktop my-8 border-y border-muted-border rounded-2xl mx-4 md:mx-0">
+<div class="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+<div class="rounded-2xl overflow-hidden shadow-md">
+<img alt="Author of the Month" class="w-full h-full object-cover" src="/images/author-of-the-month.png"/>
+</div>
+<div>
+<h2 class="font-title-md text-headline-lg text-ink-charcoal mb-4">Author of the Month</h2>
+<h3 class="font-title-md text-2xl text-primary mb-6">Elara Vance</h3>
+<p class="text-on-surface-variant mb-8 text-lg leading-relaxed">
+    Elara Vance is a renowned novelist celebrated for her evocative prose and deep exploration of the human condition. With over a dozen bestselling titles, her work continues to captivate readers around the globe. Join us this month as we delve into her most compelling stories and uncover the inspiration behind her words.
+</p>
+<a class="inline-flex items-center gap-2 text-primary font-label-sm uppercase tracking-wider hover:text-primary-container transition-colors font-bold" href="#curators-picks">
+    Discover other authors
+    <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+</div>
+</section>
+
+<!-- 8. Seasonal Deals & New Releases Slideshow -->
+<section id="seasonal-deals" class="px-margin-mobile md:px-margin-desktop py-12 bg-sage-haze my-8 rounded-2xl mx-4 md:mx-0 border border-muted-border overflow-hidden">
 <div class="flex justify-between items-end mb-8 px-4">
 <div class="flex items-center gap-3">
   <h2 class="font-title-md text-headline-lg text-ink-charcoal">Seasonal Deals</h2>
   <span class="bg-[#3bff55]/20 text-[#106b1e] border border-[#3bff55]/50 px-2.5 py-0.5 rounded-full text-xs font-bold uppercase tracking-wider">Live Now</span>
 </div>
 <div class="flex gap-2">
-<button class="w-10 h-10 rounded-full border border-ink-charcoal flex items-center justify-center hover:bg-primary hover:text-on-primary transition-colors"><span class="material-symbols-outlined">arrow_back</span></button>
-<button class="w-10 h-10 rounded-full border border-ink-charcoal flex items-center justify-center hover:bg-primary hover:text-on-primary transition-colors"><span class="material-symbols-outlined">arrow_forward</span></button>
+<button class="w-10 h-10 rounded-full border border-ink-charcoal flex items-center justify-center hover:bg-primary hover:text-on-primary transition-colors cursor-pointer"><span class="material-symbols-outlined">arrow_back</span></button>
+<button class="w-10 h-10 rounded-full border border-ink-charcoal flex items-center justify-center hover:bg-primary hover:text-on-primary transition-colors cursor-pointer"><span class="material-symbols-outlined">arrow_forward</span></button>
 </div>
 </div>
 <div class="flex overflow-x-auto gap-6 pb-8 px-4 no-scrollbar">
@@ -375,25 +423,105 @@
 </div>
 </section>
 
-<!-- 8. Browse by Genre -->
-<section class="px-margin-mobile md:px-margin-desktop py-12">
+<!-- 9. About Us (Revamped section placed above Browse by Genre) -->
+<section id="about-us" class="py-16 px-margin-mobile md:px-margin-desktop my-8 bg-white border-y border-muted-border rounded-2xl mx-4 md:mx-0 shadow-sm">
+<div class="max-w-container-max mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 md:gap-14 items-center">
+<!-- Left Column: 3 Value Props with Circular Outlines -->
+<div class="lg:col-span-6 space-y-9">
+  <div class="flex items-center gap-5 sm:gap-6">
+    <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full border-2 border-slate-200 bg-[#fafafa] flex items-center justify-center text-slate-800 flex-shrink-0 shadow-sm">
+      <span class="material-symbols-outlined text-3xl sm:text-4xl text-slate-800">inventory_2</span>
+    </div>
+    <div>
+      <h3 class="font-title-md text-lg sm:text-xl font-bold text-[#b90538] leading-snug">Quick Delivery</h3>
+      <p class="text-sm text-slate-600 font-medium mt-1">Orders are delivered within 2 working days*</p>
+    </div>
+  </div>
+
+  <div class="flex items-center gap-5 sm:gap-6">
+    <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full border-2 border-slate-200 bg-[#fafafa] flex items-center justify-center text-slate-800 flex-shrink-0 shadow-sm">
+      <span class="material-symbols-outlined text-3xl sm:text-4xl text-slate-800">verified_user</span>
+    </div>
+    <div>
+      <h3 class="font-title-md text-lg sm:text-xl font-bold text-[#b90538] leading-snug">Money-back Guarantee</h3>
+      <p class="text-sm text-slate-600 font-medium mt-1">We're proud to offer a 100-day no-quibble money-back guarantee</p>
+    </div>
+  </div>
+
+  <div class="flex items-center gap-5 sm:gap-6">
+    <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full border-2 border-slate-200 bg-[#fafafa] flex items-center justify-center text-slate-800 flex-shrink-0 shadow-sm">
+      <span class="material-symbols-outlined text-3xl sm:text-4xl text-slate-800">shopping_cart_checkout</span>
+    </div>
+    <div>
+      <h3 class="font-title-md text-lg sm:text-xl font-bold text-[#b90538] leading-snug">Hassle-free Returns</h3>
+      <p class="text-sm text-slate-600 font-medium mt-1">We've made returning items quick &amp; easy</p>
+    </div>
+  </div>
+</div>
+
+<!-- Right Column: Family Photo + Oval Badge + Story Link -->
+<div class="lg:col-span-6 flex flex-col items-center">
+  <div class="relative w-full max-w-lg rounded-3xl overflow-hidden shadow-lg border border-slate-200">
+    <img alt="Market Shop Family" class="w-full h-auto object-cover" src="/images/family-photo.png"/>
+  </div>
+  <div class="mt-4 sm:mt-5 text-center">
+    <div class="bg-[#c8102e] text-white px-8 py-3 rounded-full shadow-md inline-block">
+      <span class="font-extrabold text-sm sm:text-base tracking-wider uppercase block">FAMILY OWNED</span>
+      <span class="font-extrabold text-sm sm:text-base tracking-wider uppercase block">&amp; RUN SINCE 2018</span>
+    </div>
+    <div class="mt-3 flex items-center justify-center gap-2 text-sm font-bold text-[#c8102e] hover:underline cursor-pointer">
+      <span class="w-4 h-4 rounded-full bg-[#1b2a4a] text-white flex items-center justify-center text-[10px] font-bold">›</span>
+      <span>Read about where it all began...</span>
+    </div>
+  </div>
+</div>
+</div>
+</section>
+
+<!-- 10. Browse by Genre (6 Circular Genre Badges with Large Icons) -->
+<section id="genres-section" class="px-margin-mobile md:px-margin-desktop py-14 scroll-mt-20">
 <h2 class="font-title-md text-headline-lg text-ink-charcoal text-center mb-10">Browse by Genre</h2>
-<div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-<a class="group relative aspect-square bg-surface-container-high rounded-xl overflow-hidden shadow-sm flex flex-col items-center justify-center border border-muted-border hover:border-primary transition-colors" href="#">
-<span class="material-symbols-outlined text-4xl mb-3 text-primary group-hover:scale-110 transition-transform">auto_stories</span>
-<span class="font-title-md text-ink-charcoal">Fiction</span>
+<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 md:gap-8 justify-items-center">
+<a class="group flex flex-col items-center cursor-pointer text-center" href="#fiction">
+<div class="w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 rounded-full bg-white border-2 border-muted-border group-hover:border-primary group-hover:bg-primary/5 group-hover:scale-110 group-hover:shadow-lg transition-all duration-300 flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-4xl sm:text-5xl md:text-6xl text-primary group-hover:scale-110 transition-transform duration-300">auto_stories</span>
+</div>
+<span class="font-title-md text-sm sm:text-base font-bold text-ink-charcoal mt-3.5 group-hover:text-primary transition-colors">Fiction</span>
 </a>
-<a class="group relative aspect-square bg-surface-container-high rounded-xl overflow-hidden shadow-sm flex flex-col items-center justify-center border border-muted-border hover:border-primary transition-colors" href="#">
-<span class="material-symbols-outlined text-4xl mb-3 text-primary group-hover:scale-110 transition-transform">science</span>
-<span class="font-title-md text-ink-charcoal">Non-Fiction</span>
+
+<a class="group flex flex-col items-center cursor-pointer text-center" href="#non-fiction">
+<div class="w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 rounded-full bg-white border-2 border-muted-border group-hover:border-primary group-hover:bg-primary/5 group-hover:scale-110 group-hover:shadow-lg transition-all duration-300 flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-4xl sm:text-5xl md:text-6xl text-primary group-hover:scale-110 transition-transform duration-300">science</span>
+</div>
+<span class="font-title-md text-sm sm:text-base font-bold text-ink-charcoal mt-3.5 group-hover:text-primary transition-colors">Non-Fiction</span>
 </a>
-<a class="group relative aspect-square bg-surface-container-high rounded-xl overflow-hidden shadow-sm flex flex-col items-center justify-center border border-muted-border hover:border-primary transition-colors" href="#">
-<span class="material-symbols-outlined text-4xl mb-3 text-primary group-hover:scale-110 transition-transform">history_edu</span>
-<span class="font-title-md text-ink-charcoal">Poetry</span>
+
+<a class="group flex flex-col items-center cursor-pointer text-center" href="#rare-editions">
+<div class="w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 rounded-full bg-white border-2 border-muted-border group-hover:border-primary group-hover:bg-primary/5 group-hover:scale-110 group-hover:shadow-lg transition-all duration-300 flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-4xl sm:text-5xl md:text-6xl text-primary group-hover:scale-110 transition-transform duration-300">diamond</span>
+</div>
+<span class="font-title-md text-sm sm:text-base font-bold text-ink-charcoal mt-3.5 group-hover:text-primary transition-colors">Rare Editions</span>
 </a>
-<a class="group relative aspect-square bg-surface-container-high rounded-xl overflow-hidden shadow-sm flex flex-col items-center justify-center border border-muted-border hover:border-primary transition-colors" href="#">
-<span class="material-symbols-outlined text-4xl mb-3 text-primary group-hover:scale-110 transition-transform">diamond</span>
-<span class="font-title-md text-ink-charcoal">Rare Editions</span>
+
+<a class="group flex flex-col items-center cursor-pointer text-center" href="#poetry">
+<div class="w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 rounded-full bg-white border-2 border-muted-border group-hover:border-primary group-hover:bg-primary/5 group-hover:scale-110 group-hover:shadow-lg transition-all duration-300 flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-4xl sm:text-5xl md:text-6xl text-primary group-hover:scale-110 transition-transform duration-300">history_edu</span>
+</div>
+<span class="font-title-md text-sm sm:text-base font-bold text-ink-charcoal mt-3.5 group-hover:text-primary transition-colors">Poetry</span>
+</a>
+
+<a class="group flex flex-col items-center cursor-pointer text-center" href="#children">
+<div class="w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 rounded-full bg-white border-2 border-muted-border group-hover:border-primary group-hover:bg-primary/5 group-hover:scale-110 group-hover:shadow-lg transition-all duration-300 flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-4xl sm:text-5xl md:text-6xl text-primary group-hover:scale-110 transition-transform duration-300">child_care</span>
+</div>
+<span class="font-title-md text-sm sm:text-base font-bold text-ink-charcoal mt-3.5 group-hover:text-primary transition-colors">Children's</span>
+</a>
+
+<a class="group flex flex-col items-center cursor-pointer text-center" href="#sci-fi">
+<div class="w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 rounded-full bg-white border-2 border-muted-border group-hover:border-primary group-hover:bg-primary/5 group-hover:scale-110 group-hover:shadow-lg transition-all duration-300 flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-4xl sm:text-5xl md:text-6xl text-primary group-hover:scale-110 transition-transform duration-300">rocket_launch</span>
+</div>
+<span class="font-title-md text-sm sm:text-base font-bold text-ink-charcoal mt-3.5 group-hover:text-primary transition-colors">Sci-Fi &amp; Fantasy</span>
 </a>
 </div>
 </section>
@@ -419,11 +547,11 @@
 </div>
 </div>
 
-<!-- 9. New Releases Grid (6 books) -->
-<section class="px-margin-mobile md:px-margin-desktop py-12">
+<!-- 11. New Releases Grid (6 books) -->
+<section id="new-releases" class="px-margin-mobile md:px-margin-desktop py-12 scroll-mt-20">
 <div class="flex justify-between items-end mb-8">
 <h2 class="font-title-md text-title-md text-ink-charcoal">New Releases</h2>
-<a class="font-label-sm text-label-sm text-primary uppercase hover:underline" href="#">View All</a>
+<a class="font-label-sm text-label-sm text-primary uppercase hover:underline" href="#new-releases">View All</a>
 </div>
 <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
 <!-- Book 1 -->
@@ -531,27 +659,7 @@
 </div>
 </section>
 
-<!-- 10. Author of the Month -->
-<section class="bg-surface-container-highest py-16 px-margin-mobile md:px-margin-desktop mt-8 border-y border-muted-border">
-<div class="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-<div class="rounded-xl overflow-hidden shadow-md">
-<img alt="Author of the Month" class="w-full h-full object-cover" src="/images/author-of-the-month.png"/>
-</div>
-<div>
-<h2 class="font-title-md text-headline-lg text-ink-charcoal mb-4">Author of the Month</h2>
-<h3 class="font-title-md text-2xl text-primary mb-6">Elara Vance</h3>
-<p class="text-on-surface-variant mb-8 text-lg leading-relaxed">
-        Elara Vance is a renowned novelist celebrated for her evocative prose and deep exploration of the human condition. With over a dozen bestselling titles, her work continues to captivate readers around the globe. Join us this month as we delve into her most compelling stories and uncover the inspiration behind her words.
-    </p>
-<a class="inline-flex items-center gap-2 text-primary font-label-sm uppercase tracking-wider hover:text-primary-container transition-colors font-bold" href="#curators-picks">
-        Discover other authors
-        <span class="material-symbols-outlined text-sm">arrow_forward</span>
-</a>
-</div>
-</div>
-</section>
-
-<!-- 11. Customer Reviews -->
+<!-- 12. Customer Reviews -->
 <section class="px-margin-mobile md:px-margin-desktop py-16">
 <h2 class="font-title-md text-headline-lg text-ink-charcoal text-center mb-10">What Readers Say</h2>
 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -597,24 +705,6 @@
 </div>
 </section>
 
-<!-- 12. About Us -->
-<section class="py-16 px-margin-mobile md:px-margin-desktop border-t border-muted-border bg-paper-cream">
-<div class="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-<div class="order-2 md:order-1">
-<h2 class="font-title-md text-headline-lg text-ink-charcoal mb-4">About Us</h2>
-<p class="text-on-surface-variant mb-6 text-lg leading-relaxed">
-        Established in 2015, Market Shop was founded on a simple belief: the right book can transform a moment, a day, or a life. We strive to be more than just a retailer; we are a community of readers dedicated to the quiet joy of getting lost in a story.
-    </p>
-<p class="text-on-surface-variant text-lg leading-relaxed mb-6">
-        Our mission is to curate a selection that surprises and delights, bridging the gap between beloved classics and fresh, new voices. We're proud of the excellent reviews we receive from our community, reflecting our commitment to quality, curation, and exceptional service.
-    </p>
-</div>
-<div class="rounded-xl overflow-hidden shadow-md order-1 md:order-2">
-<img alt="About Market Shop" class="w-full h-full object-cover" src="/images/about-us.png"/>
-</div>
-</div>
-</section>
-
 <!-- 13. Join Our Newsletter -->
 <section class="bg-surface-container py-16 px-margin-mobile md:px-margin-desktop border-t border-muted-border">
 <div class="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
@@ -624,13 +714,13 @@
 <div>
 <h2 class="font-title-md text-headline-lg text-ink-charcoal mb-4">Join Our Newsletter</h2>
 <p class="text-on-surface-variant mb-8 text-lg leading-relaxed">
-        Subscribe to receive curated reading lists, exclusive offers, and the latest news from Market Shop directly to your inbox.
-    </p>
+    Subscribe to receive curated reading lists, exclusive offers, and the latest news from Market Shop directly to your inbox.
+</p>
 <form class="flex flex-col sm:flex-row gap-4" onsubmit="event.preventDefault(); alert('Thank you for subscribing to Market Shop Newsletter!');">
 <input class="flex-1 bg-surface-container-lowest rounded-xl py-3 px-4 border border-muted-border focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors text-body-md font-body-md" placeholder="Enter your email address" required="" type="email"/>
-<button class="bg-primary hover:bg-primary-container text-on-primary font-label-sm text-label-sm uppercase tracking-wider py-3 px-8 rounded-xl transition-colors shadow-sm whitespace-nowrap font-bold" type="submit">
-            Subscribe
-        </button>
+<button class="bg-primary hover:bg-primary-container text-on-primary font-label-sm text-label-sm uppercase tracking-wider py-3 px-8 rounded-xl transition-colors shadow-sm whitespace-nowrap font-bold cursor-pointer" type="submit">
+    Subscribe
+</button>
 </form>
 </div>
 </div>

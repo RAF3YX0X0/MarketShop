@@ -10,7 +10,7 @@
   }
 
   body {
-    @apply bg-paper-cream text-on-surface font-body-md antialiased;
+    @apply bg-[#fafafa] text-on-surface font-body-md antialiased;
   }
 }
 
