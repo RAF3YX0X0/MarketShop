@@ -87,12 +87,12 @@ export const WishlistDrawer: React.FC<WishlistDrawerProps> = ({ onOpenQuickView 
               wishlist.map((product) => (
                 <div
                   key={product.id}
-                  className="p-3 bg-surface-container-lowest border border-muted-border rounded-lg shadow-sm flex gap-3 hover:border-primary/40 transition-colors"
+                  className="p-3 bg-surface-container-lowest border border-muted-border rounded-xl shadow-sm flex gap-3 hover:border-primary/40 transition-colors"
                 >
                   {/* Book Cover */}
                   <div
                     onClick={() => onOpenQuickView && onOpenQuickView(product)}
-                    className="relative w-16 h-24 flex-shrink-0 bg-surface-container rounded overflow-hidden cursor-pointer book-shadow"
+                    className="relative w-16 h-24 flex-shrink-0 bg-surface-container rounded-lg overflow-hidden cursor-pointer book-shadow"
                   >
                     <Image
                       src={product.coverImage}
@@ -122,7 +122,7 @@ export const WishlistDrawer: React.FC<WishlistDrawerProps> = ({ onOpenQuickView 
                         </button>
                       </div>
                       <p className="text-[11px] text-outline truncate">{product.author}</p>
-                      <span className="inline-block mt-0.5 px-1.5 py-0.2 rounded text-[9px] font-semibold bg-surface-container text-outline">
+                      <span className="inline-block mt-0.5 px-1.5 py-0.2 rounded-md text-[9px] font-semibold bg-surface-container text-outline">
                         {product.category}
                       </span>
                     </div>
@@ -137,7 +137,7 @@ export const WishlistDrawer: React.FC<WishlistDrawerProps> = ({ onOpenQuickView 
                           addToCart(product, 1);
                           removeFromWishlist(product.id);
                         }}
-                        className="bg-primary hover:bg-primary-container text-white px-2.5 py-1 rounded text-[10px] font-bold uppercase tracking-wider flex items-center gap-1 transition-colors cursor-pointer shadow-sm"
+                        className="bg-primary hover:bg-primary-container text-white px-2.5 py-1.5 rounded-lg text-[10px] font-bold uppercase tracking-wider flex items-center gap-1 transition-colors cursor-pointer shadow-sm"
                       >
                         <ShoppingBag className="w-3 h-3" />
                         <span>Move to Basket</span>
@@ -157,14 +157,14 @@ export const WishlistDrawer: React.FC<WishlistDrawerProps> = ({ onOpenQuickView 
                   wishlist.forEach((p) => addToCart(p, 1));
                   setIsWishlistOpen(false);
                 }}
-                className="w-full bg-primary hover:bg-primary-container text-white py-3 px-4 rounded text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 shadow-sm transition-colors cursor-pointer"
+                className="w-full bg-primary hover:bg-primary-container text-white py-3 px-4 rounded-xl text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 shadow-sm transition-colors cursor-pointer"
               >
                 <span>Add All to Basket ({wishlistCount})</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </button>
               <button
                 onClick={() => setIsWishlistOpen(false)}
-                className="w-full bg-surface-container-high hover:bg-surface-container-highest text-ink-charcoal py-2 px-4 rounded text-xs font-semibold uppercase tracking-wider transition-colors cursor-pointer"
+                className="w-full bg-surface-container-high hover:bg-surface-container-highest text-ink-charcoal py-2.5 px-4 rounded-xl text-xs font-semibold uppercase tracking-wider transition-colors cursor-pointer"
               >
                 Continue Browsing
               </button>

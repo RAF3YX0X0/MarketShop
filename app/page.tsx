@@ -325,7 +325,7 @@ export default function Home() {
                 const el = document.getElementById("curators-picks");
                 el?.scrollIntoView({ behavior: "smooth" });
               }}
-              className="bg-primary hover:bg-primary-container text-on-primary font-label-sm text-label-sm uppercase tracking-wider py-4 px-8 rounded transition-colors shadow-sm"
+              className="bg-primary hover:bg-primary-container text-on-primary font-label-sm text-label-sm uppercase tracking-wider py-4 px-8 rounded-xl transition-colors shadow-sm cursor-pointer"
             >
               Shop Collection
             </button>
@@ -334,7 +334,7 @@ export default function Home() {
                 const el = document.getElementById("genres-section");
                 el?.scrollIntoView({ behavior: "smooth" });
               }}
-              className="border border-ink-charcoal text-ink-charcoal hover:bg-surface-container font-label-sm text-label-sm uppercase tracking-wider py-4 px-8 rounded transition-colors"
+              className="border border-ink-charcoal text-ink-charcoal hover:bg-surface-container font-label-sm text-label-sm uppercase tracking-wider py-4 px-8 rounded-xl transition-colors cursor-pointer"
             >
               Explore Genres
             </button>
@@ -353,8 +353,8 @@ export default function Home() {
               className="flex flex-col group cursor-pointer"
               onClick={() => handleOpenProductModal("David Walliams Gangsta Granny", "info.vebryx@gmail.com", 5.99, "/images/books/gangsta-granny.png", "Children's Fiction", 7.99)}
             >
-              <div className="aspect-[2/3] w-full bg-surface-container mb-4 overflow-hidden border border-muted-border rounded book-shadow transition-all duration-300 lift-on-hover relative">
-                <div className="absolute top-2 left-2 bg-secondary text-on-secondary text-xs px-2 py-0.5 uppercase font-bold rounded shadow-sm z-10">
+              <div className="aspect-[2/3] w-full bg-surface-container mb-4 overflow-hidden border border-muted-border rounded-xl book-shadow transition-all duration-300 lift-on-hover relative">
+                <div className="absolute top-2 left-2 bg-secondary text-on-secondary text-xs px-2 py-0.5 uppercase font-bold rounded-lg shadow-sm z-10">
                   Sale -25%
                 </div>
                 <button
@@ -408,7 +408,7 @@ export default function Home() {
                     e.stopPropagation();
                     handleAddToCartQuick("David Walliams Gangsta Granny", "info.vebryx@gmail.com", 5.99, "/images/books/gangsta-granny.png", "Children's Fiction");
                   }}
-                  className="w-full bg-surface-container-high hover:bg-primary hover:text-on-primary text-ink-charcoal font-label-sm text-label-sm uppercase py-3 border border-muted-border rounded transition-colors"
+                  className="w-full bg-surface-container-high hover:bg-primary hover:text-on-primary text-ink-charcoal font-label-sm text-label-sm uppercase py-3 border border-muted-border rounded-xl transition-colors cursor-pointer"
                 >
                   Add to Cart
                 </button>
@@ -420,8 +420,8 @@ export default function Home() {
               className="flex flex-col group cursor-pointer"
               onClick={() => handleOpenProductModal("Adventures of the magic star", "info.vebryx@gmail.com", 5.99, "/images/books/adventures-of-the-magic-star.png", "Romance & Poetry", 7.00)}
             >
-              <div className="aspect-[2/3] w-full bg-surface-container mb-4 overflow-hidden border border-muted-border rounded book-shadow transition-all duration-300 lift-on-hover relative">
-                <div className="absolute top-2 left-2 bg-secondary text-on-secondary text-xs px-2 py-0.5 uppercase font-bold rounded shadow-sm z-10">
+              <div className="aspect-[2/3] w-full bg-surface-container mb-4 overflow-hidden border border-muted-border rounded-xl book-shadow transition-all duration-300 lift-on-hover relative">
+                <div className="absolute top-2 left-2 bg-secondary text-on-secondary text-xs px-2 py-0.5 uppercase font-bold rounded-lg shadow-sm z-10">
                   Sale -14%
                 </div>
                 <button
@@ -475,7 +475,7 @@ export default function Home() {
                     e.stopPropagation();
                     handleAddToCartQuick("Adventures of the magic star", "info.vebryx@gmail.com", 5.99, "/images/books/adventures-of-the-magic-star.png", "Romance & Poetry");
                   }}
-                  className="w-full bg-surface-container-high hover:bg-primary hover:text-on-primary text-ink-charcoal font-label-sm text-label-sm uppercase py-3 border border-muted-border rounded transition-colors"
+                  className="w-full bg-surface-container-high hover:bg-primary hover:text-on-primary text-ink-charcoal font-label-sm text-label-sm uppercase py-3 border border-muted-border rounded-xl transition-colors cursor-pointer"
                 >
                   Add to Cart
                 </button>
@@ -487,7 +487,7 @@ export default function Home() {
               className="flex flex-col group cursor-pointer"
               onClick={() => handleOpenProductModal("Shadow of Decenit", "info.vebryx@gmail.com", 155.00, "/images/books/shadow-of-deceit.png", "Mystery & Thriller")}
             >
-              <div className="aspect-[2/3] w-full bg-surface-container mb-4 overflow-hidden border border-muted-border rounded book-shadow transition-all duration-300 lift-on-hover relative">
+              <div className="aspect-[2/3] w-full bg-surface-container mb-4 overflow-hidden border border-muted-border rounded-xl book-shadow transition-all duration-300 lift-on-hover relative">
                 <button
                   onClick={(e) => {
                     e.stopPropagation();
@@ -537,7 +537,7 @@ export default function Home() {
                     e.stopPropagation();
                     handleAddToCartQuick("Shadow of Decenit", "info.vebryx@gmail.com", 155.00, "/images/books/shadow-of-deceit.png", "Mystery & Thriller");
                   }}
-                  className="w-full bg-surface-container-high hover:bg-primary hover:text-on-primary text-ink-charcoal font-label-sm text-label-sm uppercase py-3 border border-muted-border rounded transition-colors"
+                  className="w-full bg-surface-container-high hover:bg-primary hover:text-on-primary text-ink-charcoal font-label-sm text-label-sm uppercase py-3 border border-muted-border rounded-xl transition-colors cursor-pointer"
                 >
                   Add to Cart
                 </button>
@@ -547,7 +547,7 @@ export default function Home() {
         </section>
 
         {/* 7. Seasonal Deals & New Releases Slideshow */}
-        <section className="px-margin-mobile md:px-margin-desktop py-12 bg-sage-haze my-8 rounded-xl mx-4 md:mx-0 border border-muted-border overflow-hidden">
+        <section className="px-margin-mobile md:px-margin-desktop py-12 bg-sage-haze my-8 rounded-2xl mx-4 md:mx-0 border border-muted-border overflow-hidden">
           <div className="flex justify-between items-end mb-8 px-4">
             <div className="flex items-center gap-3">
               <h2 className="font-title-md text-headline-lg text-ink-charcoal">Seasonal Deals</h2>
@@ -579,9 +579,9 @@ export default function Home() {
             {/* Deal Item 1 */}
             <div
               onClick={() => handleOpenProductModal("The story of the magic star", "info.vebryx@gmail.com", 105.00, "/images/books/the-story-of-the-magic-star.png", "Sci-Fi & Fantasy", 130.00)}
-              className="min-w-[300px] flex-shrink-0 bg-surface-container-lowest p-6 rounded-lg shadow-sm border border-muted-border flex items-center gap-6 group cursor-pointer hover:shadow-md transition-shadow"
+              className="min-w-[300px] flex-shrink-0 bg-surface-container-lowest p-6 rounded-xl shadow-sm border border-muted-border flex items-center gap-6 group cursor-pointer hover:shadow-md transition-shadow"
             >
-              <div className="w-24 h-36 bg-surface-variant flex-shrink-0 book-shadow overflow-hidden rounded">
+              <div className="w-24 h-36 bg-surface-variant flex-shrink-0 book-shadow overflow-hidden rounded-xl">
                 <img
                   alt="The story of the magic star"
                   className="w-full h-full object-cover"
@@ -599,9 +599,9 @@ export default function Home() {
             {/* Deal Item 2 */}
             <div
               onClick={() => handleOpenProductModal("Miss P the Pirate", "info.vebryx@gmail.com", 5.00, "/images/books/miss-p-the-pirate.png", "Adventure & Sci-Fi", 6.99)}
-              className="min-w-[300px] flex-shrink-0 bg-surface-container-lowest p-6 rounded-lg shadow-sm border border-muted-border flex items-center gap-6 group cursor-pointer hover:shadow-md transition-shadow"
+              className="min-w-[300px] flex-shrink-0 bg-surface-container-lowest p-6 rounded-xl shadow-sm border border-muted-border flex items-center gap-6 group cursor-pointer hover:shadow-md transition-shadow"
             >
-              <div className="w-24 h-36 bg-surface-variant flex-shrink-0 book-shadow overflow-hidden rounded">
+              <div className="w-24 h-36 bg-surface-variant flex-shrink-0 book-shadow overflow-hidden rounded-xl">
                 <img
                   alt="Miss P the Pirate"
                   className="w-full h-full object-cover"
@@ -619,9 +619,9 @@ export default function Home() {
             {/* Deal Item 3 */}
             <div
               onClick={() => handleOpenProductModal("The whitre Abbott", "info.vebryx@gmail.com", 7.99, "/images/books/the-white-abbott.png", "Philosophy & Art", 10.99)}
-              className="min-w-[300px] flex-shrink-0 bg-surface-container-lowest p-6 rounded-lg shadow-sm border border-muted-border flex items-center gap-6 group cursor-pointer hover:shadow-md transition-shadow"
+              className="min-w-[300px] flex-shrink-0 bg-surface-container-lowest p-6 rounded-xl shadow-sm border border-muted-border flex items-center gap-6 group cursor-pointer hover:shadow-md transition-shadow"
             >
-              <div className="w-24 h-36 bg-surface-variant flex-shrink-0 book-shadow overflow-hidden rounded">
+              <div className="w-24 h-36 bg-surface-variant flex-shrink-0 book-shadow overflow-hidden rounded-xl">
                 <img
                   alt="The whitre Abbott"
                   className="w-full h-full object-cover"
@@ -710,8 +710,8 @@ export default function Home() {
               onClick={() => handleOpenProductModal("David Walliams Gangsta Granny", "info.vebryx@gmail.com", 5.99, "/images/books/gangsta-granny.png", "Children's Fiction", 7.99)}
               className="flex flex-col group cursor-pointer"
             >
-              <div className="aspect-[2/3] w-full bg-surface-variant mb-3 rounded book-shadow overflow-hidden hover:scale-105 transition-transform duration-300 border border-muted-border relative">
-                <div className="absolute top-1.5 left-1.5 bg-secondary text-on-secondary text-[10px] font-bold px-1.5 py-0.5 rounded shadow-sm z-10">
+              <div className="aspect-[2/3] w-full bg-surface-variant mb-3 rounded-xl book-shadow overflow-hidden hover:scale-105 transition-transform duration-300 border border-muted-border relative">
+                <div className="absolute top-1.5 left-1.5 bg-secondary text-on-secondary text-[10px] font-bold px-1.5 py-0.5 rounded-md shadow-sm z-10">
                   Sale -25%
                 </div>
                 <img
@@ -736,8 +736,8 @@ export default function Home() {
               onClick={() => handleOpenProductModal("Adventures of the magic star", "info.vebryx@gmail.com", 5.99, "/images/books/adventures-of-the-magic-star.png", "Romance & Poetry", 7.00)}
               className="flex flex-col group cursor-pointer"
             >
-              <div className="aspect-[2/3] w-full bg-surface-variant mb-3 rounded book-shadow overflow-hidden hover:scale-105 transition-transform duration-300 border border-muted-border relative">
-                <div className="absolute top-1.5 left-1.5 bg-secondary text-on-secondary text-[10px] font-bold px-1.5 py-0.5 rounded shadow-sm z-10">
+              <div className="aspect-[2/3] w-full bg-surface-variant mb-3 rounded-xl book-shadow overflow-hidden hover:scale-105 transition-transform duration-300 border border-muted-border relative">
+                <div className="absolute top-1.5 left-1.5 bg-secondary text-on-secondary text-[10px] font-bold px-1.5 py-0.5 rounded-md shadow-sm z-10">
                   Sale -14%
                 </div>
                 <img
@@ -762,7 +762,7 @@ export default function Home() {
               onClick={() => handleOpenProductModal("Shadow of Decenit", "info.vebryx@gmail.com", 155.00, "/images/books/shadow-of-deceit.png", "Mystery & Thriller")}
               className="flex flex-col group cursor-pointer"
             >
-              <div className="aspect-[2/3] w-full bg-surface-variant mb-3 rounded book-shadow overflow-hidden hover:scale-105 transition-transform duration-300 border border-muted-border relative">
+              <div className="aspect-[2/3] w-full bg-surface-variant mb-3 rounded-xl book-shadow overflow-hidden hover:scale-105 transition-transform duration-300 border border-muted-border relative">
                 <img
                   alt="Shadow of Decenit"
                   className="w-full h-full object-cover"
@@ -782,8 +782,8 @@ export default function Home() {
               onClick={() => handleOpenProductModal("The story of the magic star", "info.vebryx@gmail.com", 105.00, "/images/books/the-story-of-the-magic-star.png", "Sci-Fi & Fantasy", 130.00)}
               className="flex flex-col group cursor-pointer"
             >
-              <div className="aspect-[2/3] w-full bg-surface-variant mb-3 rounded book-shadow overflow-hidden hover:scale-105 transition-transform duration-300 border border-muted-border relative">
-                <div className="absolute top-1.5 left-1.5 bg-secondary text-on-secondary text-[10px] font-bold px-1.5 py-0.5 rounded shadow-sm z-10">
+              <div className="aspect-[2/3] w-full bg-surface-variant mb-3 rounded-xl book-shadow overflow-hidden hover:scale-105 transition-transform duration-300 border border-muted-border relative">
+                <div className="absolute top-1.5 left-1.5 bg-secondary text-on-secondary text-[10px] font-bold px-1.5 py-0.5 rounded-md shadow-sm z-10">
                   Sale -19%
                 </div>
                 <img
@@ -808,8 +808,8 @@ export default function Home() {
               onClick={() => handleOpenProductModal("Miss P the Pirate", "info.vebryx@gmail.com", 5.00, "/images/books/miss-p-the-pirate.png", "Adventure & Sci-Fi", 6.99)}
               className="flex flex-col group cursor-pointer"
             >
-              <div className="aspect-[2/3] w-full bg-surface-variant mb-3 rounded book-shadow overflow-hidden hover:scale-105 transition-transform duration-300 border border-muted-border relative">
-                <div className="absolute top-1.5 left-1.5 bg-secondary text-on-secondary text-[10px] font-bold px-1.5 py-0.5 rounded shadow-sm z-10">
+              <div className="aspect-[2/3] w-full bg-surface-variant mb-3 rounded-xl book-shadow overflow-hidden hover:scale-105 transition-transform duration-300 border border-muted-border relative">
+                <div className="absolute top-1.5 left-1.5 bg-secondary text-on-secondary text-[10px] font-bold px-1.5 py-0.5 rounded-md shadow-sm z-10">
                   Sale -28%
                 </div>
                 <img
@@ -834,8 +834,8 @@ export default function Home() {
               onClick={() => handleOpenProductModal("The whitre Abbott", "info.vebryx@gmail.com", 7.99, "/images/books/the-white-abbott.png", "Philosophy & Art", 10.99)}
               className="flex flex-col group cursor-pointer"
             >
-              <div className="aspect-[2/3] w-full bg-surface-variant mb-3 rounded book-shadow overflow-hidden hover:scale-105 transition-transform duration-300 border border-muted-border relative">
-                <div className="absolute top-1.5 left-1.5 bg-secondary text-on-secondary text-[10px] font-bold px-1.5 py-0.5 rounded shadow-sm z-10">
+              <div className="aspect-[2/3] w-full bg-surface-variant mb-3 rounded-xl book-shadow overflow-hidden hover:scale-105 transition-transform duration-300 border border-muted-border relative">
+                <div className="absolute top-1.5 left-1.5 bg-secondary text-on-secondary text-[10px] font-bold px-1.5 py-0.5 rounded-md shadow-sm z-10">
                   Sale -27%
                 </div>
                 <img
@@ -857,74 +857,33 @@ export default function Home() {
           </div>
         </section>
 
-        {/* 10. Featured Authors */}
+        {/* 10. Author of the Month */}
         <section className="bg-surface-container-highest py-16 px-margin-mobile md:px-margin-desktop mt-8 border-y border-muted-border">
-          <div className="max-w-container-max mx-auto text-center">
-            <h2 className="font-title-md text-headline-lg text-ink-charcoal mb-4">Featured Authors</h2>
-            <p className="text-on-surface-variant mb-12 max-w-xl mx-auto">Discover the brilliant minds behind this month&apos;s most talked-about literature.</p>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {/* Author 1 */}
-              <div className="bg-paper-cream p-6 rounded-lg shadow-sm border border-muted-border flex flex-col items-center text-center">
-                <img
-                  alt="Author"
-                  className="w-24 h-24 rounded-full object-cover mb-4 border-2 border-primary"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-TKoeVViLvYEl4QQ6Z-WXtJWs9gzWscr-AP-OphhT3H25mf6ZsRM3NX6p-V6IV20rSkop8mHlilmWsx4-VT3wO_QR41mgbae6P0uKWAjHQCY2Kfv0cQLHFkWWO1yGRTiqjtA0I6c5mrnyx7S3SzrKLmQhkLyfAZHSoRbpvibJDgFAPjdYZJe9RZKfMaMFEeb43qcLsnk3iA_rBbN6nCxk5D3hFraXBoKArYow4sIoxRs-vytyeKY"
-                />
-                <h3 className="font-title-md text-lg text-ink-charcoal mb-2">Elena Rostova</h3>
-                <p className="text-sm text-on-surface-variant mb-4">Award-winning novelist known for exploring the depths of human emotion and memory.</p>
-                <a
-                  className="text-primary font-label-sm uppercase hover:underline mt-auto cursor-pointer font-semibold"
-                  onClick={() => {
-                    const el = document.getElementById("curators-picks");
-                    el?.scrollIntoView({ behavior: "smooth" });
-                    showToast("Showing books by Elena Rostova");
-                  }}
-                >
-                  View Books
-                </a>
-              </div>
-
-              {/* Author 2 */}
-              <div className="bg-paper-cream p-6 rounded-lg shadow-sm border border-muted-border flex flex-col items-center text-center">
-                <img
-                  alt="Author"
-                  className="w-24 h-24 rounded-full object-cover mb-4 border-2 border-primary"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdxeoNULIF09w_EtxZCJTZFYVkt4LAUlorQy829eCCgOYHVeRzukO5gSQi8t253x5LMkFkZdEW4ZzAAbuZAeojFE0_VWaXLQr8SlcOncrSzlkeeVwZrriSAIUVuAXkSPex6RJ1PrhP4kVV7txGObP3r_fGxP-MO3jSRFkg8X75anCsQuKZxgcD7Ie_gUfTL2Bf4gFWwo_EYLPg8FL0t7VZqltFx9rlDofa5dO_qAMEPy3h-WaLjQo"
-                />
-                <h3 className="font-title-md text-lg text-ink-charcoal mb-2">Dr. Julian Hayes</h3>
-                <p className="text-sm text-on-surface-variant mb-4">Architect and philosopher writing on the intersection of space, mind, and culture.</p>
-                <a
-                  className="text-primary font-label-sm uppercase hover:underline mt-auto cursor-pointer font-semibold"
-                  onClick={() => {
-                    const el = document.getElementById("curators-picks");
-                    el?.scrollIntoView({ behavior: "smooth" });
-                    showToast("Showing books by Dr. Julian Hayes");
-                  }}
-                >
-                  View Books
-                </a>
-              </div>
-
-              {/* Author 3 */}
-              <div className="bg-paper-cream p-6 rounded-lg shadow-sm border border-muted-border flex flex-col items-center text-center">
-                <img
-                  alt="Author"
-                  className="w-24 h-24 rounded-full object-cover mb-4 border-2 border-primary"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOJYQl6Nttej1Y_5xOPH0Ja0kxx_FPwW_NJVeCNgLKOnRPRMQXsFu_mdkFY7bH5SKR4c-5pS6KzUxImlDUYJZAYJ5ryfucNz0Evn1zaFuIXpYACkzY2YnWot_rpWqjp1UiKkfBF-cTwmw0kBqKfbNIY4NDLIXnOS4CqPnNQSvpetevmUEcPzlyyNc-_C_tGQgDdhrIO52zjo0gfnu19lf-mSJ2A2Yurt4S4hE22HKAy5sxkFPcH7c"
-                />
-                <h3 className="font-title-md text-lg text-ink-charcoal mb-2">Sarah Lin</h3>
-                <p className="text-sm text-on-surface-variant mb-4">Contemporary poet capturing the quiet moments of nature and modern existence.</p>
-                <a
-                  className="text-primary font-label-sm uppercase hover:underline mt-auto cursor-pointer font-semibold"
-                  onClick={() => {
-                    const el = document.getElementById("curators-picks");
-                    el?.scrollIntoView({ behavior: "smooth" });
-                    showToast("Showing books by Sarah Lin");
-                  }}
-                >
-                  View Books
-                </a>
-              </div>
+          <div className="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div className="rounded-xl overflow-hidden shadow-md">
+              <img
+                alt="Author of the Month"
+                className="w-full h-full object-cover"
+                src="/images/author-of-the-month.png"
+              />
+            </div>
+            <div>
+              <h2 className="font-title-md text-headline-lg text-ink-charcoal mb-4">Author of the Month</h2>
+              <h3 className="font-title-md text-2xl text-primary mb-6">Elara Vance</h3>
+              <p className="text-on-surface-variant mb-8 text-lg leading-relaxed">
+                Elara Vance is a renowned novelist celebrated for her evocative prose and deep exploration of the human condition. With over a dozen bestselling titles, her work continues to captivate readers around the globe. Join us this month as we delve into her most compelling stories and uncover the inspiration behind her words.
+              </p>
+              <a
+                className="inline-flex items-center gap-2 text-primary font-label-sm uppercase tracking-wider hover:text-primary-container transition-colors font-bold cursor-pointer"
+                onClick={() => {
+                  const el = document.getElementById("curators-picks");
+                  el?.scrollIntoView({ behavior: "smooth" });
+                  showToast("Discovering other authors on Market Shop");
+                }}
+              >
+                Discover other authors
+                <span className="material-symbols-outlined text-sm">arrow_forward</span>
+              </a>
             </div>
           </div>
         </section>
@@ -934,7 +893,7 @@ export default function Home() {
           <h2 className="font-title-md text-headline-lg text-ink-charcoal text-center mb-10">What Readers Say</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {/* Review 1 */}
-            <div className="bg-surface-container p-6 rounded-lg border border-muted-border relative">
+            <div className="bg-surface-container p-6 rounded-xl border border-muted-border relative shadow-sm">
               <span className="material-symbols-outlined text-outline-variant absolute top-4 right-4 text-4xl opacity-50">format_quote</span>
               <div className="flex text-primary mb-3">
                 <span className="material-symbols-outlined text-sm" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
@@ -948,7 +907,7 @@ export default function Home() {
             </div>
 
             {/* Review 2 */}
-            <div className="bg-surface-container p-6 rounded-lg border border-muted-border relative">
+            <div className="bg-surface-container p-6 rounded-xl border border-muted-border relative shadow-sm">
               <span className="material-symbols-outlined text-outline-variant absolute top-4 right-4 text-4xl opacity-50">format_quote</span>
               <div className="flex text-primary mb-3">
                 <span className="material-symbols-outlined text-sm" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
@@ -962,7 +921,7 @@ export default function Home() {
             </div>
 
             {/* Review 3 */}
-            <div className="bg-surface-container p-6 rounded-lg border border-muted-border relative">
+            <div className="bg-surface-container p-6 rounded-xl border border-muted-border relative shadow-sm">
               <span className="material-symbols-outlined text-outline-variant absolute top-4 right-4 text-4xl opacity-50">format_quote</span>
               <div className="flex text-primary mb-3">
                 <span className="material-symbols-outlined text-sm" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
@@ -973,6 +932,67 @@ export default function Home() {
               </div>
               <p className="font-body-md text-on-surface-variant italic mb-4 relative z-10">&quot;The best place to discover new authors. The site is incredibly easy to navigate and aesthetically so pleasing. Highly recommend.&quot;</p>
               <p className="font-label-sm text-ink-charcoal uppercase">— Anita W.</p>
+            </div>
+          </div>
+        </section>
+
+        {/* 12. About Us */}
+        <section id="about-us" className="py-16 px-margin-mobile md:px-margin-desktop border-t border-muted-border bg-paper-cream">
+          <div className="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div className="order-2 md:order-1">
+              <h2 className="font-title-md text-headline-lg text-ink-charcoal mb-4">About Us</h2>
+              <p className="text-on-surface-variant mb-6 text-lg leading-relaxed">
+                Established in 2015, Market Shop was founded on a simple belief: the right book can transform a moment, a day, or a life. We strive to be more than just a retailer; we are a community of readers dedicated to the quiet joy of getting lost in a story.
+              </p>
+              <p className="text-on-surface-variant text-lg leading-relaxed mb-6">
+                Our mission is to curate a selection that surprises and delights, bridging the gap between beloved classics and fresh, new voices. We&apos;re proud of the excellent reviews we receive from our community, reflecting our commitment to quality, curation, and exceptional service.
+              </p>
+            </div>
+            <div className="rounded-xl overflow-hidden shadow-md order-1 md:order-2">
+              <img
+                alt="About Market Shop"
+                className="w-full h-full object-cover"
+                src="/images/about-us.png"
+              />
+            </div>
+          </div>
+        </section>
+
+        {/* 13. Join Our Newsletter */}
+        <section className="bg-surface-container py-16 px-margin-mobile md:px-margin-desktop border-t border-muted-border">
+          <div className="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div className="rounded-xl overflow-hidden shadow-md">
+              <img
+                alt="Newsletter Sign Up"
+                className="w-full h-full object-cover"
+                src="/images/newsletter.png"
+              />
+            </div>
+            <div>
+              <h2 className="font-title-md text-headline-lg text-ink-charcoal mb-4">Join Our Newsletter</h2>
+              <p className="text-on-surface-variant mb-8 text-lg leading-relaxed">
+                Subscribe to receive curated reading lists, exclusive offers, and the latest news from Market Shop directly to your inbox.
+              </p>
+              <form
+                className="flex flex-col sm:flex-row gap-4"
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  showToast("Thank you for subscribing to Market Shop Newsletter!");
+                }}
+              >
+                <input
+                  className="flex-1 bg-surface-container-lowest rounded-xl py-3 px-4 border border-muted-border focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-colors text-body-md font-body-md"
+                  placeholder="Enter your email address"
+                  required
+                  type="email"
+                />
+                <button
+                  className="bg-primary hover:bg-primary-container text-on-primary font-label-sm text-label-sm uppercase tracking-wider py-3 px-8 rounded-xl transition-colors shadow-sm whitespace-nowrap font-bold cursor-pointer"
+                  type="submit"
+                >
+                  Subscribe
+                </button>
+              </form>
             </div>
           </div>
         </section>

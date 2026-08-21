@@ -49,17 +49,17 @@ export const QuickViewModal: React.FC<QuickViewModalProps> = ({
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto bg-slate-950/70 flex items-center justify-center p-4">
       <div
-        className="relative w-full max-w-3xl bg-white border-2 border-slate-900 shadow-flat-lg rounded-[2px] overflow-hidden my-8"
+        className="relative w-full max-w-3xl bg-white border border-slate-200 shadow-2xl rounded-2xl overflow-hidden my-8"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header Bar */}
-        <div className="bg-slate-900 text-white px-5 py-3 flex items-center justify-between">
+        <div className="bg-slate-900 text-white px-6 py-4 flex items-center justify-between">
           <span className="text-xs font-mono font-bold text-brand-coral uppercase tracking-wider">
             Item Inspection • {product.category}
           </span>
           <button
             onClick={onClose}
-            className="p-1 text-slate-300 hover:text-white"
+            className="p-1 text-slate-300 hover:text-white rounded-lg hover:bg-slate-800 transition-colors"
             aria-label="Close"
           >
             <X className="w-5 h-5" />
@@ -70,7 +70,7 @@ export const QuickViewModal: React.FC<QuickViewModalProps> = ({
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
             {/* Book Cover */}
             <div className="md:col-span-5 flex flex-col items-center">
-              <div className="relative w-48 h-68 sm:w-56 sm:h-80 bg-slate-100 border border-slate-300">
+              <div className="relative w-48 h-68 sm:w-56 sm:h-80 bg-slate-100 border border-slate-200 rounded-xl overflow-hidden shadow-md">
                 <Image
                   src={product.coverImage}
                   alt={product.title}
@@ -79,7 +79,7 @@ export const QuickViewModal: React.FC<QuickViewModalProps> = ({
                   sizes="224px"
                 />
               </div>
-              <div className="w-full mt-4 bg-slate-50 border border-slate-200 p-3 text-xs font-mono space-y-1.5">
+              <div className="w-full mt-4 bg-slate-50 border border-slate-200 rounded-xl p-3.5 text-xs font-mono space-y-1.5 shadow-sm">
                 <div className="flex justify-between">
                   <span className="text-slate-500">Seller:</span>
                   <span className="font-bold text-slate-900">{product.sellerName}</span>
@@ -149,10 +149,10 @@ export const QuickViewModal: React.FC<QuickViewModalProps> = ({
                       key={fmt}
                       type="button"
                       onClick={() => setSelectedFormat(fmt)}
-                      className={`py-2 px-2 text-xs font-bold font-mono border rounded-[2px] transition-all text-center ${
+                      className={`py-2 px-2 text-xs font-bold font-mono border rounded-xl transition-all text-center ${
                         selectedFormat === fmt
-                          ? "border-slate-900 bg-slate-900 text-white"
-                          : "border-slate-300 text-slate-700 hover:border-slate-900"
+                          ? "border-slate-900 bg-slate-900 text-white shadow-sm"
+                          : "border-slate-200 text-slate-700 hover:border-slate-900 bg-slate-50"
                       }`}
                     >
                       {fmt}
@@ -163,7 +163,7 @@ export const QuickViewModal: React.FC<QuickViewModalProps> = ({
 
               {/* Quantity and Basket Button */}
               <div className="pt-2 flex items-center gap-3">
-                <div className="flex items-center border border-slate-300 rounded-[2px]">
+                <div className="flex items-center border border-slate-300 rounded-xl overflow-hidden">
                   <button
                     onClick={() => setQuantity(Math.max(1, quantity - 1))}
                     className="px-3 py-2 text-xs font-black hover:bg-slate-100"
@@ -185,6 +185,7 @@ export const QuickViewModal: React.FC<QuickViewModalProps> = ({
                   variant="primary"
                   size="lg"
                   fullWidth
+                  className="rounded-xl"
                   leftIcon={isAdded ? <Check className="w-4 h-4" /> : <ShoppingBag className="w-4 h-4" />}
                   onClick={handleAddToCart}
                 >

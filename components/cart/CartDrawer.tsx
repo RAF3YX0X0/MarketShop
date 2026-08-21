@@ -126,12 +126,12 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ onOpenQuickView }) => {
               cart.map((item) => (
                 <div
                   key={item.product.id}
-                  className="p-3 bg-surface-container-lowest border border-muted-border rounded-lg shadow-sm flex gap-3 hover:border-primary/40 transition-colors"
+                  className="p-3 bg-surface-container-lowest border border-muted-border rounded-xl shadow-sm flex gap-3 hover:border-primary/40 transition-colors"
                 >
                   {/* Book Cover */}
                   <div
                     onClick={() => onOpenQuickView && onOpenQuickView(item.product)}
-                    className="relative w-16 h-24 flex-shrink-0 bg-surface-container rounded overflow-hidden cursor-pointer book-shadow"
+                    className="relative w-16 h-24 flex-shrink-0 bg-surface-container rounded-lg overflow-hidden cursor-pointer book-shadow"
                   >
                     <Image
                       src={item.product.coverImage}
@@ -161,14 +161,14 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ onOpenQuickView }) => {
                         </button>
                       </div>
                       <p className="text-[11px] text-outline truncate">{item.product.author}</p>
-                      <span className="inline-block mt-0.5 px-1.5 py-0.2 rounded text-[9px] font-semibold bg-surface-container text-outline">
+                      <span className="inline-block mt-0.5 px-1.5 py-0.2 rounded-md text-[9px] font-semibold bg-surface-container text-outline">
                         {item.selectedFormat || "Hardcover"}
                       </span>
                     </div>
 
                     {/* Quantity Controls & Price */}
                     <div className="flex items-center justify-between pt-1">
-                      <div className="flex items-center border border-muted-border rounded bg-surface-container-lowest">
+                      <div className="flex items-center border border-muted-border rounded-lg bg-surface-container-lowest overflow-hidden">
                         <button
                           onClick={() => updateQuantity(item.product.id, item.quantity - 1)}
                           className="p-1 text-outline hover:text-ink-charcoal transition-colors cursor-pointer"
@@ -210,7 +210,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ onOpenQuickView }) => {
               {/* Promo Code Box */}
               <div>
                 {appliedCoupon ? (
-                  <div className="flex items-center justify-between px-3 py-1.5 bg-[#3bff55]/15 border border-[#3bff55]/40 rounded text-xs">
+                  <div className="flex items-center justify-between px-3 py-1.5 bg-[#3bff55]/15 border border-[#3bff55]/40 rounded-xl text-xs">
                     <div className="flex items-center gap-1.5 text-[#106b1e] font-semibold">
                       <Tag className="w-3 h-3" />
                       <span>Code <strong>{appliedCoupon}</strong> (-{formatPrice(discountAmount)})</span>
@@ -229,11 +229,11 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ onOpenQuickView }) => {
                       value={couponInput}
                       onChange={(e) => setCouponInput(e.target.value)}
                       placeholder="Coupon code (e.g. WELCOME5)"
-                      className="flex-1 px-3 py-1.5 text-xs bg-surface-container-lowest rounded border border-muted-border focus:outline-none focus:border-primary"
+                      className="flex-1 px-3 py-1.5 text-xs bg-surface-container-lowest rounded-xl border border-muted-border focus:outline-none focus:border-primary"
                     />
                     <button
                       type="submit"
-                      className="px-3 py-1.5 text-xs font-bold uppercase bg-surface-container-high hover:bg-primary hover:text-white rounded border border-muted-border transition-colors cursor-pointer"
+                      className="px-3 py-1.5 text-xs font-bold uppercase bg-surface-container-high hover:bg-primary hover:text-white rounded-xl border border-muted-border transition-colors cursor-pointer"
                     >
                       Apply
                     </button>
@@ -267,7 +267,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ onOpenQuickView }) => {
               {/* Checkout Button */}
               <button
                 onClick={() => alert("Proceeding to secure UK checkout! (Market Shop Demo)")}
-                className="w-full bg-primary hover:bg-primary-container text-white py-3 px-4 rounded text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 shadow-sm transition-colors cursor-pointer"
+                className="w-full bg-primary hover:bg-primary-container text-white py-3 px-4 rounded-xl text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 shadow-sm transition-colors cursor-pointer"
               >
                 <span>Checkout</span>
                 <span className="opacity-80">•</span>
