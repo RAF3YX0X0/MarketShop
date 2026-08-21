@@ -380,34 +380,13 @@ export default function Home() {
         </div>
       </div>
 
-      {/* First Marquee */}
-      <div className="bg-surface-container-high py-2 border-b border-muted-border marquee-container">
-        <div className="marquee-content font-label-sm text-label-sm text-on-surface uppercase tracking-wider flex gap-12">
-          <span>Excellent Reviews</span>
-          <span className="text-primary">•</span>
-          <span>New Arrivals Just In</span>
-          <span className="text-secondary">•</span>
-          <span>Seasonal Deals Now Live</span>
-          <span className="text-[#18a12d]">•</span>
-          <span>Direct UK Sellers</span>
-          <span className="text-primary">•</span>
-          <span>Excellent Reviews</span>
-          <span className="text-primary">•</span>
-          <span>New Arrivals Just In</span>
-          <span className="text-secondary">•</span>
-          <span>Seasonal Deals Now Live</span>
-          <span className="text-[#18a12d]">•</span>
-          <span>Direct UK Sellers</span>
-        </div>
-      </div>
-
       <main className="max-w-container-max mx-auto w-full">
         {/* 5. Hero Section */}
         <section className="py-16 md:py-24 px-margin-mobile md:px-margin-desktop text-center">
-          <h1 className="font-display-xl text-headline-lg-mobile md:text-display-xl text-ink-charcoal mb-6 max-w-3xl mx-auto">
+          <h1 className="font-display-xl text-headline-lg-mobile md:text-display-xl text-ink-charcoal mb-6 max-w-3xl mx-auto font-extrabold tracking-tight">
             Curating Quiet Moments for Every Reader
           </h1>
-          <p className="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto mb-10">
+          <p className="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto mb-10 font-normal">
             Discover a carefully selected collection of literature designed to inspire, comfort, and transport you. Explore our shelves and find your next escape with direct UK independent sellers.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
@@ -416,7 +395,7 @@ export default function Home() {
                 const el = document.getElementById("curators-picks");
                 el?.scrollIntoView({ behavior: "smooth" });
               }}
-              className="bg-primary hover:bg-primary-container text-on-primary font-label-sm text-label-sm uppercase tracking-wider py-4 px-8 rounded-xl transition-colors shadow-sm cursor-pointer"
+              className="bg-primary hover:bg-primary-container text-on-primary font-label-sm text-label-sm uppercase tracking-wider py-4 px-8 rounded-xl transition-colors shadow-sm cursor-pointer font-bold"
             >
               Shop Collection
             </button>
@@ -425,18 +404,39 @@ export default function Home() {
                 const el = document.getElementById("genres-section");
                 el?.scrollIntoView({ behavior: "smooth" });
               }}
-              className="border border-ink-charcoal text-ink-charcoal hover:bg-surface-container font-label-sm text-label-sm uppercase tracking-wider py-4 px-8 rounded-xl transition-colors cursor-pointer"
+              className="border border-ink-charcoal text-ink-charcoal hover:bg-surface-container font-label-sm text-label-sm uppercase tracking-wider py-4 px-8 rounded-xl transition-colors cursor-pointer font-bold"
             >
               Explore Genres
             </button>
           </div>
         </section>
 
+        {/* Moving Marquee Bar (Relocated below Hero Section) */}
+        <div className="bg-surface-container-high py-2.5 border-y border-muted-border marquee-container my-4">
+          <div className="marquee-content font-label-sm text-label-sm text-on-surface uppercase tracking-wider flex gap-12 font-bold">
+            <span>Excellent Reviews</span>
+            <span className="text-primary">•</span>
+            <span>New Arrivals Just In</span>
+            <span className="text-secondary">•</span>
+            <span>Seasonal Deals Now Live</span>
+            <span className="text-[#18a12d]">•</span>
+            <span>Direct UK Sellers</span>
+            <span className="text-primary">•</span>
+            <span>Excellent Reviews</span>
+            <span className="text-primary">•</span>
+            <span>New Arrivals Just In</span>
+            <span className="text-secondary">•</span>
+            <span>Seasonal Deals Now Live</span>
+            <span className="text-[#18a12d]">•</span>
+            <span>Direct UK Sellers</span>
+          </div>
+        </div>
+
         {/* 6. Featured Books: Curator's Picks */}
         <section id="curators-picks" className="px-margin-mobile md:px-margin-desktop py-12 scroll-mt-20">
           <div className="flex justify-between items-end mb-8">
-            <h2 className="font-title-md text-title-md text-ink-charcoal">Curator&apos;s Picks</h2>
-            <a className="font-label-sm text-label-sm text-primary uppercase hover:underline" href="#curators-picks">View All</a>
+            <h2 className="font-title-md text-title-md text-ink-charcoal font-bold">Curator&apos;s Picks</h2>
+            <a className="font-label-sm text-label-sm text-primary uppercase hover:underline font-bold" href="#curators-picks">View All</a>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Book 1 */}
@@ -895,7 +895,7 @@ export default function Home() {
 
         {/* Second Marquee */}
         <div className="bg-surface-container-high py-2 border-y border-muted-border marquee-container my-8">
-          <div className="marquee-content font-label-sm text-label-sm text-on-surface uppercase tracking-wider flex gap-12">
+          <div className="marquee-content font-label-sm text-label-sm text-on-surface uppercase tracking-wider flex gap-12 font-bold">
             <span>Excellent Reviews</span>
             <span className="text-primary">•</span>
             <span>New Arrivals Just In</span>
@@ -913,6 +913,252 @@ export default function Home() {
             <span>Direct UK Sellers</span>
           </div>
         </div>
+
+        {/* 11. New Releases Grid (6 books) */}
+        <section id="new-releases" className="px-margin-mobile md:px-margin-desktop py-12 scroll-mt-20">
+          <div className="flex justify-between items-end mb-8">
+            <h2 className="font-title-md text-title-md text-ink-charcoal font-bold">New Releases</h2>
+            <a className="font-label-sm text-label-sm text-primary uppercase hover:underline font-bold" href="#new-releases">View All</a>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+            {/* Book 1 */}
+            <div
+              onClick={() => handleOpenProductModal("David Walliams Gangsta Granny", "info.vebryx@gmail.com", 5.99, "/images/books/gangsta-granny.png", "Children's Fiction", 7.99)}
+              className="flex flex-col group cursor-pointer"
+            >
+              <div className="aspect-[2/3] w-full bg-surface-variant mb-3 rounded-xl book-shadow overflow-hidden hover:scale-105 transition-transform duration-300 border border-muted-border relative">
+                <div className="absolute top-1.5 left-1.5 bg-secondary text-on-secondary text-[10px] font-bold px-1.5 py-0.5 rounded-md shadow-sm z-10">
+                  Sale -25%
+                </div>
+                <img
+                  alt="David Walliams Gangsta Granny"
+                  className="w-full h-full object-cover"
+                  src="/images/books/gangsta-granny.png"
+                />
+              </div>
+              <div className="flex items-center gap-1 text-[11px] text-outline mb-0.5 font-mono">
+                <span className="text-primary font-bold">★ (0)</span>
+              </div>
+              <p className="text-[11px] text-secondary truncate font-mono">By: info.vebryx@gmail.com</p>
+              <h3 className="font-title-md text-sm text-ink-charcoal truncate mt-0.5 font-bold">David Walliams Gangsta Granny</h3>
+              <p className="font-body-lg text-sm font-semibold mt-1">
+                <span className="text-secondary mr-1.5 font-bold">$5.99</span>
+                <span className="text-outline line-through font-normal text-xs">$7.99</span>
+              </p>
+            </div>
+
+            {/* Book 2 */}
+            <div
+              onClick={() => handleOpenProductModal("Adventures of the magic star", "info.vebryx@gmail.com", 5.99, "/images/books/adventures-of-the-magic-star.png", "Romance & Poetry", 7.00)}
+              className="flex flex-col group cursor-pointer"
+            >
+              <div className="aspect-[2/3] w-full bg-surface-variant mb-3 rounded-xl book-shadow overflow-hidden hover:scale-105 transition-transform duration-300 border border-muted-border relative">
+                <div className="absolute top-1.5 left-1.5 bg-secondary text-on-secondary text-[10px] font-bold px-1.5 py-0.5 rounded-md shadow-sm z-10">
+                  Sale -14%
+                </div>
+                <img
+                  alt="Adventures of the magic star"
+                  className="w-full h-full object-cover"
+                  src="/images/books/adventures-of-the-magic-star.png"
+                />
+              </div>
+              <div className="flex items-center gap-1 text-[11px] text-outline mb-0.5 font-mono">
+                <span className="text-primary font-bold">★ (0)</span>
+              </div>
+              <p className="text-[11px] text-secondary truncate font-mono">By: info.vebryx@gmail.com</p>
+              <h3 className="font-title-md text-sm text-ink-charcoal truncate mt-0.5 font-bold">Adventures of the magic star</h3>
+              <p className="font-body-lg text-sm font-semibold mt-1">
+                <span className="text-secondary mr-1.5 font-bold">$5.99</span>
+                <span className="text-outline line-through font-normal text-xs">$7.00</span>
+              </p>
+            </div>
+
+            {/* Book 3 */}
+            <div
+              onClick={() => handleOpenProductModal("Shadow of Decenit", "info.vebryx@gmail.com", 155.00, "/images/books/shadow-of-deceit.png", "Mystery & Thriller")}
+              className="flex flex-col group cursor-pointer"
+            >
+              <div className="aspect-[2/3] w-full bg-surface-variant mb-3 rounded-xl book-shadow overflow-hidden hover:scale-105 transition-transform duration-300 border border-muted-border relative">
+                <img
+                  alt="Shadow of Decenit"
+                  className="w-full h-full object-cover"
+                  src="/images/books/shadow-of-deceit.png"
+                />
+              </div>
+              <div className="flex items-center gap-1 text-[11px] text-outline mb-0.5 font-mono">
+                <span className="text-primary font-bold">★ (0)</span>
+              </div>
+              <p className="text-[11px] text-secondary truncate font-mono">By: info.vebryx@gmail.com</p>
+              <h3 className="font-title-md text-sm text-ink-charcoal truncate mt-0.5 font-bold">Shadow of Decenit</h3>
+              <p className="font-body-lg text-sm font-semibold mt-1 text-ink-charcoal font-bold">$155.00</p>
+            </div>
+
+            {/* Book 4 */}
+            <div
+              onClick={() => handleOpenProductModal("The story of the magic star", "info.vebryx@gmail.com", 105.00, "/images/books/the-story-of-the-magic-star.png", "Sci-Fi & Fantasy", 130.00)}
+              className="flex flex-col group cursor-pointer"
+            >
+              <div className="aspect-[2/3] w-full bg-surface-variant mb-3 rounded-xl book-shadow overflow-hidden hover:scale-105 transition-transform duration-300 border border-muted-border relative">
+                <div className="absolute top-1.5 left-1.5 bg-secondary text-on-secondary text-[10px] font-bold px-1.5 py-0.5 rounded-md shadow-sm z-10">
+                  Sale -19%
+                </div>
+                <img
+                  alt="The story of the magic star"
+                  className="w-full h-full object-cover"
+                  src="/images/books/the-story-of-the-magic-star.png"
+                />
+              </div>
+              <div className="flex items-center gap-1 text-[11px] text-outline mb-0.5 font-mono">
+                <span className="text-primary font-bold">★ (5.00)</span>
+              </div>
+              <p className="text-[11px] text-secondary truncate font-mono">By: info.vebryx@gmail.com</p>
+              <h3 className="font-title-md text-sm text-ink-charcoal truncate mt-0.5 font-bold">The story of the magic star</h3>
+              <p className="font-body-lg text-sm font-semibold mt-1">
+                <span className="text-secondary mr-1.5 font-bold">$105.00</span>
+                <span className="text-outline line-through font-normal text-xs">$130.00</span>
+              </p>
+            </div>
+
+            {/* Book 5 */}
+            <div
+              onClick={() => handleOpenProductModal("Miss P the Pirate", "info.vebryx@gmail.com", 5.00, "/images/books/miss-p-the-pirate.png", "Adventure & Sci-Fi", 6.99)}
+              className="flex flex-col group cursor-pointer"
+            >
+              <div className="aspect-[2/3] w-full bg-surface-variant mb-3 rounded-xl book-shadow overflow-hidden hover:scale-105 transition-transform duration-300 border border-muted-border relative">
+                <div className="absolute top-1.5 left-1.5 bg-secondary text-on-secondary text-[10px] font-bold px-1.5 py-0.5 rounded-md shadow-sm z-10">
+                  Sale -28%
+                </div>
+                <img
+                  alt="Miss P the Pirate"
+                  className="w-full h-full object-cover"
+                  src="/images/books/miss-p-the-pirate.png"
+                />
+              </div>
+              <div className="flex items-center gap-1 text-[11px] text-outline mb-0.5 font-mono">
+                <span className="text-primary font-bold">★ (0)</span>
+              </div>
+              <p className="text-[11px] text-secondary truncate font-mono">By: info.vebryx@gmail.com</p>
+              <h3 className="font-title-md text-sm text-ink-charcoal truncate mt-0.5 font-bold">Miss P the Pirate</h3>
+              <p className="font-body-lg text-sm font-semibold mt-1">
+                <span className="text-secondary mr-1.5 font-bold">$5.00</span>
+                <span className="text-outline line-through font-normal text-xs">$6.99</span>
+              </p>
+            </div>
+
+            {/* Book 6 */}
+            <div
+              onClick={() => handleOpenProductModal("The whitre Abbott", "info.vebryx@gmail.com", 7.99, "/images/books/the-white-abbott.png", "Philosophy & Art", 10.99)}
+              className="flex flex-col group cursor-pointer"
+            >
+              <div className="aspect-[2/3] w-full bg-surface-variant mb-3 rounded-xl book-shadow overflow-hidden hover:scale-105 transition-transform duration-300 border border-muted-border relative">
+                <div className="absolute top-1.5 left-1.5 bg-secondary text-on-secondary text-[10px] font-bold px-1.5 py-0.5 rounded-md shadow-sm z-10">
+                  Sale -27%
+                </div>
+                <img
+                  alt="The whitre Abbott"
+                  className="w-full h-full object-cover"
+                  src="/images/books/the-white-abbott.png"
+                />
+              </div>
+              <div className="flex items-center gap-1 text-[11px] text-outline mb-0.5 font-mono">
+                <span className="text-primary font-bold">★ (0)</span>
+              </div>
+              <p className="text-[11px] text-secondary truncate font-mono">By: info.vebryx@gmail.com</p>
+              <h3 className="font-title-md text-sm text-ink-charcoal truncate mt-0.5 font-bold">The whitre Abbott</h3>
+              <p className="font-body-lg text-sm font-semibold mt-1">
+                <span className="text-secondary mr-1.5 font-bold">$7.99</span>
+                <span className="text-outline line-through font-normal text-xs">$10.99</span>
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* 12. Customer Reviews */}
+        <section className="px-margin-mobile md:px-margin-desktop py-16">
+          <h2 className="font-title-md text-headline-lg text-ink-charcoal text-center mb-10 font-bold">What Readers Say</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {/* Review 1 */}
+            <div className="bg-surface-container p-6 rounded-xl border border-muted-border relative shadow-sm">
+              <span className="material-symbols-outlined text-outline-variant absolute top-4 right-4 text-4xl opacity-50">format_quote</span>
+              <div className="flex text-primary mb-3">
+                <span className="material-symbols-outlined text-sm" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
+                <span className="material-symbols-outlined text-sm" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
+                <span className="material-symbols-outlined text-sm" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
+                <span className="material-symbols-outlined text-sm" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
+                <span className="material-symbols-outlined text-sm" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
+              </div>
+              <p className="font-body-md text-on-surface-variant italic mb-4 relative z-10">&quot;A truly magical bookstore experience online. The curation is exceptional, and my books arrived beautifully packaged within two days.&quot;</p>
+              <p className="font-label-sm text-ink-charcoal uppercase font-bold">— Claire M.</p>
+            </div>
+
+            {/* Review 2 */}
+            <div className="bg-surface-container p-6 rounded-xl border border-muted-border relative shadow-sm">
+              <span className="material-symbols-outlined text-outline-variant absolute top-4 right-4 text-4xl opacity-50">format_quote</span>
+              <div className="flex text-primary mb-3">
+                <span className="material-symbols-outlined text-sm" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
+                <span className="material-symbols-outlined text-sm" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
+                <span className="material-symbols-outlined text-sm" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
+                <span className="material-symbols-outlined text-sm" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
+                <span className="material-symbols-outlined text-sm" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
+              </div>
+              <p className="font-body-md text-on-surface-variant italic mb-4 relative z-10">&quot;I always find something unexpected and wonderful here. The rare editions section is a treasure trove for collectors.&quot;</p>
+              <p className="font-label-sm text-ink-charcoal uppercase font-bold">— James T.</p>
+            </div>
+
+            {/* Review 3 */}
+            <div className="bg-surface-container p-6 rounded-xl border border-muted-border relative shadow-sm">
+              <span className="material-symbols-outlined text-outline-variant absolute top-4 right-4 text-4xl opacity-50">format_quote</span>
+              <div className="flex text-primary mb-3">
+                <span className="material-symbols-outlined text-sm" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
+                <span className="material-symbols-outlined text-sm" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
+                <span className="material-symbols-outlined text-sm" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
+                <span className="material-symbols-outlined text-sm" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
+                <span className="material-symbols-outlined text-sm" style={{ fontVariationSettings: "'FILL' 1" }}>star_half</span>
+              </div>
+              <p className="font-body-md text-on-surface-variant italic mb-4 relative z-10">&quot;The best place to discover new authors. The site is incredibly easy to navigate and aesthetically so pleasing. Highly recommend.&quot;</p>
+              <p className="font-label-sm text-ink-charcoal uppercase font-bold">— Anita W.</p>
+            </div>
+          </div>
+        </section>
+
+        {/* 13. Join Our Newsletter */}
+        <section className="bg-surface-container py-16 px-margin-mobile md:px-margin-desktop border-t border-muted-border">
+          <div className="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div className="rounded-xl overflow-hidden shadow-md">
+              <img
+                alt="Newsletter Sign Up"
+                className="w-full h-full object-cover"
+                src="/images/newsletter.png"
+              />
+            </div>
+            <div>
+              <h2 className="font-title-md text-headline-lg text-ink-charcoal mb-4 font-bold">Join Our Newsletter</h2>
+              <p className="text-on-surface-variant mb-8 text-lg leading-relaxed">
+                Subscribe to receive curated reading lists, exclusive offers, and the latest news from Market Shop directly to your inbox.
+              </p>
+              <form
+                className="flex flex-col sm:flex-row gap-4"
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  showToast("Thank you for subscribing to Market Shop Newsletter!");
+                }}
+              >
+                <input
+                  className="flex-1 bg-surface-container-lowest rounded-xl py-3 px-4 border border-muted-border focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-colors text-body-md font-body-md"
+                  placeholder="Enter your email address"
+                  required
+                  type="email"
+                />
+                <button
+                  className="bg-primary hover:bg-primary-container text-on-primary font-label-sm text-label-sm uppercase tracking-wider py-3 px-8 rounded-xl transition-colors shadow-sm whitespace-nowrap font-bold cursor-pointer"
+                  type="submit"
+                >
+                  Subscribe
+                </button>
+              </form>
+            </div>
+          </div>
+        </section>
       </main>
 
       {/* Comprehensive Footer */}
