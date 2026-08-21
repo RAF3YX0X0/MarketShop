@@ -33,17 +33,17 @@ export const Button: React.FC<ButtonProps> = ({
 
   const variantStyles = {
     primary:
-      "bg-slate-900 text-white hover:bg-slate-800 border border-slate-900 active:translate-x-[1px] active:translate-y-[1px]",
+      "bg-primary text-white hover:bg-primary-container border border-primary active:translate-x-[1px] active:translate-y-[1px]",
     coral:
-      "bg-brand-coral-500 text-white hover:bg-brand-coral-600 border border-brand-coral-600 active:translate-x-[1px] active:translate-y-[1px]",
+      "bg-secondary text-white hover:bg-secondary-container border border-secondary active:translate-x-[1px] active:translate-y-[1px]",
     secondary:
-      "bg-white text-slate-900 hover:bg-slate-50 border border-slate-300 hover:border-slate-900 active:translate-x-[1px] active:translate-y-[1px]",
+      "bg-white text-ink-charcoal hover:bg-surface-container border border-muted-border hover:border-primary active:translate-x-[1px] active:translate-y-[1px]",
     outline:
-      "bg-transparent text-slate-900 border-2 border-slate-900 hover:bg-slate-900 hover:text-white active:translate-x-[1px] active:translate-y-[1px]",
+      "bg-transparent text-ink-charcoal border-2 border-primary text-primary hover:bg-primary hover:text-white active:translate-x-[1px] active:translate-y-[1px]",
     danger:
-      "bg-red-600 text-white hover:bg-red-700 border border-red-700 active:translate-x-[1px] active:translate-y-[1px]",
+      "bg-secondary text-white hover:bg-secondary-container border border-secondary active:translate-x-[1px] active:translate-y-[1px]",
     ghost:
-      "bg-transparent text-slate-700 hover:text-slate-900 hover:bg-slate-100 border border-transparent",
+      "bg-transparent text-on-surface-variant hover:text-ink-charcoal hover:bg-surface-container border border-transparent",
   };
 
   const widthStyle = fullWidth ? "w-full" : "";

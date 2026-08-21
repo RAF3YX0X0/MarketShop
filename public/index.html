@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Market Shop - Ocean of Book | Curating Quiet Moments</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed-dim": "#9ec9f5",
+                        "muted-border": "#E8D5D6",
+                        "on-background": "#1b1c1a",
+                        "outline": "#6f787d",
+                        "primary-fixed": "#d6e8fb",
+                        "secondary-fixed": "#ffdede",
+                        "sage-haze": "#F2E4E5",
+                        "tertiary-fixed-dim": "#7eff91",
+                        "on-primary-fixed": "#001f29",
+                        "inverse-primary": "#9ec9f5",
+                        "on-tertiary-container": "#00390a",
+                        "on-tertiary-fixed-variant": "#005312",
+                        "surface-dim": "#E4CDCE",
+                        "outline-variant": "#bec8cd",
+                        "on-primary": "#ffffff",
+                        "on-secondary-fixed": "#40000d",
+                        "surface-container": "#F1E3E3",
+                        "on-surface": "#1b1c1a",
+                        "ink-charcoal": "#1A1D21",
+                        "surface-bright": "#FAF4F4",
+                        "on-tertiary": "#ffffff",
+                        "tertiary": "#18a12d",
+                        "accent": "#3bff55",
+                        "accent-container": "#25d83d",
+                        "secondary-container": "#e84444",
+                        "surface-container-low": "#F6ECEC",
+                        "on-primary-container": "#d6e8fb",
+                        "on-primary-fixed-variant": "#0e4b85",
+                        "primary": "#277dce",
+                        "on-tertiary-fixed": "#002205",
+                        "secondary-fixed-dim": "#ffa6a6",
+                        "secondary": "#ff5c5c",
+                        "on-secondary-container": "#fffbff",
+                        "tertiary-container": "#3bff55",
+                        "on-secondary-fixed-variant": "#850f0f",
+                        "primary-container": "#1c66ad",
+                        "error": "#ba1a1a",
+                        "on-error-container": "#93000a",
+                        "surface-tint": "#277dce",
+                        "on-secondary": "#ffffff",
+                        "surface-container-highest": "#E4CDCE",
+                        "background": "#FAF4F4",
+                        "inverse-surface": "#2f312e",
+                        "surface-variant": "#E4CDCE",
+                        "on-error": "#ffffff",
+                        "inverse-on-surface": "#f2f1ed",
+                        "error-container": "#ffdad6",
+                        "on-surface-variant": "#3f484c",
+                        "surface": "#FAF4F4",
+                        "tertiary-fixed": "#3bff55",
+                        "surface-container-high": "#EBD8D9",
+                        "surface-container-lowest": "#ffffff",
+                        "paper-cream": "#FAF4F4"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "margin-desktop": "64px",
+                        "unit": "4px",
+                        "margin-mobile": "16px",
+                        "gutter": "24px",
+                        "container-max": "1280px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Playfair Display"],
+                        "headline-lg": ["Playfair Display"],
+                        "label-sm": ["Inter"],
+                        "quote-text": ["Playfair Display"],
+                        "body-lg": ["Inter"],
+                        "display-xl": ["Playfair Display"],
+                        "title-md": ["Playfair Display"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "700" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "700" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "quote-text": ["22px", { "lineHeight": "32px", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "display-xl": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "title-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .marquee-container {
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        .marquee-content {
+            display: inline-block;
+            animation: marquee 30s linear infinite;
+        }
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .book-shadow {
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.15);
+        }
+        .lift-on-hover:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.15);
+        }
+        .hide-scroll::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scroll {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-paper-cream text-on-surface font-body-md antialiased pb-24 md:pb-0 relative min-h-screen">
+<!-- 1. Top Bar -->
+<div class="bg-surface-container-highest text-on-surface text-center py-2 px-margin-mobile md:px-margin-desktop text-sm flex flex-col md:flex-row justify-center items-center gap-2 md:gap-6 border-b border-muted-border">
+<div class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1; font-size: 16px;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1; font-size: 16px;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1; font-size: 16px;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1; font-size: 16px;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1; font-size: 16px;">star</span>
+<span class="ml-1 text-on-surface font-semibold text-xs">Trustpilot 4.9/5</span>
+<span class="ml-2 inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-bold bg-[#3bff55]/20 text-[#127020] border border-[#3bff55]/40">Verified Store</span>
+</div>
+<span class="font-quote-text italic text-on-surface-variant text-sm md:text-base hidden md:block">"A room without books is like a body without a soul."</span>
+</div>
+
+<!-- 2 & 3. Navigation -->
+<header class="w-full top-0 bg-paper-cream flex flex-col w-full max-w-container-max mx-auto px-margin-desktop hidden md:flex border-b border-muted-border sticky z-40">
+<div class="py-5 flex justify-between items-center w-full">
+<a class="hover:scale-105 transition-transform flex items-center" href="#">
+  <img src="/images/logo.png" alt="Market Shop - Ocean of Book" class="h-12 w-auto object-contain mix-blend-multiply"/>
+</a>
+<div class="flex-1 max-w-xl mx-8 relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full bg-surface-container rounded-full py-3 pl-12 pr-6 border border-muted-border focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-colors text-body-md font-body-md" placeholder="Search authors, titles, or genres..." type="text"/>
+</div>
+<div class="flex items-center gap-6">
+<!-- Favorites button triggers left drawer -->
+<button onclick="toggleWishlistDrawer()" aria-label="Favorites" class="text-primary hover:text-secondary transition-colors duration-200 relative p-1 cursor-pointer">
+<span class="material-symbols-outlined" style="font-size: 28px;">favorite</span>
+<span class="absolute -top-1 -right-1 bg-secondary text-white text-[10px] rounded-full w-4 h-4 flex items-center justify-center font-bold">2</span>
+</button>
+<!-- Cart button triggers left drawer -->
+<button onclick="toggleCartDrawer()" aria-label="Cart" class="text-primary hover:text-secondary transition-colors duration-200 relative p-1 cursor-pointer">
+<span class="material-symbols-outlined" style="font-size: 28px;">shopping_bag</span>
+<span class="absolute -top-1 -right-1 bg-primary text-white text-[10px] rounded-full w-4 h-4 flex items-center justify-center font-bold">2</span>
+</button>
+</div>
+</div>
+<nav class="flex justify-center gap-8 pb-4">
+<a class="font-title-md text-title-md text-primary font-bold border-b-2 border-primary pb-1 hover:scale-105 transition-transform" href="#">Fiction</a>
+<a class="font-title-md text-title-md text-on-surface-variant hover:text-secondary transition-colors duration-200 hover:scale-105" href="#">Non-Fiction</a>
+<a class="font-title-md text-title-md text-on-surface-variant hover:text-secondary transition-colors duration-200 hover:scale-105" href="#">Rare Editions</a>
+<a class="font-title-md text-title-md text-on-surface-variant hover:text-secondary transition-colors duration-200 hover:scale-105" href="#">Poetry</a>
+<a class="font-title-md text-title-md text-on-surface-variant hover:text-secondary transition-colors duration-200 hover:scale-105" href="#">Children</a>
+<a class="font-title-md text-title-md text-secondary hover:text-secondary-container transition-colors duration-200 hover:scale-105" href="#">Sale</a>
+</nav>
+</header>
+
+<!-- Mobile Header -->
+<header class="md:hidden flex justify-between items-center px-margin-mobile py-3 bg-paper-cream sticky top-0 z-40 border-b border-muted-border">
+<a class="flex items-center" href="#">
+  <img src="/images/logo.png" alt="Market Shop - Ocean of Book" class="h-8 w-auto object-contain mix-blend-multiply"/>
+</a>
+<div class="flex items-center gap-3">
+<button onclick="toggleWishlistDrawer()" aria-label="Favorites" class="text-on-surface hover:text-secondary p-1">
+  <span class="material-symbols-outlined text-[24px]">favorite</span>
+</button>
+<button aria-label="Search" class="text-on-surface hover:text-primary p-1">
+  <span class="material-symbols-outlined text-[24px]">search</span>
+</button>
+</div>
+</header>
+
+<!-- 4. Trust Bar -->
+<div class="bg-sage-haze py-3 border-y border-muted-border">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop flex justify-center gap-8 md:gap-16 text-center">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm">local_shipping</span>
+<span class="font-label-sm text-label-sm text-ink-charcoal uppercase tracking-wider">Quick UK Delivery</span>
+</div>
+<div class="hidden sm:flex items-center gap-2">
+<span class="material-symbols-outlined text-[#18a12d] text-sm" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="font-label-sm text-label-sm text-ink-charcoal uppercase tracking-wider">Money Back Guarantee</span>
+</div>
+<div class="hidden md:flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm">health_and_safety</span>
+<span class="font-label-sm text-label-sm text-ink-charcoal uppercase tracking-wider">Trusted Nationwide</span>
+</div>
+</div>
+</div>
+
+<!-- First Marquee -->
+<div class="bg-surface-container-high py-2 border-b border-muted-border marquee-container">
+<div class="marquee-content font-label-sm text-label-sm text-on-surface uppercase tracking-wider flex gap-12">
+<span>Excellent Reviews</span>
+<span class="text-primary">•</span>
+<span>New Arrivals Just In</span>
+<span class="text-secondary">•</span>
+<span>Seasonal Deals Now Live</span>
+<span class="text-[#18a12d]">•</span>
+<span>Direct UK Sellers</span>
+<span class="text-primary">•</span>
+<span>Excellent Reviews</span>
+<span class="text-primary">•</span>
+<span>New Arrivals Just In</span>
+<span class="text-secondary">•</span>
+<span>Seasonal Deals Now Live</span>
+<span class="text-[#18a12d]">•</span>
+<span>Direct UK Sellers</span>
+</div>
+</div>
+
+<main class="max-w-container-max mx-auto w-full">
+<!-- 5. Hero Section -->
+<section class="py-16 md:py-24 px-margin-mobile md:px-margin-desktop text-center">
+<h1 class="font-display-xl text-headline-lg-mobile md:text-display-xl text-ink-charcoal mb-6 max-w-3xl mx-auto">
+                Curating Quiet Moments for Every Reader
+            </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto mb-10">
+                Discover a carefully selected collection of literature designed to inspire, comfort, and transport you. Explore our shelves and find your next escape with direct UK independent sellers.
+            </p>
+<div class="flex flex-col sm:flex-row justify-center gap-4">
+<button class="bg-primary hover:bg-primary-container text-on-primary font-label-sm text-label-sm uppercase tracking-wider py-4 px-8 rounded transition-colors shadow-sm">
+                    Shop Collection
+                </button>
+<button class="border border-ink-charcoal text-ink-charcoal hover:bg-surface-container font-label-sm text-label-sm uppercase tracking-wider py-4 px-8 rounded transition-colors">
+                    Explore Genres
+                </button>
+</div>
+</section>
+
+<!-- 6. Featured Books -->
+<section class="px-margin-mobile md:px-margin-desktop py-12">
+<div class="flex justify-between items-end mb-8">
+<h2 class="font-title-md text-title-md text-ink-charcoal">Curator's Picks</h2>
+<a class="font-label-sm text-label-sm text-primary uppercase hover:underline" href="#">View All</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="flex flex-col group cursor-pointer">
+<div class="aspect-[2/3] w-full bg-surface-container mb-4 overflow-hidden border border-muted-border rounded book-shadow transition-all duration-300 lift-on-hover">
+<img class="w-full h-full object-cover" data-alt="Cover of The Silent Echo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2hRt3nflzL572lhboo0z-oM5QqblQKdxtBjr5uZ4Yo3vE1pBLR8UsLdU6IE1zhmgnxizLOaoVTmXe4uLdwken3H7lDihNa8CMxpsgZbTtkLkUR_mnTDvEksUMBVY5wYXnTLMiG8sAtzSusvH1xe2E14hX9F_9AoYbXlLv-zdA3mcjlFS1wy-726qKp0hWLvQ5wsTS5KXzmFghEFuBOJeU0u3FZmM5sVUEAIxn2OaHJvt_pJutkvU"/>
+</div>
+<div class="text-center">
+<h3 class="font-title-md text-title-md text-ink-charcoal mb-1">The Silent Echo</h3>
+<p class="font-body-md text-body-md text-outline mb-2">Elena Rostova</p>
+<p class="font-body-lg text-body-lg text-ink-charcoal font-semibold mb-4">£14.99</p>
+<button onclick="toggleCartDrawer()" class="w-full bg-surface-container-high hover:bg-primary hover:text-on-primary text-ink-charcoal font-label-sm text-label-sm uppercase py-3 border border-muted-border rounded transition-colors">Add to Cart</button>
+</div>
+</div>
+<div class="flex flex-col group cursor-pointer">
+<div class="aspect-[2/3] w-full bg-surface-container mb-4 overflow-hidden border border-muted-border rounded book-shadow transition-all duration-300 lift-on-hover relative">
+<div class="absolute top-2 left-2 bg-secondary text-on-secondary text-xs px-2 py-1 uppercase font-bold rounded shadow-sm">Bestseller</div>
+<img class="w-full h-full object-cover" data-alt="Cover of Architecture of the Mind" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBKqhMVW19RD8lwVDkVG2ldd-joFRVeGCcNj9Ju0A1D7vYroSl9ab6EYzgBrKp8D_XjgfsOILDxxtpVcFO8mzcbEKS74KiPCJs0tIWv2LHsQqMWAJyq4jXYg5XbTfdKAfbNS7ujtS7bcw8zxF5-4HdZqKgGwTWfeP7qPemRfWAc0KLSyDcMurOvGO6cPfrPsWWoJdXst-3NaT75ZHfbScmQe5GI_KabpY_ZaYBDSiX0H5dYHIbySlM"/>
+</div>
+<div class="text-center">
+<h3 class="font-title-md text-title-md text-ink-charcoal mb-1">Architecture of the Mind</h3>
+<p class="font-body-md text-body-md text-outline mb-2">Dr. Julian Hayes</p>
+<p class="font-body-lg text-body-lg text-ink-charcoal font-semibold mb-4">£18.50</p>
+<button onclick="toggleCartDrawer()" class="w-full bg-surface-container-high hover:bg-primary hover:text-on-primary text-ink-charcoal font-label-sm text-label-sm uppercase py-3 border border-muted-border rounded transition-colors">Add to Cart</button>
+</div>
+</div>
+<div class="flex flex-col group cursor-pointer">
+<div class="aspect-[2/3] w-full bg-surface-container mb-4 overflow-hidden border border-muted-border rounded book-shadow transition-all duration-300 lift-on-hover">
+<img class="w-full h-full object-cover" data-alt="Cover of Whispers in the Glass" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBP9EUPxxR5ZhKdNwbT2tGhHqG4vvKp31oQ-2RUXhJKN-dbNIbnugvpJR0zFsJmF3e6WD9XAGKbPMtHcWLG_i55Cw2y9AVGYXwaI8GwQ_H2NpD9dwPCJKROrCESEdrDujVgVcNdoFt6waG0NV18YSae0LdjKl7zx8oHJEzXlUO72Ov3B3_fSC7IvI4c__dAWZ-JJmQ9MCLtlbSGg0jlWH5ZRQtL6gggH-Nm6bsATKPn77_S2WouR9c"/>
+</div>
+<div class="text-center">
+<h3 class="font-title-md text-title-md text-ink-charcoal mb-1">Whispers in the Glass</h3>
+<p class="font-body-md text-body-md text-outline mb-2">Sarah Lin</p>
+<p class="font-body-lg text-body-lg font-semibold mb-4">
+<span class="text-secondary mr-2">£9.99</span>
+<span class="text-outline line-through font-normal text-sm">£12.99</span>
+</p>
+<button onclick="toggleCartDrawer()" class="w-full bg-surface-container-high hover:bg-primary hover:text-on-primary text-ink-charcoal font-label-sm text-label-sm uppercase py-3 border border-muted-border rounded transition-colors">Add to Cart</button>
+</div>
+</div>
+</div>
+</section>
+
+<!-- 7. Seasonal Deals & New Releases Slideshow -->
+<section class="px-margin-mobile md:px-margin-desktop py-12 bg-sage-haze my-8 rounded-xl mx-4 md:mx-0 border border-muted-border overflow-hidden">
+<div class="flex justify-between items-end mb-8 px-4">
+<div class="flex items-center gap-3">
+  <h2 class="font-title-md text-headline-lg text-ink-charcoal">Seasonal Deals</h2>
+  <span class="bg-[#3bff55]/20 text-[#106b1e] border border-[#3bff55]/50 px-2.5 py-0.5 rounded-full text-xs font-bold uppercase tracking-wider">Live Now</span>
+</div>
+<div class="flex gap-2">
+<button class="w-10 h-10 rounded-full border border-ink-charcoal flex items-center justify-center hover:bg-primary hover:text-on-primary transition-colors"><span class="material-symbols-outlined">arrow_back</span></button>
+<button class="w-10 h-10 rounded-full border border-ink-charcoal flex items-center justify-center hover:bg-primary hover:text-on-primary transition-colors"><span class="material-symbols-outlined">arrow_forward</span></button>
+</div>
+</div>
+<div class="flex overflow-x-auto gap-6 pb-8 px-4 no-scrollbar">
+<!-- Deal Item 1 -->
+<div class="min-w-[300px] flex-shrink-0 bg-surface-container-lowest p-6 rounded-lg shadow-sm border border-muted-border flex items-center gap-6 group cursor-pointer hover:shadow-md transition-shadow">
+<div class="w-24 h-36 bg-surface-variant flex-shrink-0 book-shadow overflow-hidden rounded">
+<img alt="Book" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-xiT39Ukh2KvmvyYQSMJfSKI77Mkwj_eQXoz-qgCDpx5DMS-Z242nHffetXx7yCATO1pa8PXVizBrxmvW_DcgP0rLwgYHT2RVCvFNtPcFKHKvldXBh7aW0OltHTGibjoNhWjcA1hexgbYAoU9iBJ8xmW5Y_jcYNSiNKvqv9vIxQeMULe1loZOUYwtkRb1EIMWGa6-PdxbvNv2rUPWE8_mI7WC9Vx6UAFa32w2xMpgIlYhLdd5tEw"/>
+</div>
+<div>
+<span class="text-secondary font-label-sm uppercase tracking-wide block mb-1 font-bold">Save 20%</span>
+<h3 class="font-title-md text-ink-charcoal mb-1 group-hover:text-primary transition-colors">Wintering</h3>
+<p class="text-sm text-outline mb-2">Katherine May</p>
+<p class="font-semibold"><span class="text-secondary mr-2">£8.99</span><span class="line-through text-outline text-sm">£10.99</span></p>
+</div>
+</div>
+<!-- Deal Item 2 -->
+<div class="min-w-[300px] flex-shrink-0 bg-surface-container-lowest p-6 rounded-lg shadow-sm border border-muted-border flex items-center gap-6 group cursor-pointer hover:shadow-md transition-shadow">
+<div class="w-24 h-36 bg-surface-variant flex-shrink-0 book-shadow overflow-hidden rounded">
+<img alt="Book" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC900G178DAqgWsGjTCHSmCjPx5iA6yyAtOHSoTD6j9ALlXlSi0TIYckc3SOu0alrAngZelbz01fQSKwoOPDhv0mirFF4mmI_ifAlKjXFAYEc6QGDC6ico8MRPYZ_X6AyIa4SxvI8YaZsSR3xiQQfq-LtMi5OSMdtprBPsrcf0YN3ztLkmxGDpwaF9g37x0EK5kCtuDyZvaEXx3UeKtHCJ4bw71RIhNRBO3NRdRx9rL5iIT8n1ZyH4"/>
+</div>
+<div>
+<span class="text-secondary font-label-sm uppercase tracking-wide block mb-1 font-bold">Buy 1 Get 1</span>
+<h3 class="font-title-md text-ink-charcoal mb-1 group-hover:text-primary transition-colors">The Alchemist</h3>
+<p class="text-sm text-outline mb-2">Paulo Coelho</p>
+<p class="font-semibold">£12.99</p>
+</div>
+</div>
+<!-- Deal Item 3 -->
+<div class="min-w-[300px] flex-shrink-0 bg-surface-container-lowest p-6 rounded-lg shadow-sm border border-muted-border flex items-center gap-6 group cursor-pointer hover:shadow-md transition-shadow">
+<div class="w-24 h-36 bg-surface-variant flex-shrink-0 book-shadow overflow-hidden rounded">
+<img alt="Book" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBhkj-qJgt1iSzLLpV3bog07pQDawy69it9VZFs4IxlzzO5yf3e1RG4UeWa1kpDWMxHfBghfGbg_PapkGierDQ96lL-a5jsUR7b99UKGixqaTvJcTbRXhm-4XvBwCsK4B54qSnHUf5H9ZZEH7Y9BnErjqTxS24Eq4uUj2YjuRy6xhmJQxr9nFqMXd2sf39AWdkxenAVe3WPKH1arpzZT4p6nneK1Bc9lpPhlyYahcd7vUuQIqF9IWY"/>
+</div>
+<div>
+<span class="text-secondary font-label-sm uppercase tracking-wide block mb-1 font-bold">Bundle Deal</span>
+<h3 class="font-title-md text-ink-charcoal mb-1 group-hover:text-primary transition-colors">Classic Poems</h3>
+<p class="text-sm text-outline mb-2">Various Artists</p>
+<p class="font-semibold"><span class="text-secondary mr-2">£15.00</span><span class="line-through text-outline text-sm">£22.00</span></p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- 8. Browse by Genre -->
+<section class="px-margin-mobile md:px-margin-desktop py-12">
+<h2 class="font-title-md text-headline-lg text-ink-charcoal text-center mb-10">Browse by Genre</h2>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+<a class="group relative aspect-square bg-surface-container-high rounded-xl overflow-hidden shadow-sm flex flex-col items-center justify-center border border-muted-border hover:border-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-4xl mb-3 text-primary group-hover:scale-110 transition-transform">auto_stories</span>
+<span class="font-title-md text-ink-charcoal">Fiction</span>
+</a>
+<a class="group relative aspect-square bg-surface-container-high rounded-xl overflow-hidden shadow-sm flex flex-col items-center justify-center border border-muted-border hover:border-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-4xl mb-3 text-primary group-hover:scale-110 transition-transform">science</span>
+<span class="font-title-md text-ink-charcoal">Non-Fiction</span>
+</a>
+<a class="group relative aspect-square bg-surface-container-high rounded-xl overflow-hidden shadow-sm flex flex-col items-center justify-center border border-muted-border hover:border-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-4xl mb-3 text-primary group-hover:scale-110 transition-transform">history_edu</span>
+<span class="font-title-md text-ink-charcoal">Poetry</span>
+</a>
+<a class="group relative aspect-square bg-surface-container-high rounded-xl overflow-hidden shadow-sm flex flex-col items-center justify-center border border-muted-border hover:border-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-4xl mb-3 text-primary group-hover:scale-110 transition-transform">diamond</span>
+<span class="font-title-md text-ink-charcoal">Rare Editions</span>
+</a>
+</div>
+</section>
+
+<!-- Second Marquee -->
+<div class="bg-surface-container-high py-2 border-y border-muted-border marquee-container my-8">
+<div class="marquee-content font-label-sm text-label-sm text-on-surface uppercase tracking-wider flex gap-12">
+<span>Excellent Reviews</span>
+<span class="text-primary">•</span>
+<span>New Arrivals Just In</span>
+<span class="text-secondary">•</span>
+<span>Seasonal Deals Now Live</span>
+<span class="text-[#18a12d]">•</span>
+<span>Direct UK Sellers</span>
+<span class="text-primary">•</span>
+<span>Excellent Reviews</span>
+<span class="text-primary">•</span>
+<span>New Arrivals Just In</span>
+<span class="text-secondary">•</span>
+<span>Seasonal Deals Now Live</span>
+<span class="text-[#18a12d]">•</span>
+<span>Direct UK Sellers</span>
+</div>
+</div>
+
+<!-- 9. New Releases Grid (6 books) -->
+<section class="px-margin-mobile md:px-margin-desktop py-12">
+<div class="flex justify-between items-end mb-8">
+<h2 class="font-title-md text-title-md text-ink-charcoal">New Releases</h2>
+<a class="font-label-sm text-label-sm text-primary uppercase hover:underline" href="#">View All</a>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+<!-- Book 1 -->
+<div class="flex flex-col group cursor-pointer">
+<div class="aspect-[2/3] w-full bg-surface-variant mb-3 rounded book-shadow overflow-hidden hover:scale-105 transition-transform duration-300 border border-muted-border">
+<img alt="Book Cover" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2onXBOs8n9f9rWGVctc9v7Zm0Qv-0lF1gOm-LoX2hEBsH6T-dTP54GgdKE_FCsPI3R20N2zyuBkzJZo9XaeFIe-0m-iorr0U1dIyZ3Xell1SxB3Wwb_hhuMFXbzy0nX6J5uw2u8jxB-5TrZzyjQydLIgtIMgC-PRY2eMyX1bGMP6Tn2h0c0-Hxj_tN6d3ngC5nzzejJjvPpLyhRlOZa9DsLwJHDBpnClJh3mmCQhm4PCExaflqj4"/>
+</div>
+<h3 class="font-title-md text-sm text-ink-charcoal truncate">The Lost City</h3>
+<p class="font-body-md text-xs text-outline mb-1">Amanda Wells</p>
+<p class="font-body-lg text-sm font-semibold">£12.99</p>
+</div>
+<!-- Book 2 -->
+<div class="flex flex-col group cursor-pointer">
+<div class="aspect-[2/3] w-full bg-surface-variant mb-3 rounded book-shadow overflow-hidden hover:scale-105 transition-transform duration-300 border border-muted-border">
+<img alt="Book Cover" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdZyPT1vz7oMNDhghsTy-kI3XoJ4gatH_VY2JxmlibnUp0lHNTNQafEfcSiPhHpg1-7c4PisH3BecLAg1tF8XtCvakUaOWPYDfoVGDpB8CMt6PDnby_Mx5c1Zo5kB17QbqzeGYXAHB_8JGlPSzwNWO4DDTKWKadD76573EVJrHPPeMszPylfkJq1_v3OLFOHFbWbGxeYq05pzpJqPiBfi4oFjOUNEH36gJMpu4cq4_LmjyxpwzY-o"/>
+</div>
+<h3 class="font-title-md text-sm text-ink-charcoal truncate">Midnight Thoughts</h3>
+<p class="font-body-md text-xs text-outline mb-1">R. K. Sterling</p>
+<p class="font-body-lg text-sm font-semibold">£10.50</p>
+</div>
+<!-- Book 3 -->
+<div class="flex flex-col group cursor-pointer">
+<div class="aspect-[2/3] w-full bg-surface-variant mb-3 rounded book-shadow overflow-hidden hover:scale-105 transition-transform duration-300 border border-muted-border">
+<img alt="Book Cover" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAePQbF8dSYdAIpAU6mjO461nW2RVta3xPEh7E5ID4vO5kHo3Xan9uYV1D0t2--vSM2DX9QPf4o0j7jZAeJIEomT4Rpwv5gRSDerYvAaqrMupgfKcaGW2THrN0fOKUDRq9sxjplmW8LrIR5_zse7QwKxdKmAD8eetAuU3rq-QoU8eEdt4HNumaiLdE7ULxmyULMIN7sAJkUzl7ezgVZIEzp4cEK_WypLtxONvf-0PtD-iqS4iJtzwQ"/>
+</div>
+<h3 class="font-title-md text-sm text-ink-charcoal truncate">Ocean Waves</h3>
+<p class="font-body-md text-xs text-outline mb-1">T. H. White</p>
+<p class="font-body-lg text-sm font-semibold">£14.00</p>
+</div>
+<!-- Book 4 -->
+<div class="flex flex-col group cursor-pointer">
+<div class="aspect-[2/3] w-full bg-surface-variant mb-3 rounded book-shadow overflow-hidden hover:scale-105 transition-transform duration-300 border border-muted-border">
+<img alt="Book Cover" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTyVgASNE_biXyqxmCwjzsDfiLJW0Pfe5nQuLWBgJoaRhOJ1FNPNsvvy0VP_8Tg7T_WpNRabeefu0fzDybbOhM_Tko34RQaXmM6NpNDk-emu8SO6tLNPdwmNAzDksuNtzUXcwpmTSBbqlj7J_Qhcv4Nhx1VdHN__b2M2TzyWTI3RKkQRzHe8uyePORP9wmgqWgnSPazveJfYlLdnz0TMgigM0Pt-HPLWTuzpTLIUa8KbHkKdA7NTE"/>
+</div>
+<h3 class="font-title-md text-sm text-ink-charcoal truncate">Modern Art</h3>
+<p class="font-body-md text-xs text-outline mb-1">Julia Stone</p>
+<p class="font-body-lg text-sm font-semibold">£25.00</p>
+</div>
+<!-- Book 5 -->
+<div class="flex flex-col group cursor-pointer">
+<div class="aspect-[2/3] w-full bg-surface-variant mb-3 rounded book-shadow overflow-hidden hover:scale-105 transition-transform duration-300 border border-muted-border">
+<img alt="Book Cover" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZQ2Y_ske2vc0SP32eeDvSPa9ozO8wREJC1GFtdCCErEmgqM61BJozRAIJg8sp8wUm1pKXh3ibmm41URk19aY7oA-iDS7VnO-oUbDimc4wIGoD0Df3ArzjCk-ekNYzAw48348X2xwF2AlWPXzpBaEE_EYUePcWzUlc42ZzMAosuPMpH1qrp093ocvuQc6rZBiS7BrWCB4BcX6uBHfP14pd9095TxXOacYYYNCQTOlZELj9iSDuTmQ"/>
+</div>
+<h3 class="font-title-md text-sm text-ink-charcoal truncate">History Repeats</h3>
+<p class="font-body-md text-xs text-outline mb-1">Martin King</p>
+<p class="font-body-lg text-sm font-semibold">£18.99</p>
+</div>
+<!-- Book 6 -->
+<div class="flex flex-col group cursor-pointer">
+<div class="aspect-[2/3] w-full bg-surface-variant mb-3 rounded book-shadow overflow-hidden hover:scale-105 transition-transform duration-300 border border-muted-border">
+<img alt="Book Cover" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCW-cAvnLXfcCULqPblJ4eLpBPvnWr4zzhsAtJK2nKX2wgN_KKhxK-yi-DnIV8mWS5Df8retEoknjTGUX7MM-wvvaadH353AuSPg2fNxL16r_cZr8UEPtSAfrVDCPdvO4w4fruXJdCpyzDS_YEnzLSTQp0XMEhEHtcjaCdcvKN1DxgKWTiMHcitKd0BQ2eP1AWkSP0pz1oVKIc9NaNQHlPFjGUJfZvF3qzX3ZEPpz5VRCC_OT-7myA"/>
+</div>
+<h3 class="font-title-md text-sm text-ink-charcoal truncate">Cooking Basics</h3>
+<p class="font-body-md text-xs text-outline mb-1">Chef Mario</p>
+<p class="font-body-lg text-sm font-semibold">£16.50</p>
+</div>
+</div>
+</section>
+
+<!-- 10. Featured Authors -->
+<section class="bg-surface-container-highest py-16 px-margin-mobile md:px-margin-desktop mt-8 border-y border-muted-border">
+<div class="max-w-container-max mx-auto text-center">
+<h2 class="font-title-md text-headline-lg text-ink-charcoal mb-4">Featured Authors</h2>
+<p class="text-on-surface-variant mb-12 max-w-xl mx-auto">Discover the brilliant minds behind this month's most talked-about literature.</p>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Author 1 -->
+<div class="bg-paper-cream p-6 rounded-lg shadow-sm border border-muted-border flex flex-col items-center text-center">
+<img alt="Author" class="w-24 h-24 rounded-full object-cover mb-4 border-2 border-primary" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-TKoeVViLvYEl4QQ6Z-WXtJWs9gzWscr-AP-OphhT3H25mf6ZsRM3NX6p-V6IV20rSkop8mHlilmWsx4-VT3wO_QR41mgbae6P0uKWAjHQCY2Kfv0cQLHFkWWO1yGRTiqjtA0I6c5mrnyx7S3SzrKLmQhkLyfAZHSoRbpvibJDgFAPjdYZJe9RZKfMaMFEeb43qcLsnk3iA_rBbN6nCxk5D3hFraXBoKArYow4sIoxRs-vytyeKY"/>
+<h3 class="font-title-md text-lg text-ink-charcoal mb-2">Elena Rostova</h3>
+<p class="text-sm text-on-surface-variant mb-4">Award-winning novelist known for exploring the depths of human emotion and memory.</p>
+<a class="text-primary font-label-sm uppercase hover:underline mt-auto font-semibold" href="#">View Books</a>
+</div>
+<!-- Author 2 -->
+<div class="bg-paper-cream p-6 rounded-lg shadow-sm border border-muted-border flex flex-col items-center text-center">
+<img alt="Author" class="w-24 h-24 rounded-full object-cover mb-4 border-2 border-primary" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdxeoNULIF09w_EtxZCJTZFYVkt4LAUlorQy829eCCgOYHVeRzukO5gSQi8t253x5LMkFkZdEW4ZzAAbuZAeojFE0_VWaXLQr8SlcOncrSzlkeeVwZrriSAIUVuAXkSPex6RJ1PrhP4kVV7txGObP3r_fGxP-MO3jSRFkg8X75anCsQuKZxgcD7Ie_gUfTL2Bf4gFWwo_EYLPg8FL0t7VZqltFx9rlDofa5dO_qAMEPy3h-WaLjQo"/>
+<h3 class="font-title-md text-lg text-ink-charcoal mb-2">Dr. Julian Hayes</h3>
+<p class="text-sm text-on-surface-variant mb-4">Architect and philosopher writing on the intersection of space, mind, and culture.</p>
+<a class="text-primary font-label-sm uppercase hover:underline mt-auto font-semibold" href="#">View Books</a>
+</div>
+<!-- Author 3 -->
+<div class="bg-paper-cream p-6 rounded-lg shadow-sm border border-muted-border flex flex-col items-center text-center">
+<img alt="Author" class="w-24 h-24 rounded-full object-cover mb-4 border-2 border-primary" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOJYQl6Nttej1Y_5xOPH0Ja0kxx_FPwW_NJVeCNgLKOnRPRMQXsFu_mdkFY7bH5SKR4c-5pS6KzUxImlDUYJZAYJ5ryfucNz0Evn1zaFuIXpYACkzY2YnWot_rpWqjp1UiKkfBF-cTwmw0kBqKfbNIY4NDLIXnOS4CqPnNQSvpetevmUEcPzlyyNc-_C_tGQgDdhrIO52zjo0gfnu19lf-mSJ2A2Yurt4S4hE22HKAy5sxkFPcH7c"/>
+<h3 class="font-title-md text-lg text-ink-charcoal mb-2">Sarah Lin</h3>
+<p class="text-sm text-on-surface-variant mb-4">Contemporary poet capturing the quiet moments of nature and modern existence.</p>
+<a class="text-primary font-label-sm uppercase hover:underline mt-auto font-semibold" href="#">View Books</a>
+</div>
+</div>
+</div>
+</section>
+
+<!-- 11. Customer Reviews -->
+<section class="px-margin-mobile md:px-margin-desktop py-16">
+<h2 class="font-title-md text-headline-lg text-ink-charcoal text-center mb-10">What Readers Say</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Review 1 -->
+<div class="bg-surface-container p-6 rounded-lg border border-muted-border relative">
+<span class="material-symbols-outlined text-outline-variant absolute top-4 right-4 text-4xl opacity-50">format_quote</span>
+<div class="flex text-primary mb-3">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="font-body-md text-on-surface-variant italic mb-4 relative z-10">"A truly magical bookstore experience online. The curation is exceptional, and my books arrived beautifully packaged within two days."</p>
+<p class="font-label-sm text-ink-charcoal uppercase">— Claire M.</p>
+</div>
+<!-- Review 2 -->
+<div class="bg-surface-container p-6 rounded-lg border border-muted-border relative">
+<span class="material-symbols-outlined text-outline-variant absolute top-4 right-4 text-4xl opacity-50">format_quote</span>
+<div class="flex text-primary mb-3">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="font-body-md text-on-surface-variant italic mb-4 relative z-10">"I always find something unexpected and wonderful here. The rare editions section is a treasure trove for collectors."</p>
+<p class="font-label-sm text-ink-charcoal uppercase">— James T.</p>
+</div>
+<!-- Review 3 -->
+<div class="bg-surface-container p-6 rounded-lg border border-muted-border relative">
+<span class="material-symbols-outlined text-outline-variant absolute top-4 right-4 text-4xl opacity-50">format_quote</span>
+<div class="flex text-primary mb-3">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star_half</span>
+</div>
+<p class="font-body-md text-on-surface-variant italic mb-4 relative z-10">"The best place to discover new authors. The site is incredibly easy to navigate and aesthetically so pleasing. Highly recommend."</p>
+<p class="font-label-sm text-ink-charcoal uppercase">— Anita W.</p>
+</div>
+</div>
+</section>
+</main>
+
+<!-- Comprehensive Footer -->
+<footer class="bg-ink-charcoal text-surface-container py-16 px-margin-mobile md:px-margin-desktop mt-12 pb-24 md:pb-16 border-t border-outline">
+<div class="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
+<div>
+<a href="#" class="inline-block mb-4">
+  <img src="/images/logo.png" alt="Market Shop - Ocean of Book" class="h-10 w-auto object-contain brightness-0 invert opacity-90"/>
+</a>
+<p class="text-outline-variant text-sm mb-6 leading-relaxed">Curating quiet moments and literary escapes since 2015. Buy direct from independent UK book sellers with fast tracked Royal Mail delivery.</p>
+<div class="flex gap-4">
+<a class="text-surface-variant hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">language</span></a>
+<a class="text-surface-variant hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">mail</span></a>
+</div>
+</div>
+<div>
+<h3 class="font-label-sm uppercase text-surface-bright tracking-wider mb-4 border-b border-outline pb-2 inline-block">Explore</h3>
+<ul class="space-y-3 text-sm text-outline-variant">
+<li><a class="hover:text-primary transition-colors" href="#fiction">Fiction &amp; Literature</a></li>
+<li><a class="hover:text-primary transition-colors" href="#non-fiction">Non-Fiction &amp; Biography</a></li>
+<li><a class="hover:text-primary transition-colors" href="#children">Children's Books</a></li>
+<li><a class="hover:text-primary transition-colors" href="#rare-editions">Rare &amp; Signed Editions</a></li>
+<li><a class="hover:text-primary transition-colors" href="#sale">Gift Cards</a></li>
+</ul>
+</div>
+<div>
+<h3 class="font-label-sm uppercase text-surface-bright tracking-wider mb-4 border-b border-outline pb-2 inline-block">About Us</h3>
+<ul class="space-y-3 text-sm text-outline-variant">
+<li><a class="hover:text-primary transition-colors" href="#">Our Story</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Book Club</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Careers</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Affiliate Program</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Contact Us</a></li>
+</ul>
+</div>
+<div>
+<h3 class="font-label-sm uppercase text-surface-bright tracking-wider mb-4 border-b border-outline pb-2 inline-block">Support</h3>
+<ul class="space-y-3 text-sm text-outline-variant">
+<li><a class="hover:text-primary transition-colors" href="#">Shipping &amp; Returns</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">FAQ</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Privacy Policy</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Terms of Service</a></li>
+</ul>
+</div>
+</div>
+<div class="max-w-container-max mx-auto mt-12 pt-8 border-t border-outline/30 text-center text-outline-variant text-xs flex flex-col md:flex-row justify-between items-center gap-4">
+<p>© 2024 Market Shop • Ocean of Book. All rights reserved.</p>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-2xl">payments</span>
+<span class="material-symbols-outlined text-2xl">credit_card</span>
+<span class="material-symbols-outlined text-2xl">account_balance</span>
+</div>
+</div>
+</footer>
+
+<!-- Mobile Bottom Navigation Bar (Home, Account, Shop, Cart) -->
+<nav class="fixed bottom-0 inset-x-0 z-50 md:hidden bg-white rounded-t-3xl shadow-[0_-6px_25px_rgba(0,0,0,0.12)] border-t border-slate-100 px-3 py-2.5">
+  <div class="grid grid-cols-4 items-center">
+    <a class="flex flex-col items-center justify-center text-slate-900 hover:text-primary transition-colors py-1" href="#">
+      <span class="material-symbols-outlined text-[22px]">home</span>
+      <span class="text-[11px] font-bold text-slate-900 mt-1">Home</span>
+    </a>
+    <a onclick="toggleWishlistDrawer()" class="flex flex-col items-center justify-center text-slate-900 hover:text-primary transition-colors py-1 cursor-pointer" href="javascript:void(0)">
+      <span class="material-symbols-outlined text-[22px]">person</span>
+      <span class="text-[11px] font-bold text-slate-900 mt-1">Account</span>
+    </a>
+    <a class="flex flex-col items-center justify-center text-slate-900 hover:text-primary transition-colors py-1" href="#curators-picks">
+      <span class="material-symbols-outlined text-[22px]">shopping_bag</span>
+      <span class="text-[11px] font-bold text-slate-900 mt-1">Shop</span>
+    </a>
+    <a onclick="toggleCartDrawer()" class="flex flex-col items-center justify-center text-slate-900 hover:text-primary transition-colors py-1 relative cursor-pointer" href="javascript:void(0)">
+      <div class="relative inline-flex">
+        <span class="material-symbols-outlined text-[22px]">shopping_cart</span>
+        <span class="absolute -top-1.5 -right-2.5 bg-black text-white text-[10px] rounded-full w-4 h-4 flex items-center justify-center font-bold leading-none shadow-sm">2</span>
+      </div>
+      <span class="text-[11px] font-bold text-slate-900 mt-1">Cart</span>
+    </a>
+  </div>
+</nav>
+
+<!-- Left-sliding Cart Drawer (1/4 page on desktop) -->
+<div id="cart-drawer-backdrop" onclick="toggleCartDrawer()" class="hidden fixed inset-0 z-50 bg-ink-charcoal/60 backdrop-blur-[2px] transition-opacity"></div>
+<div id="cart-drawer" class="fixed inset-y-0 left-0 -translate-x-full transition-transform duration-300 ease-in-out z-50 w-screen sm:w-[28vw] sm:min-w-[340px] max-w-md bg-paper-cream border-r border-muted-border shadow-2xl flex flex-col">
+  <div class="px-5 py-4 bg-surface-container border-b border-muted-border flex items-center justify-between">
+    <div class="flex items-center gap-2.5">
+      <span class="material-symbols-outlined text-primary text-2xl">shopping_bag</span>
+      <h2 class="font-title-md text-base font-bold text-ink-charcoal">Shopping Basket (2)</h2>
+    </div>
+    <button onclick="toggleCartDrawer()" class="p-1 text-outline hover:text-ink-charcoal"><span class="material-symbols-outlined">close</span></button>
+  </div>
+  <div class="bg-sage-haze px-5 py-2.5 border-b border-muted-border text-xs flex justify-between">
+    <span class="font-semibold text-ink-charcoal">✓ Free UK Tracked Delivery Unlocked!</span>
+    <span class="font-bold text-primary">100%</span>
+  </div>
+  <div class="flex-1 overflow-y-auto p-4 space-y-3">
+    <div class="p-3 bg-surface-container-lowest border border-muted-border rounded-lg shadow-sm flex gap-3">
+      <img class="w-16 h-24 object-cover rounded book-shadow" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2hRt3nflzL572lhboo0z-oM5QqblQKdxtBjr5uZ4Yo3vE1pBLR8UsLdU6IE1zhmgnxizLOaoVTmXe4uLdwken3H7lDihNa8CMxpsgZbTtkLkUR_mnTDvEksUMBVY5wYXnTLMiG8sAtzSusvH1xe2E14hX9F_9AoYbXlLv-zdA3mcjlFS1wy-726qKp0hWLvQ5wsTS5KXzmFghEFuBOJeU0u3FZmM5sVUEAIxn2OaHJvt_pJutkvU"/>
+      <div class="flex-1">
+        <h4 class="font-title-md text-xs font-bold text-ink-charcoal">The Silent Echo</h4>
+        <p class="text-[11px] text-outline">Elena Rostova</p>
+        <p class="font-bold text-xs text-ink-charcoal mt-2">£14.99</p>
+      </div>
+    </div>
+    <div class="p-3 bg-surface-container-lowest border border-muted-border rounded-lg shadow-sm flex gap-3">
+      <img class="w-16 h-24 object-cover rounded book-shadow" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBKqhMVW19RD8lwVDkVG2ldd-joFRVeGCcNj9Ju0A1D7vYroSl9ab6EYzgBrKp8D_XjgfsOILDxxtpVcFO8mzcbEKS74KiPCJs0tIWv2LHsQqMWAJyq4jXYg5XbTfdKAfbNS7ujtS7bcw8zxF5-4HdZqKgGwTWfeP7qPemRfWAc0KLSyDcMurOvGO6cPfrPsWWoJdXst-3NaT75ZHfbScmQe5GI_KabpY_ZaYBDSiX0H5dYHIbySlM"/>
+      <div class="flex-1">
+        <h4 class="font-title-md text-xs font-bold text-ink-charcoal">Architecture of the Mind</h4>
+        <p class="text-[11px] text-outline">Dr. Julian Hayes</p>
+        <p class="font-bold text-xs text-ink-charcoal mt-2">£18.50</p>
+      </div>
+    </div>
+  </div>
+  <div class="p-4 bg-surface-container border-t border-muted-border space-y-3">
+    <div class="flex justify-between text-sm font-bold text-ink-charcoal">
+      <span>Total</span>
+      <span>£33.49</span>
+    </div>
+    <button onclick="alert('Proceeding to Checkout')" class="w-full bg-primary hover:bg-primary-container text-white py-3 rounded text-xs font-bold uppercase tracking-wider">Checkout • £33.49</button>
+  </div>
+</div>
+
+<!-- Left-sliding Wishlist / Favorites Drawer (1/4 page on desktop) -->
+<div id="wishlist-drawer-backdrop" onclick="toggleWishlistDrawer()" class="hidden fixed inset-0 z-50 bg-ink-charcoal/60 backdrop-blur-[2px] transition-opacity"></div>
+<div id="wishlist-drawer" class="fixed inset-y-0 left-0 -translate-x-full transition-transform duration-300 ease-in-out z-50 w-screen sm:w-[28vw] sm:min-w-[340px] max-w-md bg-paper-cream border-r border-muted-border shadow-2xl flex flex-col">
+  <div class="px-5 py-4 bg-surface-container border-b border-muted-border flex items-center justify-between">
+    <div class="flex items-center gap-2.5">
+      <span class="material-symbols-outlined text-secondary text-2xl" style="font-variation-settings: 'FILL' 1">favorite</span>
+      <h2 class="font-title-md text-base font-bold text-ink-charcoal">Saved Wishlist (2)</h2>
+    </div>
+    <button onclick="toggleWishlistDrawer()" class="p-1 text-outline hover:text-ink-charcoal"><span class="material-symbols-outlined">close</span></button>
+  </div>
+  <div class="bg-sage-haze px-5 py-2.5 border-b border-muted-border text-xs flex justify-between">
+    <span class="font-semibold text-ink-charcoal">Saved for quiet moments</span>
+    <span class="text-secondary font-bold text-[11px] uppercase">Saved</span>
+  </div>
+  <div class="flex-1 overflow-y-auto p-4 space-y-3">
+    <div class="p-3 bg-surface-container-lowest border border-muted-border rounded-lg shadow-sm flex gap-3">
+      <img class="w-16 h-24 object-cover rounded book-shadow" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBP9EUPxxR5ZhKdNwbT2tGhHqG4vvKp31oQ-2RUXhJKN-dbNIbnugvpJR0zFsJmF3e6WD9XAGKbPMtHcWLG_i55Cw2y9AVGYXwaI8GwQ_H2NpD9dwPCJKROrCESEdrDujVgVcNdoFt6waG0NV18YSae0LdjKl7zx8oHJEzXlUO72Ov3B3_fSC7IvI4c__dAWZ-JJmQ9MCLtlbSGg0jlWH5ZRQtL6gggH-Nm6bsATKPn77_S2WouR9c"/>
+      <div class="flex-1">
+        <h4 class="font-title-md text-xs font-bold text-ink-charcoal">Whispers in the Glass</h4>
+        <p class="text-[11px] text-outline">Sarah Lin</p>
+        <p class="font-bold text-xs text-ink-charcoal mt-2">£9.99</p>
+      </div>
+    </div>
+    <div class="p-3 bg-surface-container-lowest border border-muted-border rounded-lg shadow-sm flex gap-3">
+      <img class="w-16 h-24 object-cover rounded book-shadow" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2onXBOs8n9f9rWGVctc9v7Zm0Qv-0lF1gOm-LoX2hEBsH6T-dTP54GgdKE_FCsPI3R20N2zyuBkzJZo9XaeFIe-0m-iorr0U1dIyZ3Xell1SxB3Wwb_hhuMFXbzy0nX6J5uw2u8jxB-5TrZzyjQydLIgtIMgC-PRY2eMyX1bGMP6Tn2h0c0-Hxj_tN6d3ngC5nzzejJjvPpLyhRlOZa9DsLwJHDBpnClJh3mmCQhm4PCExaflqj4"/>
+      <div class="flex-1">
+        <h4 class="font-title-md text-xs font-bold text-ink-charcoal">The Lost City</h4>
+        <p class="text-[11px] text-outline">Amanda Wells</p>
+        <p class="font-bold text-xs text-ink-charcoal mt-2">£12.99</p>
+      </div>
+    </div>
+  </div>
+  <div class="p-4 bg-surface-container border-t border-muted-border space-y-2">
+    <button onclick="toggleWishlistDrawer(); toggleCartDrawer();" class="w-full bg-primary hover:bg-primary-container text-white py-3 rounded text-xs font-bold uppercase tracking-wider">Move All to Basket</button>
+  </div>
+</div>
+
+<script>
+  function toggleCartDrawer() {
+    const drawer = document.getElementById('cart-drawer');
+    const backdrop = document.getElementById('cart-drawer-backdrop');
+    if (drawer.classList.contains('-translate-x-full')) {
+      drawer.classList.remove('-translate-x-full');
+      drawer.classList.add('translate-x-0');
+      backdrop.classList.remove('hidden');
+    } else {
+      drawer.classList.add('-translate-x-full');
+      drawer.classList.remove('translate-x-0');
+      backdrop.classList.add('hidden');
+    }
+  }
+
+  function toggleWishlistDrawer() {
+    const drawer = document.getElementById('wishlist-drawer');
+    const backdrop = document.getElementById('wishlist-drawer-backdrop');
+    if (drawer.classList.contains('-translate-x-full')) {
+      drawer.classList.remove('-translate-x-full');
+      drawer.classList.add('translate-x-0');
+      backdrop.classList.remove('hidden');
+    } else {
+      drawer.classList.add('-translate-x-full');
+      drawer.classList.remove('translate-x-0');
+      backdrop.classList.add('hidden');
+    }
+  }
+</script>
+</body>
+</html>

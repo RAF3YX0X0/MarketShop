@@ -1,45 +1,43 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Inter, Lora } from "next/font/google";
+import { Playfair_Display, Inter } from "next/font/google";
 import "./globals.css";
 import { CartProvider } from "@/components/cart/CartContext";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
   variable: "--font-playfair",
+  weight: ["400", "600", "700"],
+  style: ["normal", "italic"],
   display: "swap",
 });
 
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
-  display: "swap",
-});
-
-const lora = Lora({
-  subsets: ["latin"],
-  variable: "--font-lora",
+  weight: ["400", "600", "700"],
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Market Shop | Ocean of Book - Direct UK Book Marketplace",
+  title: "Market Shop - Ocean of Book | Curating Quiet Moments",
   description:
-    "Buy books direct from independent UK sellers. Save up to 45% on new, used, and collector copies with Royal Mail tracked delivery and a 100-day money-back guarantee.",
+    "Market Shop - Ocean of Book. Discover a carefully selected collection of literature designed to inspire, comfort, and transport you.",
   keywords: [
     "Market Shop",
     "Ocean of Book",
-    "buy books online UK",
-    "independent bookshop UK",
-    "sell books online",
-    "cheap books",
-    "bestsellers",
-    "rare books",
+    "Curating Quiet Moments",
+    "Fiction",
+    "Non-Fiction",
+    "Rare Editions",
+    "Poetry",
+    "Children Books",
+    "Bestsellers",
   ],
-  authors: [{ name: "Market Shop Ltd" }],
+  authors: [{ name: "Market Shop - Ocean of Book" }],
   openGraph: {
-    title: "Market Shop | Ocean of Book - Direct UK Book Marketplace",
+    title: "Market Shop - Ocean of Book | Curating Quiet Moments",
     description:
-      "Buy books direct from independent UK sellers with flat 5% seller fee and 100-day returns.",
+      "Market Shop - Ocean of Book. Discover a carefully selected collection of literature designed to inspire, comfort, and transport you.",
     type: "website",
     locale: "en_GB",
   },
@@ -51,8 +49,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${playfair.variable} ${inter.variable} ${lora.variable} scroll-smooth`}>
-      <body className="font-sans antialiased text-slate-900 bg-white min-h-screen flex flex-col selection:bg-brand-coral selection:text-white">
+    <html lang="en" className={`light ${playfair.variable} ${inter.variable} scroll-smooth`}>
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+          rel="stylesheet"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body className="bg-paper-cream text-on-surface font-body-md antialiased pb-24 md:pb-0 relative min-h-screen">
         <CartProvider>
           {children}
         </CartProvider>
@@ -60,3 +70,4 @@ export default function RootLayout({
     </html>
   );
 }
+
